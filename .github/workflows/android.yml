@@ -2,8 +2,12 @@ name: Android checks
 on:
   push:
   pull_request:
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: android-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -24,10 +28,63 @@ jobs:
         run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
       - name: Test, lint and build
         run: ./gradlew --no-daemon testDebugUnitTest lintDebug assembleDebug assembleRelease
-      - uses: actions/upload-artifact@v4
+      - name: Prepare installable prototype
+        run: |
+          mkdir -p distribution
+          cp app/build/outputs/apk/debug/app-debug.apk distribution/panera-order-pad.apk
+          "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose distribution/panera-order-pad.apk
+          cd distribution
+          sha256sum panera-order-pad.apk > panera-order-pad.apk.sha256
+      - name: Upload installable APK
+        uses: actions/upload-artifact@v4
         with:
-          name: review-apk-and-reports
+          name: panera-order-pad-apk
+          path: distribution/
+          if-no-files-found: error
+      - name: Upload verification reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verification-reports
           path: |
-            app/build/outputs/apk/debug/app-debug.apk
             app/build/reports/tests/testDebugUnitTest/
             app/build/reports/lint-results-debug.html
+  publish:
+    name: Publish phone download
+    needs: verify
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: panera-order-pad-apk
+          path: distribution
+      - name: Publish verified prototype APK
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          prototype_tag="prototype-${GITHUB_RUN_NUMBER}"
+          cat > release-notes.md <<'NOTES'
+          Installable Android prototype. Tests, lint, debug and optimized release builds passed before publication.
+
+          On an Android 8.0+ phone, download **panera-order-pad.apk**, open it, and allow installation from that download source if Android asks. The .sha256 file is an optional integrity check.
+
+          This APK is signed with a development key for prototype review. A different CI runner can use a different development key; replacing a previous build may require uninstalling it, which removes its saved order notes. Preserve needed notes first. A production signing key is not configured.
+
+          The Glenview menu and promotion availability still need cafe verification.
+          NOTES
+          printf '\nSource commit: %s\n' "$GITHUB_SHA" >> release-notes.md
+          if ! gh release view "$prototype_tag" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
+            gh release create "$prototype_tag" --repo "$GITHUB_REPOSITORY" \
+              --target "$GITHUB_SHA" --title "Android prototype #${GITHUB_RUN_NUMBER}" \
+              --notes-file release-notes.md --draft --prerelease
+          fi
+          gh release upload "$prototype_tag" --repo "$GITHUB_REPOSITORY" \
+            distribution/panera-order-pad.apk distribution/panera-order-pad.apk.sha256 --clobber
+          gh release edit "$prototype_tag" --repo "$GITHUB_REPOSITORY" \
+            --draft=false --prerelease --notes-file release-notes.md
+          printf '### Phone install\n[Download APK](https://github.com/%s/releases/download/%s/panera-order-pad.apk)\n' \
+            "$GITHUB_REPOSITORY" "$prototype_tag" >> "$GITHUB_STEP_SUMMARY"

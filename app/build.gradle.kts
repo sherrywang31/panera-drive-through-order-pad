@@ -33,9 +33,9 @@ android {
     lint {
         warningsAsErrors = true
         lintConfig = file("lint.xml")
-        // Availability of a newer release must not change reproducible CI results.
-        // Upgrade the verified version catalog deliberately; retain all code/resource checks.
-        disable += setOf("AndroidGradlePluginVersion", "GradleDependency", "NewerVersionAvailable")
+        // New upstream releases / SDKs must not change reproducible CI results.
+        // Upgrade the verified toolchain and target SDK deliberately; retain code/resource checks.
+        disable += setOf("AndroidGradlePluginVersion", "GradleDependency", "NewerVersionAvailable", "OldTargetApi")
     }
     packaging { resources.excludes += "/META-INF/{AL2.0,LGPL2.1}" }
 }

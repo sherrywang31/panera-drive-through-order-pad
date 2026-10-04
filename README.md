@@ -14,15 +14,19 @@ A native Kotlin / Jetpack Compose Android app implementing the cashier prototype
 
 ## Install the review build
 
-The delivered `drive-through-order-pad-debug.apk` is signed with a development key. Transfer it to the Android phone and open it, allowing installation from that source if Android requests it. It can also be installed with `adb install -r drive-through-order-pad-debug.apk`.
+On the cashier's Android phone, open [GitHub Releases](https://github.com/sherrywang31/panera-drive-through-order-pad/releases), choose the newest Android prototype, and download **panera-order-pad.apk** from Assets. Open the downloaded APK and allow installation from that browser/download source if Android requests it. No Android Studio, ZIP extraction or GitHub sign-in is needed for the public release download. Android 8.0 or later is required.
 
-This is a working offline review build, not a Play Store release. It does not send orders to a POS. The included 249-item menu is the research profile from the prototype, dated October 3, 2026. **The Glenview café roster, current promotion eligibility and availability still need café verification before live use.** Mix & Match side capture remains a register review prompt, following the approved layout. Removing the app or clearing its data removes its notes. Development-key builds from a different computer may require uninstalling the old review build first; that also removes notes.
+Every successful `main` build publishes a numbered prototype release with the APK and its SHA-256 checksum. Pull requests produce an APK under the workflow run's **Artifacts → panera-order-pad-apk** instead; GitHub requires sign-in to download Actions artifacts, which arrive as a ZIP. Verification reports are a separate artifact. Failed checks never publish a new prototype APK. The workflow can also be run manually from Actions.
+
+The APK is signed with a development key for prototype review. A different CI runner or local computer can generate a different development key; replacing a previous build may require uninstalling the old app, which removes its saved order notes. Preserve any needed notes before uninstalling. Production signing credentials are not configured or checked into this repository. The locally delivered `drive-through-order-pad-debug.apk` can also be transferred to a phone or installed with `adb install -r drive-through-order-pad-debug.apk`.
+
+This is a working offline review build, not a Play Store release. It does not send orders to a POS. The included 249-item menu is the research profile from the prototype, dated October 3, 2026. **The Glenview café roster, current promotion eligibility and availability still need café verification before live use.** Mix & Match side capture remains a register review prompt, following the approved layout. Removing the app or clearing its data removes its notes.
 
 ## Build
 
 Open this folder in Android Studio, or use a JDK 17 installation and the Android SDK. Versions are pinned in `gradle/libs.versions.toml`; the Gradle 8.13 wrapper verifies its distribution checksum. Install `platforms;android-36` and `build-tools;36.0.0` with the Android SDK manager. Point `ANDROID_HOME` to that SDK, or add `sdk.dir=/absolute/sdk/path` to an untracked `local.properties`.
 
-The app uses a verified stable toolchain compatible with SDK 36. Lint treats code/resource warnings as errors; only advisory checks for newer dependency/tool releases are disabled so a new upstream release cannot break CI. Dependency upgrades should be explicit changes validated with the same tests and lint.
+The app uses a verified stable toolchain compatible with SDK 36. Lint treats code/resource warnings as errors; advisory checks for newer dependency/tool releases and target SDK availability are disabled so a new upstream release or a runner with extra SDKs cannot break CI. Dependency and target SDK upgrades should be explicit changes validated with the same tests and lint.
 
 ```sh
 ./gradlew testDebugUnitTest lintDebug assembleDebug assembleRelease
@@ -35,7 +39,7 @@ Outputs:
 - Test report: `app/build/reports/tests/testDebugUnitTest/index.html`
 - Lint report: `app/build/reports/lint-results-debug.html`
 
-A distributed release needs a privately managed signing key, a confirmed application ID, and verified café menu data. No signing secrets belong in source control. The checked-in CI workflow runs the same checks and uploads the debug build when this project is used as a repository root.
+A production release needs a privately managed signing key, a confirmed application ID, and verified café menu data. No signing secrets belong in source control. The checked-in CI workflow runs the same checks, verifies the debug APK's signature, uploads it separately from reports, and publishes a public prototype download after a successful `main` build. Only the publishing job receives repository write permission; pull requests only run verification.
 
 ## Engineering structure
 
