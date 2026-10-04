@@ -1,0 +1,7 @@
+<lint>
+    <!-- Keep the documented adaptive-icon qualifier. AAPT2 does not link this
+         project's adaptive icon when the v26 qualifier is removed. -->
+    <issue id="ObsoleteSdkInt">
+        <ignore path="src/main/res/mipmap-anydpi-v26" />
+    </issue>
+</lint>

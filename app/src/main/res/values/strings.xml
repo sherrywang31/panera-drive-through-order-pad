@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Drive-through Order Pad</string>
+    <string name="next_car">Next car →</string>
+    <string name="select_bagel">Select bagel</string>
+    <string name="remove">Remove</string>
+    <string name="undo">Undo</string>
+    <string name="back">Back</string>
+    <string name="clear_selection">Clear selection</string>
+    <string name="another">+ Another</string>
+    <string name="entered">Entered at register</string>
+    <string name="quantity">Qty</string>
+    <string name="categories">Categories</string>
+    <string name="edit">Edit</string>
+    <string name="retry">Retry</string>
+</resources>

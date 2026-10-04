@@ -1,0 +1,16 @@
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): false
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+
+package: name='com.driveorderpad' versionCode='1' versionName='0.1.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+sdkVersion:'26'
+targetSdkVersion:'36'
+uses-permission: name='com.driveorderpad.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'
+native-code: 'arm64-v8a' 'armeabi-v7a' 'x86' 'x86_64'
+
+APK SHA-256: 734bf0590bca49dc7be549c84dd1c169a721e680c0656026608c723a8e2e6e95
