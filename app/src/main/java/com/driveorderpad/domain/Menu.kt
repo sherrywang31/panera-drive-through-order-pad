@@ -15,7 +15,7 @@ data class MenuData(
 
 @Serializable data class MenuCategory(val id: String, val label: String, val sortOrder: Int)
 @Serializable data class MenuPortion(val id: String, val label: String)
-@Serializable data class MenuItem(val id: String, val label: String, val categoryId: String, val portionIds: List<String>)
+@Serializable data class MenuItem(val id: String, val label: String, val categoryId: String, val portionIds: List<String>, val requiresSide: Boolean = false)
 @Serializable data class MenuOffer(
     val id: String,
     val programId: String,
@@ -76,6 +76,18 @@ class MenuCatalog(val data: MenuData) {
         append(line.itemLabel)
     }
 
+    fun requiresSide(meal: Meal): Boolean = when (meal.program) {
+        Program.YOU_PICK_TWO -> meal.hasItems
+        Program.DEFAULT -> slots(meal).filter { it.role == "food" }.mapNotNull { meal.slots[it.id] }
+            .any { items[it.itemId]?.requiresSide ?: true }
+        else -> false
+    }
+
+    fun missingSides(order: CarOrder) = order.meals.filter { requiresSide(it) && it.slots["side"] == null }
+
+    /** Representative labels for each flavor; bagelQuantity supplies the aggregated Long count. */
+    fun bagelSelections(meal: Meal): List<Selection> = meal.slots.values.filterNotNull().distinctBy { it.itemId }
+
     fun review(meal: Meal): List<String> {
         if (!meal.hasItems) return emptyList()
         val foods = slots(meal).filter { it.role == "food" }.mapNotNull { meal.slots[it.id] }
@@ -88,11 +100,11 @@ class MenuCatalog(val data: MenuData) {
                 add("Confirm Mix & Match side at register.")
             }
             if (meal.slots.values.filterNotNull().any { it.portionId == null }) add("Confirm the size.")
-            if (card(meal.program).slots.any { it.role == "side" } && meal.slots["side"] == null && foods.isNotEmpty()) add("Side still needed.")
+            if (requiresSide(meal) && meal.slots["side"] == null) add("Required side still needed.")
             if (meal.slots.values.filterNotNull().any { offers[it.offerId]?.demoEnabled != true }) add("Menu choice changed: confirm at register.")
             if (meal.program == Program.BAGEL_TUESDAY) {
                 when {
-                    meal.bagelTotal > 13 -> add("${meal.bagelTotal - 13} over the 13-bagel target. You can still continue.")
+                    meal.bagelTotal > 13 -> add("${meal.bagelTotal - 13} over the 13-bagel limit. Remove bagels before adding more.")
                     meal.bagelTotal < 13 -> add("${13 - meal.bagelTotal} more to reach 13 bagels.")
                 }
             }

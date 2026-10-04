@@ -49,6 +49,7 @@ class OrderPadViewModelTest {
         val s = repo.notes
         val meal = s.active.meals.first { it.program == Program.DEFAULT }
         model.apply(OrderAction.Select(s.activeOrderId, meal.id, "food", "default:food:sandwiches-bacon-turkey-bravo", "half"))
+        model.apply(OrderAction.Select(s.activeOrderId, meal.id, "side", "default:side:sides-chips", "each"))
         advanceUntilIdle()
         model.nextCar(); model.nextCar(); model.nextCar()
         advanceUntilIdle()
@@ -67,7 +68,7 @@ class OrderPadViewModelTest {
         advanceUntilIdle()
         val before = model.state.value.notebook
         repo.fail = true
-        model.apply(OrderAction.Quantity(s.activeOrderId, meal.id, "bagel-1", 14))
+        model.apply(OrderAction.StepBagel(s.activeOrderId, meal.id, "bagels-plain", 1))
         model.nextCar()
         advanceUntilIdle()
         assertEquals(before, model.state.value.notebook)
@@ -76,10 +77,10 @@ class OrderPadViewModelTest {
         assertFalse(model.state.value.saving)
         assertEquals(s.activeOrderId, model.state.value.notebook!!.activeOrderId)
         repo.fail = false
-        model.apply(OrderAction.Quantity(s.activeOrderId, meal.id, "bagel-1", 14))
+        model.apply(OrderAction.StepBagel(s.activeOrderId, meal.id, "bagels-plain", 1))
         advanceUntilIdle()
         assertNull(model.state.value.error)
-        assertEquals(14L, model.state.value.notebook!!.active.meals.first { it.id == meal.id }.bagelTotal)
+        assertEquals(2L, model.state.value.notebook!!.active.meals.first { it.id == meal.id }.bagelTotal)
     }
 
     @Test fun `picker and card expansion restore from SavedStateHandle`() = runTest(dispatcher) {
@@ -94,11 +95,13 @@ class OrderPadViewModelTest {
         val restored = OrderPadViewModel(saved) { AppDependencies(menu, repo) }
         advanceUntilIdle()
         assertEquals(model.state.value.navigation, restored.state.value.navigation)
-        assertEquals(setOf(Program.BAGEL_TUESDAY), restored.state.value.expanded)
+        assertEquals(setOf(Program.DEFAULT, Program.YOU_PICK_TWO), restored.state.value.expanded)
         restored.choose("you-pick-two:food:sandwiches-bacon-turkey-bravo", "half")
         advanceUntilIdle()
         assertEquals("entry", restored.state.value.navigation.screen)
         assertTrue(restored.state.value.notebook!!.active.hasItems)
+        assertEquals(meal.id, restored.state.value.navigation.anchorMealId)
+        assertEquals("food-1", restored.state.value.navigation.anchorSlotId)
     }
 
     @Test fun `Undo removal restores bagels and marks input for refresh`() = runTest(dispatcher) {
@@ -108,14 +111,67 @@ class OrderPadViewModelTest {
         val s = repo.notes
         val m = s.active.meals.first { it.program == Program.BAGEL_TUESDAY }
         model.apply(OrderAction.Select(s.activeOrderId, m.id, "bagel-1", "bagel-tuesday:food:bagels-plain", "each"))
-        model.apply(OrderAction.Quantity(s.activeOrderId, m.id, "bagel-1", 15))
+        model.apply(OrderAction.Quantity(s.activeOrderId, m.id, "bagel-1", 13))
         model.apply(OrderAction.RemoveBagel(s.activeOrderId, m.id, "bagel-1"))
         advanceUntilIdle()
         assertEquals(0L, repo.notes.active.meals.first { it.id == m.id }.bagelTotal)
         model.undo()
         advanceUntilIdle()
-        assertEquals(15L, repo.notes.active.meals.first { it.id == m.id }.bagelTotal)
+        assertEquals(13L, repo.notes.active.meals.first { it.id == m.id }.bagelTotal)
         assertFalse(model.state.value.canUndo)
         assertEquals(1, model.state.value.inputResetEpoch)
+    }
+
+    @Test fun `summary editing focuses the earlier meal and picker exits retain its exact field`() = runTest(dispatcher) {
+        val repo = MemoryRepository(engine)
+        val saved = SavedStateHandle()
+        val model = OrderPadViewModel(saved) { AppDependencies(menu, repo) }
+        advanceUntilIdle()
+        val car = repo.notes.active
+        val first = car.meals.first { it.program == Program.YOU_PICK_TWO }
+        model.apply(OrderAction.Select(car.id, first.id, "food-1", "you-pick-two:food:sandwiches-grilled-cheese", "half"))
+        model.apply(OrderAction.Another(car.id, Program.YOU_PICK_TWO))
+        advanceUntilIdle()
+        val second = repo.notes.active.meals.last { it.program == Program.YOU_PICK_TWO }
+        model.apply(OrderAction.Select(car.id, second.id, "food-1", "you-pick-two:food:sandwiches-tuna-salad", "half"))
+        advanceUntilIdle()
+        model.toggle(Program.YOU_PICK_TWO)
+        model.editMeal(first.id)
+        assertEquals(first.id, model.state.value.focusedMeals["${car.id}:you-pick-two"])
+        assertTrue(Program.YOU_PICK_TWO in model.state.value.expanded)
+        assertTrue(model.state.value.navigation.fromSummary)
+        model.openSlot(car.id, first.id, "food-2", "entry")
+        model.choose("you-pick-two:food:soups-mac-mac-cheese", "cup")
+        advanceUntilIdle()
+        assertEquals(first.id, model.state.value.navigation.anchorMealId)
+        assertEquals("food-2", model.state.value.navigation.anchorSlotId)
+        assertEquals("Tuna Salad", repo.notes.active.meals.first { it.id == second.id }.slots["food-1"]!!.itemLabel)
+        model.openSlot(car.id, first.id, "side", "entry")
+        model.back()
+        assertEquals("side", model.state.value.navigation.anchorSlotId)
+        model.openSlot(car.id, first.id, "food-2", "entry")
+        model.clearPicker()
+        advanceUntilIdle()
+        assertEquals("food-2", model.state.value.navigation.anchorSlotId)
+        assertNull(repo.notes.active.meals.first { it.id == first.id }.slots["food-2"])
+        val restored = OrderPadViewModel(saved) { AppDependencies(menu, repo) }
+        advanceUntilIdle()
+        assertEquals(model.state.value.focusedMeals, restored.state.value.focusedMeals)
+    }
+
+    @Test fun `bagel summary editing opens its section even at thirteen`() = runTest(dispatcher) {
+        val repo = MemoryRepository(engine)
+        val model = OrderPadViewModel(SavedStateHandle()) { AppDependencies(menu, repo) }
+        advanceUntilIdle()
+        val car = repo.notes.active
+        val bagel = car.meals.first { it.program == Program.BAGEL_TUESDAY }
+        repeat(20) { model.apply(OrderAction.StepBagel(car.id, bagel.id, "bagels-everything", 1)) }
+        advanceUntilIdle()
+        model.toggle(Program.BAGEL_TUESDAY)
+        model.editMeal(bagel.id)
+        assertTrue(Program.BAGEL_TUESDAY in model.state.value.expanded)
+        assertEquals(bagel.id, model.state.value.navigation.anchorMealId)
+        assertTrue(model.state.value.navigation.fromSummary)
+        assertEquals(13L, repo.notes.active.meals.first { it.id == bagel.id }.bagelTotal)
     }
 }

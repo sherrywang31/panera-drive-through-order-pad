@@ -28,14 +28,30 @@ class NotebookRepositoryTest {
         val s = repository.load()
         val meal = s.active.meals.first { it.program == Program.BAGEL_TUESDAY }
         repository.apply(OrderAction.Select(s.activeOrderId, meal.id, "bagel-1", "bagel-tuesday:food:bagels-everything", "each"))
-        val captured = repository.apply(OrderAction.Quantity(s.activeOrderId, meal.id, "bagel-1", 17)).after
+        val captured = repository.apply(OrderAction.Quantity(s.activeOrderId, meal.id, "bagel-1", 13)).after
         scope.coroutineContext[kotlinx.coroutines.Job]!!.cancel()
         scope.coroutineContext[kotlinx.coroutines.Job]!!.join()
         scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
         try {
             val reopened = FileNotebookRepository.create(file, engine, scope).load()
             assertEquals(captured, reopened)
-            assertEquals(17L, reopened.active.meals.first { it.program == Program.BAGEL_TUESDAY }.bagelTotal)
+            assertEquals(13L, reopened.active.meals.first { it.program == Program.BAGEL_TUESDAY }.bagelTotal)
+        } finally { scope.cancel() }
+    }
+
+    @Test fun `older over-limit notes reopen unchanged and can be reduced`() = runBlocking {
+        val initial = engine.initialize(Notebook())
+        val bagel = initial.active.meals.first { it.program == Program.BAGEL_TUESDAY }
+        val legacy = bagel.copy(slots = mapOf("bagel-1" to Selection("bagel-tuesday:food:bagels-plain", "bagels-plain", "Plain", "each", "Each", 17)))
+        val notes = initial.copy(orders = listOf(initial.active.copy(meals = initial.active.meals.map { if (it.id == bagel.id) legacy else it })))
+        val file = File(temporary.root, "legacy.json")
+        file.outputStream().use { NotebookSerializer.writeTo(notes, it) }
+        val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+        try {
+            val repository = FileNotebookRepository.create(file, engine, scope)
+            assertEquals(notes, repository.load())
+            val after = repository.apply(OrderAction.StepBagel(notes.activeOrderId, bagel.id, "bagels-plain", -1)).after
+            assertEquals(16L, after.active.meals.first { it.id == bagel.id }.bagelTotal)
         } finally { scope.cancel() }
     }
 

@@ -24,13 +24,18 @@ import kotlinx.serialization.json.Json
     val slotId: String? = null,
     val categoryId: String? = null,
     val returnScreen: String = "entry",
+    val anchorMealId: String? = null,
+    val anchorSlotId: String? = null,
+    val anchorRequest: Long = 0,
+    val fromSummary: Boolean = false,
 )
 
 data class OrderPadState(
     val menu: MenuCatalog? = null,
     val notebook: Notebook? = null,
     val navigation: NavigationState = NavigationState(),
-    val expanded: Set<Program> = emptySet(),
+    val expanded: Set<Program> = setOf(Program.DEFAULT, Program.YOU_PICK_TWO, Program.BAGEL_TUESDAY),
+    val focusedMeals: Map<String, String> = emptyMap(),
     val loading: Boolean = true,
     val saving: Boolean = false,
     val message: String? = null,
@@ -47,7 +52,8 @@ class OrderPadViewModel(
     private val restoredNav = runCatching { json.decodeFromString<NavigationState>(savedState["navigation"] ?: "{}") }.getOrDefault(NavigationState())
     private val _state = MutableStateFlow(OrderPadState(
         navigation = restoredNav,
-        expanded = (savedState.get<ArrayList<String>>("expanded") ?: arrayListOf()).mapNotNull { key -> Program.entries.find { it.key == key } }.toSet(),
+        expanded = (savedState.get<ArrayList<String>>("expanded") ?: arrayListOf("default", "you-pick-two", "bagel-tuesday")).mapNotNull { key -> Program.entries.find { it.key == key } }.toSet(),
+        focusedMeals = runCatching { json.decodeFromString<Map<String, String>>(savedState["focusedMeals"] ?: "{}") }.getOrDefault(emptyMap()),
     ))
     val state = _state.asStateFlow()
     private var dependencies: AppDependencies? = null
@@ -106,6 +112,14 @@ class OrderPadViewModel(
         val change = deps.repository.apply(event.action)
         if (change.before != change.after) undo = change.before
         _state.update { it.copy(notebook = change.after, saving = false, message = change.message, canUndo = undo != null) }
+        val retainedMealIds = change.after.orders.flatMap { it.meals }.map { it.id }.toSet()
+        _state.update { it.copy(focusedMeals = it.focusedMeals.filterValues { id -> id in retainedMealIds }) }
+        savedState["focusedMeals"] = json.encodeToString(_state.value.focusedMeals)
+        if (event.action is OrderAction.Another) {
+            val order = change.after.orders.first { it.id == event.action.orderId }
+            val meal = order.meals.last { it.program == event.action.program }
+            focusMeal(order.id, meal.id)
+        }
         event.destination?.let(::navigate)
     }
 
@@ -132,6 +146,17 @@ class OrderPadViewModel(
         _state.update { it.copy(expanded = if (program in it.expanded) it.expanded - program else it.expanded + program) }
         savedState["expanded"] = ArrayList(_state.value.expanded.map { it.key })
     }
+    private fun focusMeal(orderId: String, mealId: String) {
+        val meal = _state.value.notebook?.orders?.find { it.id == orderId }?.meals?.find { it.id == mealId } ?: return
+        _state.update { it.copy(focusedMeals = it.focusedMeals + ("$orderId:${meal.program.key}" to mealId), expanded = it.expanded + meal.program) }
+        savedState["focusedMeals"] = json.encodeToString(_state.value.focusedMeals)
+        savedState["expanded"] = ArrayList(_state.value.expanded.map { it.key })
+    }
+    fun editMeal(mealId: String) {
+        val order = _state.value.notebook?.active ?: return
+        val meal = order.meals.find { it.id == mealId && it.hasItems } ?: return
+        navigate(NavigationState(orderId = order.id, anchorMealId = meal.id, fromSummary = true))
+    }
     fun queue() = navigate(NavigationState(screen = "queue"))
     fun entry() = navigate(NavigationState())
     fun openSlot(orderId: String, mealId: String, slotId: String, returnScreen: String) {
@@ -142,14 +167,15 @@ class OrderPadViewModel(
         val category = menu.categories(choices).singleOrNull()?.id
         navigate(NavigationState("picker", orderId, mealId, slotId, category, returnScreen))
     }
+    private fun returnFromPicker(nav: NavigationState) = NavigationState(screen = nav.returnScreen, orderId = nav.orderId, anchorMealId = nav.mealId, anchorSlotId = nav.slotId)
     fun category(id: String?) = navigate(_state.value.navigation.copy(categoryId = id))
     fun choose(offerId: String, portionId: String?) {
         val nav = _state.value.navigation
-        if (nav.screen == "picker") post(OrderAction.Select(nav.orderId!!, nav.mealId!!, nav.slotId!!, offerId, portionId), NavigationState(screen = nav.returnScreen, orderId = nav.orderId))
+        if (nav.screen == "picker") post(OrderAction.Select(nav.orderId!!, nav.mealId!!, nav.slotId!!, offerId, portionId), returnFromPicker(nav))
     }
     fun clearPicker() {
         val nav = _state.value.navigation
-        post(OrderAction.Clear(nav.orderId!!, nav.mealId!!, nav.slotId!!), NavigationState(screen = nav.returnScreen, orderId = nav.orderId))
+        if (nav.screen == "picker") post(OrderAction.Clear(nav.orderId!!, nav.mealId!!, nav.slotId!!), returnFromPicker(nav))
     }
     fun back() {
         val nav = _state.value.navigation
@@ -158,10 +184,16 @@ class OrderPadViewModel(
             val menu = _state.value.menu!!
             if (menu.categories(menu.choices(meal.program, menu.slots(meal).first { it.id == nav.slotId })).size > 1) { category(null); return }
         }
-        navigate(if (nav.screen == "picker") NavigationState(screen = nav.returnScreen, orderId = nav.orderId) else NavigationState())
+        navigate(if (nav.screen == "picker") returnFromPicker(nav) else NavigationState())
     }
     private fun navigate(nav: NavigationState) {
-        savedState["navigation"] = json.encodeToString(nav)
-        _state.update { it.copy(navigation = nav) }
+        val destination = if (nav.anchorMealId != null) {
+            focusMeal(nav.orderId ?: _state.value.notebook!!.activeOrderId, nav.anchorMealId)
+            val request = (savedState.get<Long>("anchorRequest") ?: 0) + 1
+            savedState["anchorRequest"] = request
+            nav.copy(anchorRequest = request)
+        } else nav
+        savedState["navigation"] = json.encodeToString(destination)
+        _state.update { it.copy(navigation = destination) }
     }
 }

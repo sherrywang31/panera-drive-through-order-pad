@@ -40,7 +40,7 @@ class OrderEngine(val menu: MenuCatalog) {
 
     private fun ensureBlank(meal: Meal): Meal {
         if (meal.program != Program.BAGEL_TUESDAY || meal.slots.values.any { it == null }) return meal
-        val next = meal.slots.keys.maxOf { it.substringAfter("bagel-").toLong() } + 1
+        val next = (meal.slots.keys.maxOfOrNull { it.substringAfter("bagel-").toLong() } ?: 0) + 1
         return meal.copy(slots = meal.slots + ("bagel-$next" to null))
     }
 
@@ -48,7 +48,9 @@ class OrderEngine(val menu: MenuCatalog) {
         val order = state.orders.firstOrNull { it.id == orderId } ?: error("This car is no longer in the queue.")
         require(order.meals.any { it.id == mealId }) { "This meal is no longer available." }
         return state.copy(orders = state.orders.map { car ->
-            if (car.id != orderId) car else car.copy(meals = car.meals.map { if (it.id == mealId) ensureBlank(update(it)) else it })
+            if (car.id != orderId) car else car.copy(meals = car.meals.map {
+                if (it.id != mealId) it else update(it).let { updated -> if (updated == it) it else ensureBlank(updated) }
+            })
         })
     }
 
@@ -66,6 +68,7 @@ class OrderEngine(val menu: MenuCatalog) {
                 val portion = action.portionId ?: offer.allowedPortionIds.singleOrNull()
                 val item = menu.items.getValue(offer.itemId)
                 val quantity = if (meal.program == Program.BAGEL_TUESDAY) meal.slots[action.slotId]?.quantity ?: 1 else 1
+                require(meal.program != Program.BAGEL_TUESDAY || meal.slots[action.slotId] != null || meal.bagelTotal < 13) { "13 bagels selected. Remove one before adding more." }
                 meal.copy(slots = meal.slots + (action.slotId to Selection(offer.id, item.id, item.label, portion, portion?.let { menu.portionLabel(it) }, quantity)))
             }
             is OrderAction.SetPortion -> edit(state, action.orderId, action.mealId) { meal ->
@@ -79,7 +82,36 @@ class OrderEngine(val menu: MenuCatalog) {
                 require(meal.program == Program.BAGEL_TUESDAY && action.quantity > 0) { "Use a positive whole number." }
                 requireSlot(meal, action.slotId)
                 val line = meal.slots[action.slotId] ?: error("Choose a bagel first.")
+                val total = meal.bagelTotal - line.quantity + action.quantity
+                require(total <= 13 || total < meal.bagelTotal) { "13 bagels selected. Remove one before adding more." }
                 meal.copy(slots = meal.slots + (action.slotId to line.copy(quantity = action.quantity)))
+            }
+            is OrderAction.StepBagel -> edit(state, action.orderId, action.mealId) { meal ->
+                require(meal.program == Program.BAGEL_TUESDAY && action.delta in listOf(-1, 1))
+                val matches = meal.slots.entries.filter { it.value?.itemId == action.itemId }
+                when {
+                    action.delta > 0 && meal.bagelTotal >= 13 -> { message = "13 bagels selected. Remove one before adding more."; meal }
+                    action.delta < 0 && matches.isEmpty() -> meal
+                    action.delta < 0 -> {
+                        val (slot, line) = matches.last()
+                        message = "One ${line!!.itemLabel} removed."
+                        meal.copy(slots = if (line.quantity > 1) meal.slots + (slot to line.copy(quantity = line.quantity - 1)) else meal.slots - slot)
+                    }
+                    else -> {
+                        val offer = menu.choices(meal.program, menu.slots(meal).first()).firstOrNull { it.itemId == action.itemId }
+                            ?: error("This bagel is no longer available.")
+                        val item = menu.items.getValue(offer.itemId)
+                        message = "One ${item.label} added."
+                        if (matches.isNotEmpty()) {
+                            val (slot, line) = matches.first()
+                            meal.copy(slots = meal.slots + (slot to line!!.copy(quantity = line.quantity + 1)))
+                        } else {
+                            val available = ensureBlank(meal)
+                            val slot = available.slots.entries.first { it.value == null }.key
+                            available.copy(slots = available.slots + (slot to Selection(offer.id, item.id, item.label, "each", menu.portionLabel("each"))))
+                        }
+                    }
+                }
             }
             is OrderAction.Clear -> edit(state, action.orderId, action.mealId) { meal ->
                 requireSlot(meal, action.slotId)
@@ -106,7 +138,8 @@ class OrderEngine(val menu: MenuCatalog) {
             is OrderAction.NextCar -> {
                 // Stable source ID makes a double tap harmless after the first transition.
                 if (state.activeOrderId != action.orderId || !state.active.hasItems) state else {
-                    message = "Car ${state.active.sequence} saved."
+                    require(menu.missingSides(state.active).isEmpty()) { "Choose a side for each required meal before Next car." }
+                    message = "Car ${state.carNumber(state.active.id)} saved."
                     val queued = state.copy(orders = state.orders.map { if (it.id == action.orderId) it.copy(status = OrderStatus.QUEUED) else it })
                     activateEmpty(queued)
                 }
@@ -114,7 +147,8 @@ class OrderEngine(val menu: MenuCatalog) {
             is OrderAction.Entered -> {
                 val car = state.orders.firstOrNull { it.id == action.orderId }
                 if (car == null || !car.hasItems) state else {
-                    message = "Car ${car.sequence} entered at register."
+                    require(menu.missingSides(car).isEmpty()) { "Choose the required sides before marking this car entered." }
+                    message = "Car ${state.carNumber(car.id)} entered at register."
                     val remaining = state.copy(orders = state.orders.filterNot { it.id == action.orderId })
                     if (remaining.orders.none { it.id == remaining.activeOrderId }) activateEmpty(remaining) else remaining
                 }

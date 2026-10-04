@@ -1,16 +1,20 @@
 # Drive-through Order Pad
 
-A native Kotlin / Jetpack Compose Android app implementing the cashier prototype. Android 8.0 (API 26) or later. It opens with an empty Car 1; it does not seed demonstration orders.
+A native Kotlin / Jetpack Compose Android app implementing the cashier prototype. Android 8.0 (API 26) or later. Version 0.2.0 opens with an empty Car 0; it does not seed demonstration orders.
 
 ## Cashier workflow
 
-- **Default:** food, optional drink, side. Applicable sizes are available in the picker and on the food row.
+- **Already ordered:** a growing list at the top shows every nonempty meal, numbered within its program (Default 1, Default 2, You Pick Two 1, etc.). Tap a listed meal to unfold its box and edit that exact meal, including Bagel Tuesday at 13. Earlier meals remain intact when adding another.
+- **Foldable boxes:** Default, You Pick Two and Bagel Tuesday open initially; Mix & Match starts folded. Every box can be folded. Fold choices survive Next car and screen recreation.
+- **Default:** food, optional drink, side. A side is required for sandwiches, soups & mac, salads, market bowls, kids and stuffers. Bakery and other food categories can leave it empty. Applicable sizes are available in the picker and on the food row.
 - **You Pick Two:** two eligible foods, optional drink, side. Offers enforce the allowed portion; standard sandwiches use Half.
-- **Bagel Tuesday:** collapsed above Mix & Match. Choose a bagel and type a positive whole-number quantity. Each filled row has Remove. One blank row remains available. Totals above 13 show a prominent warning and remain saveable; neither quantity entry nor additional rows are capped at 13.
+- **Bagel Tuesday:** a compact two-column grid above Mix & Match lists the configured flavors. Tap anywhere on a flavor box to add one; its separate 48 dp minus button removes one. Additions stop at 13 in both the UI and the order engine, including buffered rapid taps. Counts never become negative. Older saved notes with duplicate rows or totals above 13 remain readable and removable; adding is disabled until the total drops below 13.
 - **Mix & Match:** collapsed, ten optional slots filtered to the configured roster.
 - **Sides:** Apple, Chips and Baguette in Default and You Pick Two.
-- **Next car:** the only bottom action on the entry screen. Each edit is saved on device; Next car queues the current car and opens the next empty car. Missing selections remain notes with review prompts.
-- **Queue:** oldest first, including the current nonempty draft. Edit any saved meal; mark a car Entered at register after copying it to the register. Undo restores the previous committed change. “+ Another” preserves earlier meals of the same program.
+- **Hot coffee and tea:** 16 oz and 20 oz capture choices, including Hot Tea, flavored teas and Americano. Espresso retains its 2 oz serving. These cashier-requested capture sizes still need local selling-menu verification.
+- **Selection return:** selecting, clearing or backing out of a picker returns to the originating meal and field. Entry and ticket scroll positions survive the picker; a field that needs more room is brought into view. Tapping the summary scrolls directly to that meal's box.
+- **Next car:** the only bottom action on the entry screen. Each edit is saved on device; Next car queues the current car and opens the next empty car. Required sides must be chosen before handoff. Other incomplete requests remain notes with review prompts.
+- **Queue:** oldest first, including the current nonempty draft. Display numbers always start at Car 0 and renumber when a car is entered. Stable internal IDs never change. Edit any saved meal; mark a car Entered at register after copying it to the register and choosing required sides. Undo restores the previous committed change.
 
 ## Install the review build
 
@@ -46,9 +50,9 @@ A production release needs a privately managed signing key, a confirmed applicat
 | Layer | Responsibility |
 |---|---|
 | `domain/Menu.kt` | Canonical item IDs, explicit program offers, portions, contextual category filtering and readback review rules |
-| `domain/OrderEngine.kt` | Pure immutable order transitions; rejects ineligible offers/portions, preserves incomplete orders, adds/removes bagel rows, makes repeated Next car taps harmless |
+| `domain/OrderEngine.kt` | Pure immutable order transitions; enforces offer/portion eligibility, required sides and the bagel addition cap; makes repeated Next car taps harmless |
 | `data/NotebookRepository.kt` | App-scoped typed DataStore; atomic writes, monotonic revisions, revision-checked Undo, serialization and corruption errors |
-| `ui/OrderPadViewModel.kt` | Immutable StateFlow, a sequential event channel, SavedStateHandle navigation/expansion, save-error handling |
+| `ui/OrderPadViewModel.kt` | Immutable StateFlow, a sequential event channel, SavedStateHandle navigation/expansion/meal focus, save-error handling |
 | `ui/OrderPadApp.kt` | Stateless Material 3 screens and touch controls; lifecycle-aware state collection only at the app boundary |
 | `OrderPadApplication.kt` | Explicit application-scoped dependency construction; asset loading off the main thread |
 
@@ -56,13 +60,13 @@ DataStore is appropriate for a small active note queue stored as one consistent 
 
 The native note format has its own schema version (`1`) and does not import the browser widget's storage. Every selection snapshots its display name and portion label, so later menu removal cannot erase or rename a heard request. Removed/disabled choices are retained on readback with a review prompt. The bundled catalog is separate from order storage and retains source provenance. Menu updates belong in `app/src/main/assets/menu.json`; changing category membership alone never grants combo eligibility.
 
-Writes must finish before the screen reports a saved change. The app preserves the last committed state on an I/O error and visibly reports the failure; numeric editors reset to committed values. It does not silently replace corrupt or unsupported order files with blank notes. There is no network permission, analytics, login, or remote service. Android backup/transfer rules exclude local order notes.
+Writes must finish before the screen reports a saved change. The app preserves the last committed state on an I/O error and visibly reports the failure; buffered taps after that failure are canceled. It does not silently replace corrupt or unsupported order files with blank notes. Existing schema-1 notes are retained without a destructive migration. There is no network permission, analytics, login, or remote service. Android backup/transfer rules exclude local order notes.
 
 The UI follows the system light/dark theme, Android back navigation, keyboard/inset behavior and font scaling. Controls use native Compose semantics and at least 48 dp touch targets. Pickers and readback scroll vertically; all menu choices remain available without pagination. UI control strings and the menu currently target English.
 
 ## Verification
 
-See `VALIDATION.md` for the executed build and test results. Tests cover program/portion integrity against every enabled offer, incomplete requests, optional drinks, repeated meals, soft bagel totals, dynamic row removal, rapid Next car events, Undo, concurrent storage writes, reopening storage, corruption preservation, SavedStateHandle restoration, save failures and native Compose interactions at a 320 dp width.
+See `VALIDATION.md` for the executed build and test results. Tests cover program/portion integrity against every enabled offer, required-side handoffs, hot drink sizes, zero-based queue positions, repeated meals, rapid bagel taps, older duplicate/over-limit notes, Undo, concurrent storage writes, reopening storage, corruption preservation, SavedStateHandle restoration, save failures and native Compose interactions at a 320 dp width.
 
 Before a café pilot, review the app on the cashier's actual phone: one-handed reach, keypad behavior, large text, screen rotation, background/relaunch, and copying two or three queued cars into the register. The app has no customer-identification fields and should be used for order notes only.
 

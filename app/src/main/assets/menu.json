@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "catalogVersion": "2026-10-03",
+  "catalogVersion": "2026-10-03-cashier-2",
   "nationalGuideEffective": "2026-09-02",
   "location": {
     "city": "Glenview",
@@ -318,7 +318,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "sandwiches-chicken-bacon-rancher",
@@ -347,7 +348,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "sandwiches-chipotle-chicken-avo-melt",
@@ -376,7 +378,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "sandwiches-ciabatta-cheesesteak",
@@ -405,7 +408,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "sandwiches-cranberry-walnut-chicken-salad",
@@ -434,7 +438,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "sandwiches-grilled-cheese",
@@ -463,7 +468,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "sandwiches-chicken-avo-blt",
@@ -492,7 +498,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "sandwiches-mediterranean-veggie",
@@ -521,7 +528,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "sandwiches-smokehouse-bbq-chicken",
@@ -550,7 +558,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "sandwiches-spicy-fiesta-chicken",
@@ -579,7 +588,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "sandwiches-toasted-frontega-chicken",
@@ -608,7 +618,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "sandwiches-toasted-italiano",
@@ -637,7 +648,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "sandwiches-tomato-basil-blt",
@@ -666,7 +678,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "sandwiches-tuna-salad",
@@ -695,7 +708,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "sandwiches-turkey-cheddar",
@@ -724,7 +738,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "sandwiches-toasted-caprese-focaccia",
@@ -753,7 +768,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "sandwiches-french-ciabatta-dipper",
@@ -782,7 +798,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "sandwiches-chicken-pesto-ciabatta-dipper",
@@ -811,7 +828,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "sandwiches-chicken-roma-bagel-stack",
@@ -837,7 +855,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Single sandwich portion listed; combo exception needs café verification."
+      "note": "Single sandwich portion listed; combo exception needs café verification.",
+      "requiresSide": true
     },
     {
       "id": "sandwiches-spicy-steak-bagel-stack",
@@ -863,7 +882,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Single sandwich portion listed; combo exception needs café verification."
+      "note": "Single sandwich portion listed; combo exception needs café verification.",
+      "requiresSide": true
     },
     {
       "id": "soups-mac-bistro-french-onion",
@@ -893,7 +913,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide listing; soup rotation and availability require café confirmation."
+      "note": "National guide listing; soup rotation and availability require café confirmation.",
+      "requiresSide": true
     },
     {
       "id": "soups-mac-broccoli-cheddar",
@@ -923,7 +944,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide listing; soup rotation and availability require café confirmation."
+      "note": "National guide listing; soup rotation and availability require café confirmation.",
+      "requiresSide": true
     },
     {
       "id": "soups-mac-chicken-wild-rice",
@@ -953,7 +975,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide listing; soup rotation and availability require café confirmation."
+      "note": "National guide listing; soup rotation and availability require café confirmation.",
+      "requiresSide": true
     },
     {
       "id": "soups-mac-chicken-noodle",
@@ -983,7 +1006,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide listing; soup rotation and availability require café confirmation."
+      "note": "National guide listing; soup rotation and availability require café confirmation.",
+      "requiresSide": true
     },
     {
       "id": "soups-mac-creamy-tomato",
@@ -1013,7 +1037,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide listing; soup rotation and availability require café confirmation."
+      "note": "National guide listing; soup rotation and availability require café confirmation.",
+      "requiresSide": true
     },
     {
       "id": "soups-mac-rustic-baked-potato",
@@ -1043,7 +1068,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide listing; soup rotation and availability require café confirmation."
+      "note": "National guide listing; soup rotation and availability require café confirmation.",
+      "requiresSide": true
     },
     {
       "id": "soups-mac-three-cheese-lasagna",
@@ -1073,7 +1099,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide listing; soup rotation and availability require café confirmation."
+      "note": "National guide listing; soup rotation and availability require café confirmation.",
+      "requiresSide": true
     },
     {
       "id": "soups-mac-autumn-squash",
@@ -1103,7 +1130,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide listing; soup rotation and availability require café confirmation."
+      "note": "National guide listing; soup rotation and availability require café confirmation.",
+      "requiresSide": true
     },
     {
       "id": "soups-mac-hearty-fireside-chili",
@@ -1133,7 +1161,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide listing; soup rotation and availability require café confirmation."
+      "note": "National guide listing; soup rotation and availability require café confirmation.",
+      "requiresSide": true
     },
     {
       "id": "soups-mac-mac-cheese",
@@ -1163,7 +1192,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide listing; soup rotation and availability require café confirmation."
+      "note": "National guide listing; soup rotation and availability require café confirmation.",
+      "requiresSide": true
     },
     {
       "id": "soups-mac-bacon-mac-cheese",
@@ -1193,7 +1223,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide listing; soup rotation and availability require café confirmation."
+      "note": "National guide listing; soup rotation and availability require café confirmation.",
+      "requiresSide": true
     },
     {
       "id": "stuffers-ultimate-mac-stuffer",
@@ -1219,7 +1250,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Listed in allergen guide; portion and combo eligibility require café confirmation."
+      "note": "Listed in allergen guide; portion and combo eligibility require café confirmation.",
+      "requiresSide": true
     },
     {
       "id": "salads-asian-sesame-chicken",
@@ -1249,7 +1281,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "salads-caesar",
@@ -1279,7 +1312,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "salads-caesar-with-chicken",
@@ -1309,7 +1343,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "salads-fuji-apple-chicken",
@@ -1339,7 +1374,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "salads-greek",
@@ -1369,7 +1405,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "salads-greek-with-chicken",
@@ -1399,7 +1436,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "salads-green-goddess-cobb",
@@ -1429,7 +1467,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "salads-ranch-parm-blt",
@@ -1459,7 +1498,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "salads-southwest-chicken-ranch",
@@ -1489,7 +1529,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "salads-farmhouse-crunch",
@@ -1519,7 +1560,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "salads-ultimate-garden-steak",
@@ -1549,7 +1591,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "salads-harvest-medley",
@@ -1579,7 +1622,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "salads-harvest-medley-with-chicken",
@@ -1609,7 +1653,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "salads-asian-sesame-no-chicken",
@@ -1636,7 +1681,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Without-chicken version explicitly listed in allergen guide; portion options inferred from salad family."
+      "note": "Without-chicken version explicitly listed in allergen guide; portion options inferred from salad family.",
+      "requiresSide": true
     },
     {
       "id": "salads-fuji-apple-no-chicken",
@@ -1663,7 +1709,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Without-chicken version explicitly listed in allergen guide; portion options inferred from salad family."
+      "note": "Without-chicken version explicitly listed in allergen guide; portion options inferred from salad family.",
+      "requiresSide": true
     },
     {
       "id": "stuffers-asian-sesame-chicken-stuffer",
@@ -1691,7 +1738,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Whole stuffer portion; eligibility must be configured individually."
+      "note": "Whole stuffer portion; eligibility must be configured individually.",
+      "requiresSide": true
     },
     {
       "id": "stuffers-asian-sesame-stuffer-no-chicken",
@@ -1719,7 +1767,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Whole stuffer portion; eligibility must be configured individually."
+      "note": "Whole stuffer portion; eligibility must be configured individually.",
+      "requiresSide": true
     },
     {
       "id": "stuffers-caesar-stuffer",
@@ -1747,7 +1796,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Whole stuffer portion; eligibility must be configured individually."
+      "note": "Whole stuffer portion; eligibility must be configured individually.",
+      "requiresSide": true
     },
     {
       "id": "stuffers-caesar-chicken-stuffer",
@@ -1775,7 +1825,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Whole stuffer portion; eligibility must be configured individually."
+      "note": "Whole stuffer portion; eligibility must be configured individually.",
+      "requiresSide": true
     },
     {
       "id": "stuffers-fuji-apple-chicken-stuffer",
@@ -1803,7 +1854,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Whole stuffer portion; eligibility must be configured individually."
+      "note": "Whole stuffer portion; eligibility must be configured individually.",
+      "requiresSide": true
     },
     {
       "id": "stuffers-fuji-apple-stuffer-no-chicken",
@@ -1831,7 +1883,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Whole stuffer portion; eligibility must be configured individually."
+      "note": "Whole stuffer portion; eligibility must be configured individually.",
+      "requiresSide": true
     },
     {
       "id": "stuffers-greek-stuffer",
@@ -1859,7 +1912,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Whole stuffer portion; eligibility must be configured individually."
+      "note": "Whole stuffer portion; eligibility must be configured individually.",
+      "requiresSide": true
     },
     {
       "id": "stuffers-greek-chicken-stuffer",
@@ -1887,7 +1941,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Whole stuffer portion; eligibility must be configured individually."
+      "note": "Whole stuffer portion; eligibility must be configured individually.",
+      "requiresSide": true
     },
     {
       "id": "stuffers-green-goddess-cobb-stuffer",
@@ -1915,7 +1970,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Whole stuffer portion; eligibility must be configured individually."
+      "note": "Whole stuffer portion; eligibility must be configured individually.",
+      "requiresSide": true
     },
     {
       "id": "stuffers-ranch-parm-blt-stuffer",
@@ -1943,7 +1999,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Whole stuffer portion; eligibility must be configured individually."
+      "note": "Whole stuffer portion; eligibility must be configured individually.",
+      "requiresSide": true
     },
     {
       "id": "stuffers-southwest-chicken-ranch-stuffer",
@@ -1971,7 +2028,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Whole stuffer portion; eligibility must be configured individually."
+      "note": "Whole stuffer portion; eligibility must be configured individually.",
+      "requiresSide": true
     },
     {
       "id": "stuffers-farmhouse-crunch-stuffer",
@@ -1999,7 +2057,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Whole stuffer portion; eligibility must be configured individually."
+      "note": "Whole stuffer portion; eligibility must be configured individually.",
+      "requiresSide": true
     },
     {
       "id": "stuffers-ultimate-garden-steak-stuffer",
@@ -2027,7 +2086,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Whole stuffer portion; eligibility must be configured individually."
+      "note": "Whole stuffer portion; eligibility must be configured individually.",
+      "requiresSide": true
     },
     {
       "id": "stuffers-harvest-medley-stuffer",
@@ -2055,7 +2115,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Whole stuffer portion; eligibility must be configured individually."
+      "note": "Whole stuffer portion; eligibility must be configured individually.",
+      "requiresSide": true
     },
     {
       "id": "stuffers-harvest-medley-chicken-stuffer",
@@ -2083,7 +2144,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Whole stuffer portion; eligibility must be configured individually."
+      "note": "Whole stuffer portion; eligibility must be configured individually.",
+      "requiresSide": true
     },
     {
       "id": "market-bowls-all-in-veggie",
@@ -2110,7 +2172,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "market-bowls-carnitas-elote",
@@ -2137,7 +2200,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "market-bowls-sesame-ginger-chicken",
@@ -2164,7 +2228,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "breakfast-sausage-egg-bagel-stack",
@@ -2191,7 +2256,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Breakfast hours require local configuration."
+      "note": "Breakfast hours require local configuration.",
+      "requiresSide": false
     },
     {
       "id": "breakfast-wake-up-blt-bagel-stack",
@@ -2218,7 +2284,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Breakfast hours require local configuration."
+      "note": "Breakfast hours require local configuration.",
+      "requiresSide": false
     },
     {
       "id": "breakfast-farmhouse-duo-bagel-stack",
@@ -2245,7 +2312,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Breakfast hours require local configuration."
+      "note": "Breakfast hours require local configuration.",
+      "requiresSide": false
     },
     {
       "id": "breakfast-bacon-egg-cheese-ciabatta",
@@ -2272,7 +2340,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Breakfast hours require local configuration."
+      "note": "Breakfast hours require local configuration.",
+      "requiresSide": false
     },
     {
       "id": "breakfast-bacon-egg-cheese-croissant",
@@ -2299,7 +2368,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Breakfast hours require local configuration."
+      "note": "Breakfast hours require local configuration.",
+      "requiresSide": false
     },
     {
       "id": "breakfast-bacon-double-take",
@@ -2326,7 +2396,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Breakfast hours require local configuration."
+      "note": "Breakfast hours require local configuration.",
+      "requiresSide": false
     },
     {
       "id": "breakfast-broccoli-cheddar-frittata",
@@ -2353,7 +2424,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Breakfast hours require local configuration."
+      "note": "Breakfast hours require local configuration.",
+      "requiresSide": false
     },
     {
       "id": "breakfast-chipotle-chicken-egg-avo",
@@ -2380,7 +2452,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Breakfast hours require local configuration."
+      "note": "Breakfast hours require local configuration.",
+      "requiresSide": false
     },
     {
       "id": "breakfast-egg-cheese-ciabatta",
@@ -2407,7 +2480,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Breakfast hours require local configuration."
+      "note": "Breakfast hours require local configuration.",
+      "requiresSide": false
     },
     {
       "id": "breakfast-egg-cheese-croissant",
@@ -2434,7 +2508,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Breakfast hours require local configuration."
+      "note": "Breakfast hours require local configuration.",
+      "requiresSide": false
     },
     {
       "id": "breakfast-five-cheese-bacon-frittata",
@@ -2461,7 +2536,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Breakfast hours require local configuration."
+      "note": "Breakfast hours require local configuration.",
+      "requiresSide": false
     },
     {
       "id": "breakfast-ham-croissant-benny",
@@ -2488,7 +2564,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Breakfast hours require local configuration."
+      "note": "Breakfast hours require local configuration.",
+      "requiresSide": false
     },
     {
       "id": "breakfast-ham-egg-cheese-ciabatta",
@@ -2515,7 +2592,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Breakfast hours require local configuration."
+      "note": "Breakfast hours require local configuration.",
+      "requiresSide": false
     },
     {
       "id": "breakfast-sausage-egg-cheese-ciabatta",
@@ -2542,7 +2620,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Breakfast hours require local configuration."
+      "note": "Breakfast hours require local configuration.",
+      "requiresSide": false
     },
     {
       "id": "breakfast-sausage-egg-cheese-croissant",
@@ -2569,7 +2648,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Breakfast hours require local configuration."
+      "note": "Breakfast hours require local configuration.",
+      "requiresSide": false
     },
     {
       "id": "breakfast-steak-wake",
@@ -2596,7 +2676,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Breakfast hours require local configuration."
+      "note": "Breakfast hours require local configuration.",
+      "requiresSide": false
     },
     {
       "id": "breakfast-four-cheese-souffle",
@@ -2623,7 +2704,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Breakfast hours require local configuration."
+      "note": "Breakfast hours require local configuration.",
+      "requiresSide": false
     },
     {
       "id": "breakfast-spinach-bacon-souffle",
@@ -2650,7 +2732,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Breakfast hours require local configuration."
+      "note": "Breakfast hours require local configuration.",
+      "requiresSide": false
     },
     {
       "id": "breakfast-strawberry-pecan-oatmeal",
@@ -2677,7 +2760,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Breakfast hours require local configuration."
+      "note": "Breakfast hours require local configuration.",
+      "requiresSide": false
     },
     {
       "id": "breakfast-garden-avo-egg-white",
@@ -2703,7 +2787,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Listed in allergen guide; availability needs café confirmation."
+      "note": "Listed in allergen guide; availability needs café confirmation.",
+      "requiresSide": false
     },
     {
       "id": "bagels-asiago-cheese",
@@ -2729,7 +2814,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bagels-asiago-everything",
@@ -2755,7 +2841,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bagels-blueberry",
@@ -2781,7 +2868,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bagels-chocolate-chip",
@@ -2807,7 +2895,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bagels-cinnamon-crunch",
@@ -2833,7 +2922,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bagels-cinnamon-swirl-raisin",
@@ -2859,7 +2949,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bagels-everything",
@@ -2885,7 +2976,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bagels-multigrain-bagel-flat",
@@ -2911,7 +3003,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bagels-plain",
@@ -2937,7 +3030,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bagels-sesame",
@@ -2963,7 +3057,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "spreads-plain-cream-cheese",
@@ -2990,7 +3085,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "spreads-honey-walnut-cream-cheese",
@@ -3017,7 +3113,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-brownie",
@@ -3045,7 +3142,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-candy-cookie",
@@ -3073,7 +3171,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-chocolate-chipper-cookie",
@@ -3101,7 +3200,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-petite-chocolate-chipper",
@@ -3129,7 +3229,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-chocolate-coconut-macaroon",
@@ -3157,7 +3258,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-coconut-macaroon",
@@ -3185,7 +3287,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-dubai-chocolate-pistachio-cookie",
@@ -3213,7 +3316,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-pumpkin-shortbread-cookie",
@@ -3241,7 +3345,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-kitchen-sink-cookie",
@@ -3269,7 +3374,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-oatmeal-raisin-cookie",
@@ -3297,7 +3403,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-pb-j-cookie",
@@ -3325,7 +3432,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-cranberry-orange-slice",
@@ -3353,7 +3461,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-blueberry-muffin",
@@ -3381,7 +3490,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-chocolate-chip-muffie",
@@ -3409,7 +3519,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-almond-pastry",
@@ -3437,7 +3548,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-asiago-croissant-twists",
@@ -3470,7 +3582,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-caramel-pumpkin-slice",
@@ -3498,7 +3611,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-cherry-pastry",
@@ -3526,7 +3640,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-chocolate-croissant",
@@ -3554,7 +3669,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-cinnamon-roll",
@@ -3582,7 +3698,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-pecan-braid",
@@ -3610,7 +3727,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-pumpkin-spice-cinnamon-roll",
@@ -3638,7 +3756,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-orange-scone",
@@ -3666,7 +3785,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-mini-orange-scone",
@@ -3694,7 +3814,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "bakery-cinnamon-croissant-bites",
@@ -3724,7 +3845,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "breads-artisan-ciabatta-loaf",
@@ -3750,7 +3872,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "Retail loaf/roll listing; local availability and sale format require confirmation. Bread substitutions belong under item modifiers."
+      "note": "Retail loaf/roll listing; local availability and sale format require confirmation. Bread substitutions belong under item modifiers.",
+      "requiresSide": false
     },
     {
       "id": "breads-black-pepper-focaccia",
@@ -3776,7 +3899,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "Retail loaf/roll listing; local availability and sale format require confirmation. Bread substitutions belong under item modifiers."
+      "note": "Retail loaf/roll listing; local availability and sale format require confirmation. Bread substitutions belong under item modifiers.",
+      "requiresSide": false
     },
     {
       "id": "breads-classic-white-loaf",
@@ -3802,7 +3926,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "Retail loaf/roll listing; local availability and sale format require confirmation. Bread substitutions belong under item modifiers."
+      "note": "Retail loaf/roll listing; local availability and sale format require confirmation. Bread substitutions belong under item modifiers.",
+      "requiresSide": false
     },
     {
       "id": "breads-country-rustic-sourdough",
@@ -3828,7 +3953,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "Retail loaf/roll listing; local availability and sale format require confirmation. Bread substitutions belong under item modifiers."
+      "note": "Retail loaf/roll listing; local availability and sale format require confirmation. Bread substitutions belong under item modifiers.",
+      "requiresSide": false
     },
     {
       "id": "breads-croissant",
@@ -3854,7 +3980,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "Retail loaf/roll listing; local availability and sale format require confirmation. Bread substitutions belong under item modifiers."
+      "note": "Retail loaf/roll listing; local availability and sale format require confirmation. Bread substitutions belong under item modifiers.",
+      "requiresSide": false
     },
     {
       "id": "breads-french-baguette-loaf",
@@ -3880,7 +4007,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "Retail loaf/roll listing; local availability and sale format require confirmation. Bread substitutions belong under item modifiers."
+      "note": "Retail loaf/roll listing; local availability and sale format require confirmation. Bread substitutions belong under item modifiers.",
+      "requiresSide": false
     },
     {
       "id": "breads-empty-bread-bowl",
@@ -3906,7 +4034,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "Retail loaf/roll listing; local availability and sale format require confirmation. Bread substitutions belong under item modifiers."
+      "note": "Retail loaf/roll listing; local availability and sale format require confirmation. Bread substitutions belong under item modifiers.",
+      "requiresSide": false
     },
     {
       "id": "breads-tomato-basil-miche",
@@ -3932,7 +4061,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "Retail loaf/roll listing; local availability and sale format require confirmation. Bread substitutions belong under item modifiers."
+      "note": "Retail loaf/roll listing; local availability and sale format require confirmation. Bread substitutions belong under item modifiers.",
+      "requiresSide": false
     },
     {
       "id": "breads-whole-grain-lahvash",
@@ -3958,7 +4088,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "Retail loaf/roll listing; local availability and sale format require confirmation. Bread substitutions belong under item modifiers."
+      "note": "Retail loaf/roll listing; local availability and sale format require confirmation. Bread substitutions belong under item modifiers.",
+      "requiresSide": false
     },
     {
       "id": "breads-italian-stuffer-roll",
@@ -3984,7 +4115,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "Retail loaf/roll listing; local availability and sale format require confirmation. Bread substitutions belong under item modifiers."
+      "note": "Retail loaf/roll listing; local availability and sale format require confirmation. Bread substitutions belong under item modifiers.",
+      "requiresSide": false
     },
     {
       "id": "kids-kids-grilled-cheese",
@@ -4010,7 +4142,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "kids-kids-ham-american",
@@ -4036,7 +4169,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "kids-kids-turkey-american",
@@ -4062,7 +4196,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "kids-kids-broccoli-cheddar",
@@ -4088,7 +4223,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "kids-kids-mac-cheese",
@@ -4114,7 +4250,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": true
     },
     {
       "id": "sides-apple",
@@ -4140,7 +4277,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National side/snack listing; availability and meal-side eligibility need cafe confirmation."
+      "note": "National side/snack listing; availability and meal-side eligibility need cafe confirmation.",
+      "requiresSide": false
     },
     {
       "id": "sides-banana",
@@ -4166,7 +4304,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National side/snack listing; availability and meal-side eligibility need cafe confirmation."
+      "note": "National side/snack listing; availability and meal-side eligibility need cafe confirmation.",
+      "requiresSide": false
     },
     {
       "id": "sides-baguette-side",
@@ -4192,7 +4331,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National side/snack listing; availability and meal-side eligibility need cafe confirmation."
+      "note": "National side/snack listing; availability and meal-side eligibility need cafe confirmation.",
+      "requiresSide": false
     },
     {
       "id": "sides-greek-yogurt-parfait",
@@ -4218,7 +4358,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National side/snack listing; availability and meal-side eligibility need cafe confirmation."
+      "note": "National side/snack listing; availability and meal-side eligibility need cafe confirmation.",
+      "requiresSide": false
     },
     {
       "id": "sides-chips",
@@ -4244,7 +4385,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National side/snack listing; availability and meal-side eligibility need cafe confirmation."
+      "note": "National side/snack listing; availability and meal-side eligibility need cafe confirmation.",
+      "requiresSide": false
     },
     {
       "id": "sides-pickle-spear",
@@ -4270,7 +4412,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National side/snack listing; availability and meal-side eligibility need cafe confirmation."
+      "note": "National side/snack listing; availability and meal-side eligibility need cafe confirmation.",
+      "requiresSide": false
     },
     {
       "id": "sides-fruit-cup",
@@ -4296,7 +4439,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National side/snack listing; availability and meal-side eligibility need cafe confirmation."
+      "note": "National side/snack listing; availability and meal-side eligibility need cafe confirmation.",
+      "requiresSide": false
     },
     {
       "id": "sides-hard-boiled-eggs",
@@ -4322,7 +4466,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Side/snack role is a research classification, not proof of inclusion as a meal side."
+      "note": "Side/snack role is a research classification, not proof of inclusion as a meal side.",
+      "requiresSide": false
     },
     {
       "id": "hot-coffee-tea-dark-roast-coffee",
@@ -4356,7 +4501,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "hot-coffee-tea-light-roast-coffee",
@@ -4390,7 +4536,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "hot-coffee-tea-hazelnut-coffee",
@@ -4424,7 +4571,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "hot-coffee-tea-decaf-coffee",
@@ -4458,7 +4606,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "hot-coffee-tea-americano",
@@ -4469,7 +4618,8 @@
         "drink"
       ],
       "portionIds": [
-        "16-oz"
+        "16-oz",
+        "20-oz"
       ],
       "availability": {
         "glenview": "unverified",
@@ -4491,7 +4641,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "hot-coffee-tea-caffe-latte",
@@ -4525,7 +4676,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "hot-coffee-tea-cappuccino",
@@ -4559,7 +4711,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "hot-coffee-tea-caramel-latte",
@@ -4593,7 +4746,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "hot-coffee-tea-chai-tea-latte",
@@ -4627,7 +4781,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "hot-coffee-tea-vanilla-latte",
@@ -4661,7 +4816,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "hot-coffee-tea-mocha-latte",
@@ -4695,7 +4851,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "hot-coffee-tea-pumpkin-spice-latte",
@@ -4729,7 +4886,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "hot-coffee-tea-hot-chocolate",
@@ -4763,7 +4921,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "hot-coffee-tea-british-breakfast-tea",
@@ -4774,7 +4933,8 @@
         "drink"
       ],
       "portionIds": [
-        "16-oz"
+        "16-oz",
+        "20-oz"
       ],
       "availability": {
         "glenview": "unverified",
@@ -4796,7 +4956,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "hot-coffee-tea-honey-ginseng-green-tea",
@@ -4807,7 +4968,8 @@
         "drink"
       ],
       "portionIds": [
-        "16-oz"
+        "16-oz",
+        "20-oz"
       ],
       "availability": {
         "glenview": "unverified",
@@ -4829,7 +4991,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "hot-coffee-tea-orange-ginger-mint-tea",
@@ -4840,7 +5003,8 @@
         "drink"
       ],
       "portionIds": [
-        "16-oz"
+        "16-oz",
+        "20-oz"
       ],
       "availability": {
         "glenview": "unverified",
@@ -4862,7 +5026,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "hot-coffee-tea-hot-tea",
@@ -4873,7 +5038,8 @@
         "drink"
       ],
       "portionIds": [
-        "16-oz"
+        "16-oz",
+        "20-oz"
       ],
       "availability": {
         "glenview": "unverified",
@@ -4895,7 +5061,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "hot-coffee-tea-espresso",
@@ -4928,7 +5095,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "iced-coffee-iced-coffee",
@@ -4958,7 +5126,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "iced-coffee-hazelnut-mocha-iced-coffee",
@@ -4988,7 +5157,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "iced-coffee-rocky-road-iced-coffee",
@@ -5018,7 +5188,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "iced-coffee-snickerdoodle-iced-coffee",
@@ -5048,7 +5219,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "iced-coffee-pumpkin-spice-iced-coffee",
@@ -5078,7 +5250,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "iced-coffee-iced-caffe-latte",
@@ -5107,7 +5280,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "iced-coffee-iced-caramel-latte",
@@ -5136,7 +5310,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "iced-coffee-iced-chai-latte",
@@ -5165,7 +5340,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "iced-coffee-iced-vanilla-latte",
@@ -5194,7 +5370,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "iced-coffee-iced-mocha-latte",
@@ -5223,7 +5400,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "iced-coffee-iced-pumpkin-spice-latte",
@@ -5252,7 +5430,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "frozen-smoothies-cafe-frozen-java",
@@ -5284,7 +5463,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "frozen-smoothies-hazelnut-mocha-frozen-java",
@@ -5316,7 +5496,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "frozen-smoothies-rocky-road-frozen-java",
@@ -5348,7 +5529,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "frozen-smoothies-snickerdoodle-frozen-java",
@@ -5380,7 +5562,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "frozen-smoothies-pumpkin-spice-frozen-java",
@@ -5412,7 +5595,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "frozen-smoothies-frozen-hot-chocolate",
@@ -5444,7 +5628,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "frozen-smoothies-mango-smoothie",
@@ -5476,7 +5661,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "frozen-smoothies-strawberry-banana-smoothie",
@@ -5508,7 +5694,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "frozen-smoothies-strawberry-smoothie",
@@ -5540,7 +5727,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "frozen-smoothies-tropical-green-smoothie",
@@ -5572,7 +5760,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": null
+      "note": null,
+      "requiresSide": false
     },
     {
       "id": "tea-refreshers-agave-lemonade",
@@ -5607,7 +5796,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Island Mango fruit variants (dragon fruit / pineapple) are documented; configure local recipe."
+      "note": "Island Mango fruit variants (dragon fruit / pineapple) are documented; configure local recipe.",
+      "requiresSide": false
     },
     {
       "id": "tea-refreshers-blackberry-hibiscus-tea",
@@ -5642,7 +5832,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Island Mango fruit variants (dragon fruit / pineapple) are documented; configure local recipe."
+      "note": "Island Mango fruit variants (dragon fruit / pineapple) are documented; configure local recipe.",
+      "requiresSide": false
     },
     {
       "id": "tea-refreshers-passion-papaya-tea",
@@ -5677,7 +5868,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Island Mango fruit variants (dragon fruit / pineapple) are documented; configure local recipe."
+      "note": "Island Mango fruit variants (dragon fruit / pineapple) are documented; configure local recipe.",
+      "requiresSide": false
     },
     {
       "id": "tea-refreshers-sweet-iced-tea",
@@ -5712,7 +5904,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Island Mango fruit variants (dragon fruit / pineapple) are documented; configure local recipe."
+      "note": "Island Mango fruit variants (dragon fruit / pineapple) are documented; configure local recipe.",
+      "requiresSide": false
     },
     {
       "id": "tea-refreshers-unsweetened-iced-tea",
@@ -5747,7 +5940,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Island Mango fruit variants (dragon fruit / pineapple) are documented; configure local recipe."
+      "note": "Island Mango fruit variants (dragon fruit / pineapple) are documented; configure local recipe.",
+      "requiresSide": false
     },
     {
       "id": "tea-refreshers-cherry-lime-fresca",
@@ -5782,7 +5976,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Island Mango fruit variants (dragon fruit / pineapple) are documented; configure local recipe."
+      "note": "Island Mango fruit variants (dragon fruit / pineapple) are documented; configure local recipe.",
+      "requiresSide": false
     },
     {
       "id": "tea-refreshers-strawberry-basil-fresca",
@@ -5817,7 +6012,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Island Mango fruit variants (dragon fruit / pineapple) are documented; configure local recipe."
+      "note": "Island Mango fruit variants (dragon fruit / pineapple) are documented; configure local recipe.",
+      "requiresSide": false
     },
     {
       "id": "tea-refreshers-dragonfruit-sunset-refresher",
@@ -5852,7 +6048,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Island Mango fruit variants (dragon fruit / pineapple) are documented; configure local recipe."
+      "note": "Island Mango fruit variants (dragon fruit / pineapple) are documented; configure local recipe.",
+      "requiresSide": false
     },
     {
       "id": "tea-refreshers-island-mango-refresher",
@@ -5887,7 +6084,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Island Mango fruit variants (dragon fruit / pineapple) are documented; configure local recipe."
+      "note": "Island Mango fruit variants (dragon fruit / pineapple) are documented; configure local recipe.",
+      "requiresSide": false
     },
     {
       "id": "tea-refreshers-passionfruit-paradise-refresher",
@@ -5922,7 +6120,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "Island Mango fruit variants (dragon fruit / pineapple) are documented; configure local recipe."
+      "note": "Island Mango fruit variants (dragon fruit / pineapple) are documented; configure local recipe.",
+      "requiresSide": false
     },
     {
       "id": "fountain-caffeine-free-diet-pepsi",
@@ -5961,7 +6160,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-canada-dry-ginger-ale",
@@ -6000,7 +6200,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-coke",
@@ -6039,7 +6240,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-coke-zero",
@@ -6078,7 +6280,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-diet-coke",
@@ -6117,7 +6320,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-diet-dr-pepper",
@@ -6156,7 +6360,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-diet-mountain-dew",
@@ -6195,7 +6400,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-diet-pepsi",
@@ -6234,7 +6440,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-dr-pepper",
@@ -6273,7 +6480,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-fanta-orange",
@@ -6312,7 +6520,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-lime-bubly",
@@ -6351,7 +6560,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-brisk-raspberry-tea",
@@ -6390,7 +6600,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-mountain-dew",
@@ -6429,7 +6640,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-mug-root-beer",
@@ -6468,7 +6680,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-pepsi",
@@ -6507,7 +6720,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-pepsi-zero",
@@ -6545,7 +6759,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-pibb-xtra",
@@ -6584,7 +6799,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-powerade-mountain-blast",
@@ -6623,7 +6839,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-sobe-yumberry-pomegranate",
@@ -6662,7 +6879,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-sprite",
@@ -6701,7 +6919,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-starry",
@@ -6740,7 +6959,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-tropicana-fruit-punch",
@@ -6779,7 +6999,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-tropicana-lemonade",
@@ -6818,7 +7039,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "fountain-tropicana-light-lemonade",
@@ -6857,7 +7079,8 @@
         }
       ],
       "catalogTier": "main",
-      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification."
+      "note": "National guide covers multiple soda systems. Do not show both systems as locally available without café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-aha-blueberry-pomegranate",
@@ -6896,7 +7119,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-aha-lime-watermelon",
@@ -6935,7 +7159,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-bottled-passionfruit-papaya-tea",
@@ -6974,7 +7199,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-bottled-water",
@@ -7013,7 +7239,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-bubly-lemon-can",
@@ -7052,7 +7279,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-bubly-lime-can",
@@ -7091,7 +7319,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-dasani-lemon",
@@ -7130,7 +7359,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-dasani-lime",
@@ -7169,7 +7399,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-coke-bottle",
@@ -7208,7 +7439,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-coke-zero-bottle",
@@ -7247,7 +7479,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-diet-coke-bottle",
@@ -7286,7 +7519,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-diet-pepsi-bottle-can",
@@ -7326,7 +7560,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-dr-pepper-bottle",
@@ -7365,7 +7600,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-mountain-dew-bottle-can",
@@ -7405,7 +7641,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-diet-mountain-dew-can",
@@ -7444,7 +7681,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-pepsi-bottle-can",
@@ -7484,7 +7722,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-pepsi-zero-bottle",
@@ -7523,7 +7762,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-sprite-bottle",
@@ -7562,7 +7802,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-sprite-zero-bottle",
@@ -7601,7 +7842,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-starry-bottle-can",
@@ -7641,7 +7883,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-gold-peak-tea-bottle",
@@ -7680,7 +7923,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-honest-berry-hibiscus",
@@ -7719,7 +7963,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-minute-maid-oj",
@@ -7758,7 +8003,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-premium-oj",
@@ -7797,7 +8043,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-kids-apple-juice",
@@ -7836,7 +8083,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-kids-chocolate-milk",
@@ -7875,7 +8123,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "bottled-canned-kids-white-milk",
@@ -7914,7 +8163,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "National listing; packaged beverage stocking requires café verification."
+      "note": "National listing; packaged beverage stocking requires café verification.",
+      "requiresSide": false
     },
     {
       "id": "grab-go-chicken-caesar-wrap",
@@ -7940,7 +8190,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "Non-traditional Grab N Go listing; not presumed available at Glenview."
+      "note": "Non-traditional Grab N Go listing; not presumed available at Glenview.",
+      "requiresSide": false
     },
     {
       "id": "grab-go-frontega-chicken-wrap",
@@ -7966,7 +8217,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "Non-traditional Grab N Go listing; not presumed available at Glenview."
+      "note": "Non-traditional Grab N Go listing; not presumed available at Glenview.",
+      "requiresSide": false
     },
     {
       "id": "grab-go-green-goddess-chicken-wrap",
@@ -7992,7 +8244,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "Non-traditional Grab N Go listing; not presumed available at Glenview."
+      "note": "Non-traditional Grab N Go listing; not presumed available at Glenview.",
+      "requiresSide": false
     },
     {
       "id": "grab-go-turkey-cheddar-wrap",
@@ -8018,7 +8271,8 @@
         }
       ],
       "catalogTier": "secondary",
-      "note": "Non-traditional Grab N Go listing; not presumed available at Glenview."
+      "note": "Non-traditional Grab N Go listing; not presumed available at Glenview.",
+      "requiresSide": false
     }
   ],
   "programs": [
@@ -11927,7 +12181,8 @@
       "itemId": "hot-coffee-tea-americano",
       "role": "drink",
       "allowedPortionIds": [
-        "16-oz"
+        "16-oz",
+        "20-oz"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -11942,7 +12197,8 @@
       "itemId": "hot-coffee-tea-americano",
       "role": "drink",
       "allowedPortionIds": [
-        "16-oz"
+        "16-oz",
+        "20-oz"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
@@ -12213,7 +12469,8 @@
       "itemId": "hot-coffee-tea-british-breakfast-tea",
       "role": "drink",
       "allowedPortionIds": [
-        "16-oz"
+        "16-oz",
+        "20-oz"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -12228,7 +12485,8 @@
       "itemId": "hot-coffee-tea-british-breakfast-tea",
       "role": "drink",
       "allowedPortionIds": [
-        "16-oz"
+        "16-oz",
+        "20-oz"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
@@ -12243,7 +12501,8 @@
       "itemId": "hot-coffee-tea-honey-ginseng-green-tea",
       "role": "drink",
       "allowedPortionIds": [
-        "16-oz"
+        "16-oz",
+        "20-oz"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -12258,7 +12517,8 @@
       "itemId": "hot-coffee-tea-honey-ginseng-green-tea",
       "role": "drink",
       "allowedPortionIds": [
-        "16-oz"
+        "16-oz",
+        "20-oz"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
@@ -12273,7 +12533,8 @@
       "itemId": "hot-coffee-tea-orange-ginger-mint-tea",
       "role": "drink",
       "allowedPortionIds": [
-        "16-oz"
+        "16-oz",
+        "20-oz"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -12288,7 +12549,8 @@
       "itemId": "hot-coffee-tea-orange-ginger-mint-tea",
       "role": "drink",
       "allowedPortionIds": [
-        "16-oz"
+        "16-oz",
+        "20-oz"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
@@ -12303,7 +12565,8 @@
       "itemId": "hot-coffee-tea-hot-tea",
       "role": "drink",
       "allowedPortionIds": [
-        "16-oz"
+        "16-oz",
+        "20-oz"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -12318,7 +12581,8 @@
       "itemId": "hot-coffee-tea-hot-tea",
       "role": "drink",
       "allowedPortionIds": [
-        "16-oz"
+        "16-oz",
+        "20-oz"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
@@ -14967,7 +15231,7 @@
       "id": "default",
       "programId": "default",
       "label": "Default",
-      "collapsible": false,
+      "collapsible": true,
       "initiallyExpanded": true,
       "slots": [
         {
@@ -14998,7 +15262,7 @@
       "id": "you-pick-two",
       "programId": "you-pick-two",
       "label": "You Pick Two",
-      "collapsible": false,
+      "collapsible": true,
       "initiallyExpanded": true,
       "slots": [
         {
@@ -15034,7 +15298,7 @@
       "programId": "bagel-tuesday",
       "label": "Bagel Tuesday",
       "collapsible": true,
-      "initiallyExpanded": false,
+      "initiallyExpanded": true,
       "slots": [
         {
           "id": "bagel-1",
@@ -15054,11 +15318,12 @@
       "quantityControl": {
         "minimum": 1,
         "totalTarget": 13,
-        "enforcement": "warn_only"
+        "enforcement": "cap_additions_preserve_legacy"
       },
-      "rowPresentation": "selected_rows_plus_one_empty_row",
+      "rowPresentation": "inline_flavor_grid",
       "rowActions": [
-        "remove"
+        "add_one",
+        "remove_one"
       ],
       "categoryIds": [
         "bagels"
@@ -15242,5 +15507,20 @@
     "Confirm Glenview cafe ID, current sellable items and per-program portions; Market Bowls/Stuffers/Bagel Stack eligibility is not assumed.",
     "Mix & Match sketch has no side row. Store an unresolved side-capture decision; never borrow the Default side.",
     "Confirm how to record a combo named only after a Default food has been captured; current mock requires explicit card choice."
-  ]
+  ],
+  "cashierCaptureOverrides": {
+    "requiredSideCategories": [
+      "kids",
+      "market-bowls",
+      "salads",
+      "sandwiches",
+      "soups-mac",
+      "stuffers"
+    ],
+    "hotCoffeeTeaSizes": [
+      "16-oz",
+      "20-oz"
+    ],
+    "note": "Cashier-requested note capture rules; local selling sizes still require cafe verification. Espresso retains its 2 oz portion."
+  }
 }
