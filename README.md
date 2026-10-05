@@ -1,20 +1,22 @@
 # Drive-through Order Pad
 
-A native Kotlin / Jetpack Compose Android app implementing the cashier prototype. Android 8.0 (API 26) or later. Version 0.2.0 opens with an empty Car 0; it does not seed demonstration orders.
+A native Kotlin / Jetpack Compose Android app implementing the cashier prototype. Android 8.0 (API 26) or later. Version 0.3.0 opens with an empty Car 0; it does not seed demonstration orders.
 
 ## Cashier workflow
 
-- **Already ordered:** a growing list at the top shows every nonempty meal, numbered within its program (Default 1, Default 2, You Pick Two 1, etc.). Tap a listed meal to unfold its box and edit that exact meal, including Bagel Tuesday at 13. Earlier meals remain intact when adding another.
-- **Foldable boxes:** Default, You Pick Two and Bagel Tuesday open initially; Mix & Match starts folded. Every box can be folded. Fold choices survive Next car and screen recreation.
-- **Default:** food, optional drink, side. A side is required for sandwiches, soups & mac, salads, market bowls, kids and stuffers. Bakery and other food categories can leave it empty. Applicable sizes are available in the picker and on the food row.
-- **You Pick Two:** two eligible foods, optional drink, side. Offers enforce the allowed portion; standard sandwiches use Half.
-- **Bagel Tuesday:** a compact two-column grid above Mix & Match lists the configured flavors. Tap anywhere on a flavor box to add one; its separate 48 dp minus button removes one. Additions stop at 13 in both the UI and the order engine, including buffered rapid taps. Counts never become negative. Older saved notes with duplicate rows or totals above 13 remain readable and removable; adding is disabled until the total drops below 13.
-- **Mix & Match:** collapsed, ten optional slots filtered to the configured roster.
-- **Sides:** Apple, Chips and Baguette in Default and You Pick Two.
-- **Hot coffee and tea:** 16 oz and 20 oz capture choices, including Hot Tea, flavored teas and Americano. Espresso retains its 2 oz serving. These cashier-requested capture sizes still need local selling-menu verification.
-- **Selection return:** selecting, clearing or backing out of a picker returns to the originating meal and field. Entry and ticket scroll positions survive the picker; a field that needs more room is brought into view. Tapping the summary scrolls directly to that meal's box.
-- **Next car:** the only bottom action on the entry screen. Each edit is saved on device; Next car queues the current car and opens the next empty car. Required sides must be chosen before handoff. Other incomplete requests remain notes with review prompts.
-- **Queue:** oldest first, including the current nonempty draft. Display numbers always start at Car 0 and renumber when a car is entered. Stable internal IDs never change. Edit any saved meal; mark a car Entered at register after copying it to the register and choosing required sides. Undo restores the previous committed change.
+- **Six boxes:** Drinks, Breakfast, Bagels, Default, You Pick Two and Mix & Match. All start closed and close again for the next car. Amber headers say Closed; green headers say Open. Each open section ends with a labeled green edge and a Close button.
+- **Already ordered:** the growing list at the top shows all captured selections, separate numbered meals and separate numbered dozens. Tap an entry to open its exact editor. Choosing, clearing or backing out of a picker returns to its original meal and field while preserving scroll position.
+- **Drinks:** tap a whole item box to add one, or its separate minus button to subtract. Select a size above the grid for sized categories; counts for different sizes stay separate. Hot Coffee & Tea opens by default and uses only 16 oz and 20 oz. Bottled and Frozen & Smoothies have no size selector and show their full configured lists together.
+- **Bottled:** exactly Bottled Passionfruit Papaya Tea, Bottled Water, Bottled Orange Juice, Kids Apple Juice, Kids Chocolate Milk and Kids White Milk. Removed choices remain readable in earlier notes but cannot be added.
+- **Breakfast:** the configured breakfast roster uses whole-tile addition and separate minus buttons, with independent item counts.
+- **Bagels:** one shared flavor grid serves Individual first, then Dozen 1, Dozen 2, and subsequent targets. Individual quantities are unlimited. Add a dozen with **+ Dozen**, select it, and fill its independent 13-bagel count. At 13, addition stops and subtraction stays available; the target does not switch automatically. Remove a selected dozen or clear the only remaining dozen. Undo restores its notes and editing target. Plain and Walnut cream cheese each offer Single and Tub count tiles shared for the car.
+- **Default:** food, optional drink, side. Sandwiches, soups & mac, salads, market bowls, kids and stuffers require a side before Next car or Entered at register. Other categories can leave it empty. Applicable food sizes appear in the picker and selected row.
+- **You Pick Two:** two eligible foods, optional drink, required side. Sandwiches stay Half. Soups offer Cup and Bowl; Mac & Cheese and Bacon Mac & Cheese stay Cup.
+- **Meal drink pickers:** open directly to Hot Coffee & Tea. A sized drink's name is a label; tap its size to add it. Bottled and Frozen & Smoothies add directly by name. New drinks never have an unknown size.
+- **Mix & Match:** ten optional slots filtered to the configured roster. Side confirmation remains a register review prompt.
+- **Sides:** Apple, Chips and Baguette for Default and You Pick Two.
+- **Next car:** the only bottom action. Every change saves on device; Next car queues the order and opens an empty car. Required sides gate handoff. Other incomplete requests remain notes with review prompts.
+- **Queue:** oldest first, including a nonempty draft. Display numbers start at Car 0 and renumber after a car is entered. Internal IDs stay stable. Edit saved cars; mark Entered at register after copying them to the register. Undo restores the previous committed change.
 
 ## Install the review build
 
@@ -24,7 +26,7 @@ Every successful `main` build publishes a numbered prototype release with the AP
 
 The APK is signed with a development key for prototype review. A different CI runner or local computer can generate a different development key; replacing a previous build may require uninstalling the old app, which removes its saved order notes. Preserve any needed notes before uninstalling. Production signing credentials are not configured or checked into this repository. The locally delivered `drive-through-order-pad-debug.apk` can also be transferred to a phone or installed with `adb install -r drive-through-order-pad-debug.apk`.
 
-This is a working offline review build, not a Play Store release. It does not send orders to a POS. The included 249-item menu is the research profile from the prototype, dated October 3, 2026. **The Glenview café roster, current promotion eligibility and availability still need café verification before live use.** Mix & Match side capture remains a register review prompt, following the approved layout. Removing the app or clearing its data removes its notes.
+This is a working offline review build, not a Play Store release. It does not send orders to a POS. The included 249-item menu is the research profile from the prototype, with cashier capture overrides dated October 4, 2026. **The Glenview café roster, current promotion eligibility and availability still need café verification before live use.** Mix & Match side capture remains a register review prompt, following the approved layout. Removing the app or clearing its data removes its notes.
 
 ## Build
 
@@ -58,15 +60,15 @@ A production release needs a privately managed signing key, a confirmed applicat
 
 DataStore is appropriate for a small active note queue stored as one consistent document. Entered cars are removed rather than accumulated as an unbounded history. The latest Undo snapshot exists only in memory; Undo is intentionally unavailable after a full app restart. If persistent history, cross-device sync, or large searchable datasets are added, use a database-backed repository without changing the pure order engine.
 
-The native note format has its own schema version (`1`) and does not import the browser widget's storage. Every selection snapshots its display name and portion label, so later menu removal cannot erase or rename a heard request. Removed/disabled choices are retained on readback with a review prompt. The bundled catalog is separate from order storage and retains source provenance. Menu updates belong in `app/src/main/assets/menu.json`; changing category membership alone never grants combo eligibility.
+The native note format has its own schema version (`2`) and does not import the browser widget's storage. Every selection snapshots its display name and portion label, so later menu removal cannot erase or rename a heard request. Removed/disabled choices are retained on readback with a review prompt. The bundled catalog is separate from order storage and retains source provenance. Menu updates belong in `app/src/main/assets/menu.json`; changing category membership alone never grants combo eligibility.
 
-Writes must finish before the screen reports a saved change. The app preserves the last committed state on an I/O error and visibly reports the failure; buffered taps after that failure are canceled. It does not silently replace corrupt or unsupported order files with blank notes. Existing schema-1 notes are retained without a destructive migration. There is no network permission, analytics, login, or remote service. Android backup/transfer rules exclude local order notes.
+Writes must finish before the screen reports a saved change. The app preserves the last committed state on an I/O error and visibly reports the failure; buffered taps after that failure are canceled. It does not silently replace corrupt or unsupported order files with blank notes. Schema-1 notes upgrade atomically to schema 2. New capture groups are added, no-size drink notes are normalized to Each, and original labels, quantities, car IDs and existing meals are preserved. Legacy 2 oz hot drinks and over-limit/duplicate bagel notes remain readable and removable. New dozen IDs use a persisted allocation counter, so deleting a dozen does not reuse its ID. There is no network permission, analytics, login, or remote service. Android backup/transfer rules exclude local order notes.
 
 The UI follows the system light/dark theme, Android back navigation, keyboard/inset behavior and font scaling. Controls use native Compose semantics and at least 48 dp touch targets. Pickers and readback scroll vertically; all menu choices remain available without pagination. UI control strings and the menu currently target English.
 
 ## Verification
 
-See `VALIDATION.md` for the executed build and test results. Tests cover program/portion integrity against every enabled offer, required-side handoffs, hot drink sizes, zero-based queue positions, repeated meals, rapid bagel taps, older duplicate/over-limit notes, Undo, concurrent storage writes, reopening storage, corruption preservation, SavedStateHandle restoration, save failures and native Compose interactions at a 320 dp width.
+See `VALIDATION.md` for the executed build and test results. Tests cover every enabled offer and portion, the six-item Bottled roster, ten Frozen & Smoothies choices, required drink sizes, Cup/Bowl soups, independent counted programs and dozens, required sides, queue numbering, legacy migration, Undo, concurrent writes, reopening storage, corruption preservation, SavedStateHandle restoration and save failures. Native Compose checks at 320 dp verify the actual controls and selection-return positions.
 
 Before a café pilot, review the app on the cashier's actual phone: one-handed reach, keypad behavior, large text, screen rotation, background/relaunch, and copying two or three queued cars into the register. The app has no customer-identification fields and should be used for order notes only.
 

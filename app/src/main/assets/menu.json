@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "catalogVersion": "2026-10-03-cashier-2",
+  "catalogVersion": "2026-10-04-cashier-3",
   "nationalGuideEffective": "2026-09-02",
   "location": {
     "city": "Glenview",
@@ -157,7 +157,7 @@
     },
     {
       "id": "bottled-canned",
-      "label": "Bottled & Canned",
+      "label": "Bottled",
       "pickerGroup": "drinks",
       "sortOrder": 17
     },
@@ -5073,7 +5073,8 @@
         "drink"
       ],
       "portionIds": [
-        "2-oz"
+        "16-oz",
+        "20-oz"
       ],
       "availability": {
         "glenview": "unverified",
@@ -5442,7 +5443,7 @@
         "drink"
       ],
       "portionIds": [
-        "20-oz"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -5475,7 +5476,7 @@
         "drink"
       ],
       "portionIds": [
-        "20-oz"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -5508,7 +5509,7 @@
         "drink"
       ],
       "portionIds": [
-        "20-oz"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -5541,7 +5542,7 @@
         "drink"
       ],
       "portionIds": [
-        "20-oz"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -5574,7 +5575,7 @@
         "drink"
       ],
       "portionIds": [
-        "20-oz"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -5607,7 +5608,7 @@
         "drink"
       ],
       "portionIds": [
-        "16-oz"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -5640,7 +5641,7 @@
         "drink"
       ],
       "portionIds": [
-        "16-oz"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -5673,7 +5674,7 @@
         "drink"
       ],
       "portionIds": [
-        "16-oz"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -5706,7 +5707,7 @@
         "drink"
       ],
       "portionIds": [
-        "16-oz"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -5739,7 +5740,7 @@
         "drink"
       ],
       "portionIds": [
-        "16-oz"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7091,7 +7092,7 @@
         "drink"
       ],
       "portionIds": [
-        "12-oz-can"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7131,7 +7132,7 @@
         "drink"
       ],
       "portionIds": [
-        "12-oz-can"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7171,7 +7172,7 @@
         "drink"
       ],
       "portionIds": [
-        "500-ml-bottle"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7211,7 +7212,7 @@
         "drink"
       ],
       "portionIds": [
-        "16-9-oz-bottle"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7251,7 +7252,7 @@
         "drink"
       ],
       "portionIds": [
-        "12-oz-can"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7291,7 +7292,7 @@
         "drink"
       ],
       "portionIds": [
-        "12-oz-can"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7331,7 +7332,7 @@
         "drink"
       ],
       "portionIds": [
-        "12-oz-can"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7371,7 +7372,7 @@
         "drink"
       ],
       "portionIds": [
-        "12-oz-can"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7411,7 +7412,7 @@
         "drink"
       ],
       "portionIds": [
-        "20-oz-bottle"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7451,7 +7452,7 @@
         "drink"
       ],
       "portionIds": [
-        "20-oz-bottle"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7491,7 +7492,7 @@
         "drink"
       ],
       "portionIds": [
-        "20-oz-bottle"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7531,8 +7532,7 @@
         "drink"
       ],
       "portionIds": [
-        "20-oz-bottle",
-        "12-oz-can"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7572,7 +7572,7 @@
         "drink"
       ],
       "portionIds": [
-        "20-oz-bottle"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7612,8 +7612,7 @@
         "drink"
       ],
       "portionIds": [
-        "20-oz-bottle",
-        "12-oz-can"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7653,7 +7652,7 @@
         "drink"
       ],
       "portionIds": [
-        "12-oz-can"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7693,8 +7692,7 @@
         "drink"
       ],
       "portionIds": [
-        "20-oz-bottle",
-        "12-oz-can"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7734,7 +7732,7 @@
         "drink"
       ],
       "portionIds": [
-        "20-oz-bottle"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7774,7 +7772,7 @@
         "drink"
       ],
       "portionIds": [
-        "20-oz-bottle"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7814,7 +7812,7 @@
         "drink"
       ],
       "portionIds": [
-        "20-oz-bottle"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7854,8 +7852,7 @@
         "drink"
       ],
       "portionIds": [
-        "20-oz-bottle",
-        "12-oz-can"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7895,7 +7892,7 @@
         "drink"
       ],
       "portionIds": [
-        "18-5-oz-bottle"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7935,7 +7932,7 @@
         "drink"
       ],
       "portionIds": [
-        "16-9-oz-bottle"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -7975,7 +7972,7 @@
         "drink"
       ],
       "portionIds": [
-        "12-oz-bottle"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -8009,13 +8006,13 @@
     {
       "id": "bottled-canned-premium-oj",
       "name": "Premium OJ",
-      "label": "Premium OJ",
+      "label": "Bottled Orange Juice",
       "categoryId": "bottled-canned",
       "roles": [
         "drink"
       ],
       "portionIds": [
-        "11-5-oz-bottle"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -8055,7 +8052,7 @@
         "drink"
       ],
       "portionIds": [
-        "6-75-oz"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -8095,7 +8092,7 @@
         "drink"
       ],
       "portionIds": [
-        "8-oz"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -8135,7 +8132,7 @@
         "drink"
       ],
       "portionIds": [
-        "8-oz"
+        "each"
       ],
       "availability": {
         "glenview": "unverified",
@@ -8284,7 +8281,7 @@
         "maximum": 1
       },
       "distinctItems": false,
-      "note": "Drink-only notes are allowed. An empty card is unused; missing side/size are review prompts, not capture blocks."
+      "note": "Drink-only notes allowed. Required sides block Next car for applicable food categories. Sized drinks require size selection before capture."
     },
     {
       "id": "you-pick-two",
@@ -8298,13 +8295,13 @@
     },
     {
       "id": "bagel-tuesday",
-      "label": "Bagel Tuesday",
+      "label": "Baker’s Dozen",
       "foodCount": {
         "target": 13,
         "countBy": "sum_quantities"
       },
       "distinctItems": false,
-      "note": "One bundle per car in this design. The 13-bagel target is advisory; preserve every positive integer quantity and visibly flag totals over 13. Flavor rows can be added beyond 13."
+      "note": "Multiple independent dozens per car. Cap each dozen at 13; preserve older over-limit notes and allow removal."
     },
     {
       "id": "mix-match",
@@ -8322,6 +8319,30 @@
         "sourceId": "mix_match"
       },
       "note": "The cashier sketch specifies 2–10. Capture limit 10 is a user layout requirement; historical published maximum 11 is retained as evidence."
+    },
+    {
+      "id": "drinks",
+      "label": "Drinks",
+      "distinctItems": false,
+      "note": "Tap to add and subtract independent item counts."
+    },
+    {
+      "id": "breakfast",
+      "label": "Breakfast",
+      "distinctItems": false,
+      "note": "Tap to add and subtract independent item counts."
+    },
+    {
+      "id": "individual-bagels",
+      "label": "Individual bagels",
+      "distinctItems": false,
+      "note": "Tap to add and subtract independent item counts."
+    },
+    {
+      "id": "cream-cheese",
+      "label": "Cream cheese",
+      "distinctItems": false,
+      "note": "Tap to add and subtract independent item counts."
     }
   ],
   "offers": [
@@ -9042,7 +9063,8 @@
       "itemId": "soups-mac-bistro-french-onion",
       "role": "food",
       "allowedPortionIds": [
-        "cup"
+        "cup",
+        "bowl"
       ],
       "eligibilityStatus": "prototype_assumption_local_unverified",
       "demoEnabled": true,
@@ -9089,7 +9111,8 @@
       "itemId": "soups-mac-broccoli-cheddar",
       "role": "food",
       "allowedPortionIds": [
-        "cup"
+        "cup",
+        "bowl"
       ],
       "eligibilityStatus": "prototype_assumption_local_unverified",
       "demoEnabled": true,
@@ -9121,7 +9144,8 @@
       "itemId": "soups-mac-chicken-wild-rice",
       "role": "food",
       "allowedPortionIds": [
-        "cup"
+        "cup",
+        "bowl"
       ],
       "eligibilityStatus": "prototype_assumption_local_unverified",
       "demoEnabled": true,
@@ -9153,7 +9177,8 @@
       "itemId": "soups-mac-chicken-noodle",
       "role": "food",
       "allowedPortionIds": [
-        "cup"
+        "cup",
+        "bowl"
       ],
       "eligibilityStatus": "prototype_assumption_local_unverified",
       "demoEnabled": true,
@@ -9200,7 +9225,8 @@
       "itemId": "soups-mac-creamy-tomato",
       "role": "food",
       "allowedPortionIds": [
-        "cup"
+        "cup",
+        "bowl"
       ],
       "eligibilityStatus": "prototype_assumption_local_unverified",
       "demoEnabled": true,
@@ -9247,7 +9273,8 @@
       "itemId": "soups-mac-rustic-baked-potato",
       "role": "food",
       "allowedPortionIds": [
-        "cup"
+        "cup",
+        "bowl"
       ],
       "eligibilityStatus": "prototype_assumption_local_unverified",
       "demoEnabled": true,
@@ -9279,7 +9306,8 @@
       "itemId": "soups-mac-three-cheese-lasagna",
       "role": "food",
       "allowedPortionIds": [
-        "cup"
+        "cup",
+        "bowl"
       ],
       "eligibilityStatus": "prototype_assumption_local_unverified",
       "demoEnabled": true,
@@ -9311,7 +9339,8 @@
       "itemId": "soups-mac-autumn-squash",
       "role": "food",
       "allowedPortionIds": [
-        "cup"
+        "cup",
+        "bowl"
       ],
       "eligibilityStatus": "prototype_assumption_local_unverified",
       "demoEnabled": true,
@@ -9343,7 +9372,8 @@
       "itemId": "soups-mac-hearty-fireside-chili",
       "role": "food",
       "allowedPortionIds": [
-        "cup"
+        "cup",
+        "bowl"
       ],
       "eligibilityStatus": "prototype_assumption_local_unverified",
       "demoEnabled": true,
@@ -12597,7 +12627,8 @@
       "itemId": "hot-coffee-tea-espresso",
       "role": "drink",
       "allowedPortionIds": [
-        "2-oz"
+        "16-oz",
+        "20-oz"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -12612,7 +12643,8 @@
       "itemId": "hot-coffee-tea-espresso",
       "role": "drink",
       "allowedPortionIds": [
-        "2-oz"
+        "16-oz",
+        "20-oz"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
@@ -12967,7 +12999,7 @@
       "itemId": "frozen-smoothies-cafe-frozen-java",
       "role": "drink",
       "allowedPortionIds": [
-        "20-oz"
+        "each"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -12982,7 +13014,7 @@
       "itemId": "frozen-smoothies-cafe-frozen-java",
       "role": "drink",
       "allowedPortionIds": [
-        "20-oz"
+        "each"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
@@ -12997,7 +13029,7 @@
       "itemId": "frozen-smoothies-hazelnut-mocha-frozen-java",
       "role": "drink",
       "allowedPortionIds": [
-        "20-oz"
+        "each"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -13012,7 +13044,7 @@
       "itemId": "frozen-smoothies-hazelnut-mocha-frozen-java",
       "role": "drink",
       "allowedPortionIds": [
-        "20-oz"
+        "each"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
@@ -13027,7 +13059,7 @@
       "itemId": "frozen-smoothies-rocky-road-frozen-java",
       "role": "drink",
       "allowedPortionIds": [
-        "20-oz"
+        "each"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -13042,7 +13074,7 @@
       "itemId": "frozen-smoothies-rocky-road-frozen-java",
       "role": "drink",
       "allowedPortionIds": [
-        "20-oz"
+        "each"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
@@ -13057,7 +13089,7 @@
       "itemId": "frozen-smoothies-snickerdoodle-frozen-java",
       "role": "drink",
       "allowedPortionIds": [
-        "20-oz"
+        "each"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -13072,7 +13104,7 @@
       "itemId": "frozen-smoothies-snickerdoodle-frozen-java",
       "role": "drink",
       "allowedPortionIds": [
-        "20-oz"
+        "each"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
@@ -13087,7 +13119,7 @@
       "itemId": "frozen-smoothies-pumpkin-spice-frozen-java",
       "role": "drink",
       "allowedPortionIds": [
-        "20-oz"
+        "each"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -13102,7 +13134,7 @@
       "itemId": "frozen-smoothies-pumpkin-spice-frozen-java",
       "role": "drink",
       "allowedPortionIds": [
-        "20-oz"
+        "each"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
@@ -13117,7 +13149,7 @@
       "itemId": "frozen-smoothies-frozen-hot-chocolate",
       "role": "drink",
       "allowedPortionIds": [
-        "16-oz"
+        "each"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -13132,7 +13164,7 @@
       "itemId": "frozen-smoothies-frozen-hot-chocolate",
       "role": "drink",
       "allowedPortionIds": [
-        "16-oz"
+        "each"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
@@ -13147,7 +13179,7 @@
       "itemId": "frozen-smoothies-mango-smoothie",
       "role": "drink",
       "allowedPortionIds": [
-        "16-oz"
+        "each"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -13162,7 +13194,7 @@
       "itemId": "frozen-smoothies-mango-smoothie",
       "role": "drink",
       "allowedPortionIds": [
-        "16-oz"
+        "each"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
@@ -13177,7 +13209,7 @@
       "itemId": "frozen-smoothies-strawberry-banana-smoothie",
       "role": "drink",
       "allowedPortionIds": [
-        "16-oz"
+        "each"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -13192,7 +13224,7 @@
       "itemId": "frozen-smoothies-strawberry-banana-smoothie",
       "role": "drink",
       "allowedPortionIds": [
-        "16-oz"
+        "each"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
@@ -13207,7 +13239,7 @@
       "itemId": "frozen-smoothies-strawberry-smoothie",
       "role": "drink",
       "allowedPortionIds": [
-        "16-oz"
+        "each"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -13222,7 +13254,7 @@
       "itemId": "frozen-smoothies-strawberry-smoothie",
       "role": "drink",
       "allowedPortionIds": [
-        "16-oz"
+        "each"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
@@ -13237,7 +13269,7 @@
       "itemId": "frozen-smoothies-tropical-green-smoothie",
       "role": "drink",
       "allowedPortionIds": [
-        "16-oz"
+        "each"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -13252,7 +13284,7 @@
       "itemId": "frozen-smoothies-tropical-green-smoothie",
       "role": "drink",
       "allowedPortionIds": [
-        "16-oz"
+        "each"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
@@ -14348,72 +14380,12 @@
       "note": "Attached to the note, not counted as either of the two foods."
     },
     {
-      "id": "default:drink:bottled-canned-aha-blueberry-pomegranate",
-      "programId": "default",
-      "itemId": "bottled-canned-aha-blueberry-pomegranate",
-      "role": "drink",
-      "allowedPortionIds": [
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "catalog_baseline_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": null
-    },
-    {
-      "id": "you-pick-two:drink:bottled-canned-aha-blueberry-pomegranate",
-      "programId": "you-pick-two",
-      "itemId": "bottled-canned-aha-blueberry-pomegranate",
-      "role": "drink",
-      "allowedPortionIds": [
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "separate_drink_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": "Attached to the note, not counted as either of the two foods."
-    },
-    {
-      "id": "default:drink:bottled-canned-aha-lime-watermelon",
-      "programId": "default",
-      "itemId": "bottled-canned-aha-lime-watermelon",
-      "role": "drink",
-      "allowedPortionIds": [
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "catalog_baseline_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": null
-    },
-    {
-      "id": "you-pick-two:drink:bottled-canned-aha-lime-watermelon",
-      "programId": "you-pick-two",
-      "itemId": "bottled-canned-aha-lime-watermelon",
-      "role": "drink",
-      "allowedPortionIds": [
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "separate_drink_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": "Attached to the note, not counted as either of the two foods."
-    },
-    {
       "id": "default:drink:bottled-canned-bottled-passionfruit-papaya-tea",
       "programId": "default",
       "itemId": "bottled-canned-bottled-passionfruit-papaya-tea",
       "role": "drink",
       "allowedPortionIds": [
-        "500-ml-bottle"
+        "each"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -14428,7 +14400,7 @@
       "itemId": "bottled-canned-bottled-passionfruit-papaya-tea",
       "role": "drink",
       "allowedPortionIds": [
-        "500-ml-bottle"
+        "each"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
@@ -14443,7 +14415,7 @@
       "itemId": "bottled-canned-bottled-water",
       "role": "drink",
       "allowedPortionIds": [
-        "16-9-oz-bottle"
+        "each"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -14458,585 +14430,7 @@
       "itemId": "bottled-canned-bottled-water",
       "role": "drink",
       "allowedPortionIds": [
-        "16-9-oz-bottle"
-      ],
-      "eligibilityStatus": "separate_drink_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": "Attached to the note, not counted as either of the two foods."
-    },
-    {
-      "id": "default:drink:bottled-canned-bubly-lemon-can",
-      "programId": "default",
-      "itemId": "bottled-canned-bubly-lemon-can",
-      "role": "drink",
-      "allowedPortionIds": [
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "catalog_baseline_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": null
-    },
-    {
-      "id": "you-pick-two:drink:bottled-canned-bubly-lemon-can",
-      "programId": "you-pick-two",
-      "itemId": "bottled-canned-bubly-lemon-can",
-      "role": "drink",
-      "allowedPortionIds": [
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "separate_drink_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": "Attached to the note, not counted as either of the two foods."
-    },
-    {
-      "id": "default:drink:bottled-canned-bubly-lime-can",
-      "programId": "default",
-      "itemId": "bottled-canned-bubly-lime-can",
-      "role": "drink",
-      "allowedPortionIds": [
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "catalog_baseline_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": null
-    },
-    {
-      "id": "you-pick-two:drink:bottled-canned-bubly-lime-can",
-      "programId": "you-pick-two",
-      "itemId": "bottled-canned-bubly-lime-can",
-      "role": "drink",
-      "allowedPortionIds": [
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "separate_drink_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": "Attached to the note, not counted as either of the two foods."
-    },
-    {
-      "id": "default:drink:bottled-canned-dasani-lemon",
-      "programId": "default",
-      "itemId": "bottled-canned-dasani-lemon",
-      "role": "drink",
-      "allowedPortionIds": [
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "catalog_baseline_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": null
-    },
-    {
-      "id": "you-pick-two:drink:bottled-canned-dasani-lemon",
-      "programId": "you-pick-two",
-      "itemId": "bottled-canned-dasani-lemon",
-      "role": "drink",
-      "allowedPortionIds": [
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "separate_drink_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": "Attached to the note, not counted as either of the two foods."
-    },
-    {
-      "id": "default:drink:bottled-canned-dasani-lime",
-      "programId": "default",
-      "itemId": "bottled-canned-dasani-lime",
-      "role": "drink",
-      "allowedPortionIds": [
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "catalog_baseline_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": null
-    },
-    {
-      "id": "you-pick-two:drink:bottled-canned-dasani-lime",
-      "programId": "you-pick-two",
-      "itemId": "bottled-canned-dasani-lime",
-      "role": "drink",
-      "allowedPortionIds": [
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "separate_drink_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": "Attached to the note, not counted as either of the two foods."
-    },
-    {
-      "id": "default:drink:bottled-canned-coke-bottle",
-      "programId": "default",
-      "itemId": "bottled-canned-coke-bottle",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle"
-      ],
-      "eligibilityStatus": "catalog_baseline_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": null
-    },
-    {
-      "id": "you-pick-two:drink:bottled-canned-coke-bottle",
-      "programId": "you-pick-two",
-      "itemId": "bottled-canned-coke-bottle",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle"
-      ],
-      "eligibilityStatus": "separate_drink_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": "Attached to the note, not counted as either of the two foods."
-    },
-    {
-      "id": "default:drink:bottled-canned-coke-zero-bottle",
-      "programId": "default",
-      "itemId": "bottled-canned-coke-zero-bottle",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle"
-      ],
-      "eligibilityStatus": "catalog_baseline_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": null
-    },
-    {
-      "id": "you-pick-two:drink:bottled-canned-coke-zero-bottle",
-      "programId": "you-pick-two",
-      "itemId": "bottled-canned-coke-zero-bottle",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle"
-      ],
-      "eligibilityStatus": "separate_drink_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": "Attached to the note, not counted as either of the two foods."
-    },
-    {
-      "id": "default:drink:bottled-canned-diet-coke-bottle",
-      "programId": "default",
-      "itemId": "bottled-canned-diet-coke-bottle",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle"
-      ],
-      "eligibilityStatus": "catalog_baseline_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": null
-    },
-    {
-      "id": "you-pick-two:drink:bottled-canned-diet-coke-bottle",
-      "programId": "you-pick-two",
-      "itemId": "bottled-canned-diet-coke-bottle",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle"
-      ],
-      "eligibilityStatus": "separate_drink_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": "Attached to the note, not counted as either of the two foods."
-    },
-    {
-      "id": "default:drink:bottled-canned-diet-pepsi-bottle-can",
-      "programId": "default",
-      "itemId": "bottled-canned-diet-pepsi-bottle-can",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle",
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "catalog_baseline_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": null
-    },
-    {
-      "id": "you-pick-two:drink:bottled-canned-diet-pepsi-bottle-can",
-      "programId": "you-pick-two",
-      "itemId": "bottled-canned-diet-pepsi-bottle-can",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle",
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "separate_drink_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": "Attached to the note, not counted as either of the two foods."
-    },
-    {
-      "id": "default:drink:bottled-canned-dr-pepper-bottle",
-      "programId": "default",
-      "itemId": "bottled-canned-dr-pepper-bottle",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle"
-      ],
-      "eligibilityStatus": "catalog_baseline_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": null
-    },
-    {
-      "id": "you-pick-two:drink:bottled-canned-dr-pepper-bottle",
-      "programId": "you-pick-two",
-      "itemId": "bottled-canned-dr-pepper-bottle",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle"
-      ],
-      "eligibilityStatus": "separate_drink_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": "Attached to the note, not counted as either of the two foods."
-    },
-    {
-      "id": "default:drink:bottled-canned-mountain-dew-bottle-can",
-      "programId": "default",
-      "itemId": "bottled-canned-mountain-dew-bottle-can",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle",
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "catalog_baseline_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": null
-    },
-    {
-      "id": "you-pick-two:drink:bottled-canned-mountain-dew-bottle-can",
-      "programId": "you-pick-two",
-      "itemId": "bottled-canned-mountain-dew-bottle-can",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle",
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "separate_drink_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": "Attached to the note, not counted as either of the two foods."
-    },
-    {
-      "id": "default:drink:bottled-canned-diet-mountain-dew-can",
-      "programId": "default",
-      "itemId": "bottled-canned-diet-mountain-dew-can",
-      "role": "drink",
-      "allowedPortionIds": [
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "catalog_baseline_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": null
-    },
-    {
-      "id": "you-pick-two:drink:bottled-canned-diet-mountain-dew-can",
-      "programId": "you-pick-two",
-      "itemId": "bottled-canned-diet-mountain-dew-can",
-      "role": "drink",
-      "allowedPortionIds": [
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "separate_drink_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": "Attached to the note, not counted as either of the two foods."
-    },
-    {
-      "id": "default:drink:bottled-canned-pepsi-bottle-can",
-      "programId": "default",
-      "itemId": "bottled-canned-pepsi-bottle-can",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle",
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "catalog_baseline_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": null
-    },
-    {
-      "id": "you-pick-two:drink:bottled-canned-pepsi-bottle-can",
-      "programId": "you-pick-two",
-      "itemId": "bottled-canned-pepsi-bottle-can",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle",
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "separate_drink_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": "Attached to the note, not counted as either of the two foods."
-    },
-    {
-      "id": "default:drink:bottled-canned-pepsi-zero-bottle",
-      "programId": "default",
-      "itemId": "bottled-canned-pepsi-zero-bottle",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle"
-      ],
-      "eligibilityStatus": "catalog_baseline_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": null
-    },
-    {
-      "id": "you-pick-two:drink:bottled-canned-pepsi-zero-bottle",
-      "programId": "you-pick-two",
-      "itemId": "bottled-canned-pepsi-zero-bottle",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle"
-      ],
-      "eligibilityStatus": "separate_drink_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": "Attached to the note, not counted as either of the two foods."
-    },
-    {
-      "id": "default:drink:bottled-canned-sprite-bottle",
-      "programId": "default",
-      "itemId": "bottled-canned-sprite-bottle",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle"
-      ],
-      "eligibilityStatus": "catalog_baseline_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": null
-    },
-    {
-      "id": "you-pick-two:drink:bottled-canned-sprite-bottle",
-      "programId": "you-pick-two",
-      "itemId": "bottled-canned-sprite-bottle",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle"
-      ],
-      "eligibilityStatus": "separate_drink_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": "Attached to the note, not counted as either of the two foods."
-    },
-    {
-      "id": "default:drink:bottled-canned-sprite-zero-bottle",
-      "programId": "default",
-      "itemId": "bottled-canned-sprite-zero-bottle",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle"
-      ],
-      "eligibilityStatus": "catalog_baseline_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": null
-    },
-    {
-      "id": "you-pick-two:drink:bottled-canned-sprite-zero-bottle",
-      "programId": "you-pick-two",
-      "itemId": "bottled-canned-sprite-zero-bottle",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle"
-      ],
-      "eligibilityStatus": "separate_drink_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": "Attached to the note, not counted as either of the two foods."
-    },
-    {
-      "id": "default:drink:bottled-canned-starry-bottle-can",
-      "programId": "default",
-      "itemId": "bottled-canned-starry-bottle-can",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle",
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "catalog_baseline_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": null
-    },
-    {
-      "id": "you-pick-two:drink:bottled-canned-starry-bottle-can",
-      "programId": "you-pick-two",
-      "itemId": "bottled-canned-starry-bottle-can",
-      "role": "drink",
-      "allowedPortionIds": [
-        "20-oz-bottle",
-        "12-oz-can"
-      ],
-      "eligibilityStatus": "separate_drink_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": "Attached to the note, not counted as either of the two foods."
-    },
-    {
-      "id": "default:drink:bottled-canned-gold-peak-tea-bottle",
-      "programId": "default",
-      "itemId": "bottled-canned-gold-peak-tea-bottle",
-      "role": "drink",
-      "allowedPortionIds": [
-        "18-5-oz-bottle"
-      ],
-      "eligibilityStatus": "catalog_baseline_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": null
-    },
-    {
-      "id": "you-pick-two:drink:bottled-canned-gold-peak-tea-bottle",
-      "programId": "you-pick-two",
-      "itemId": "bottled-canned-gold-peak-tea-bottle",
-      "role": "drink",
-      "allowedPortionIds": [
-        "18-5-oz-bottle"
-      ],
-      "eligibilityStatus": "separate_drink_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": "Attached to the note, not counted as either of the two foods."
-    },
-    {
-      "id": "default:drink:bottled-canned-honest-berry-hibiscus",
-      "programId": "default",
-      "itemId": "bottled-canned-honest-berry-hibiscus",
-      "role": "drink",
-      "allowedPortionIds": [
-        "16-9-oz-bottle"
-      ],
-      "eligibilityStatus": "catalog_baseline_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": null
-    },
-    {
-      "id": "you-pick-two:drink:bottled-canned-honest-berry-hibiscus",
-      "programId": "you-pick-two",
-      "itemId": "bottled-canned-honest-berry-hibiscus",
-      "role": "drink",
-      "allowedPortionIds": [
-        "16-9-oz-bottle"
-      ],
-      "eligibilityStatus": "separate_drink_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": "Attached to the note, not counted as either of the two foods."
-    },
-    {
-      "id": "default:drink:bottled-canned-minute-maid-oj",
-      "programId": "default",
-      "itemId": "bottled-canned-minute-maid-oj",
-      "role": "drink",
-      "allowedPortionIds": [
-        "12-oz-bottle"
-      ],
-      "eligibilityStatus": "catalog_baseline_local_unverified",
-      "demoEnabled": true,
-      "sourceIds": [
-        "nutrition"
-      ],
-      "note": null
-    },
-    {
-      "id": "you-pick-two:drink:bottled-canned-minute-maid-oj",
-      "programId": "you-pick-two",
-      "itemId": "bottled-canned-minute-maid-oj",
-      "role": "drink",
-      "allowedPortionIds": [
-        "12-oz-bottle"
+        "each"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
@@ -15051,7 +14445,7 @@
       "itemId": "bottled-canned-premium-oj",
       "role": "drink",
       "allowedPortionIds": [
-        "11-5-oz-bottle"
+        "each"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -15066,7 +14460,7 @@
       "itemId": "bottled-canned-premium-oj",
       "role": "drink",
       "allowedPortionIds": [
-        "11-5-oz-bottle"
+        "each"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
@@ -15081,7 +14475,7 @@
       "itemId": "bottled-canned-kids-apple-juice",
       "role": "drink",
       "allowedPortionIds": [
-        "6-75-oz"
+        "each"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -15096,7 +14490,7 @@
       "itemId": "bottled-canned-kids-apple-juice",
       "role": "drink",
       "allowedPortionIds": [
-        "6-75-oz"
+        "each"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
@@ -15111,7 +14505,7 @@
       "itemId": "bottled-canned-kids-chocolate-milk",
       "role": "drink",
       "allowedPortionIds": [
-        "8-oz"
+        "each"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -15126,7 +14520,7 @@
       "itemId": "bottled-canned-kids-chocolate-milk",
       "role": "drink",
       "allowedPortionIds": [
-        "8-oz"
+        "each"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
@@ -15141,7 +14535,7 @@
       "itemId": "bottled-canned-kids-white-milk",
       "role": "drink",
       "allowedPortionIds": [
-        "8-oz"
+        "each"
       ],
       "eligibilityStatus": "catalog_baseline_local_unverified",
       "demoEnabled": true,
@@ -15156,10 +14550,640 @@
       "itemId": "bottled-canned-kids-white-milk",
       "role": "drink",
       "allowedPortionIds": [
-        "8-oz"
+        "each"
       ],
       "eligibilityStatus": "separate_drink_local_unverified",
       "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": "Attached to the note, not counted as either of the two foods."
+    },
+    {
+      "id": "default:drink:bottled-canned-aha-blueberry-pomegranate",
+      "programId": "default",
+      "itemId": "bottled-canned-aha-blueberry-pomegranate",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "you-pick-two:drink:bottled-canned-aha-blueberry-pomegranate",
+      "programId": "you-pick-two",
+      "itemId": "bottled-canned-aha-blueberry-pomegranate",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "separate_drink_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": "Attached to the note, not counted as either of the two foods."
+    },
+    {
+      "id": "default:drink:bottled-canned-aha-lime-watermelon",
+      "programId": "default",
+      "itemId": "bottled-canned-aha-lime-watermelon",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "you-pick-two:drink:bottled-canned-aha-lime-watermelon",
+      "programId": "you-pick-two",
+      "itemId": "bottled-canned-aha-lime-watermelon",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "separate_drink_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": "Attached to the note, not counted as either of the two foods."
+    },
+    {
+      "id": "default:drink:bottled-canned-bubly-lemon-can",
+      "programId": "default",
+      "itemId": "bottled-canned-bubly-lemon-can",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "you-pick-two:drink:bottled-canned-bubly-lemon-can",
+      "programId": "you-pick-two",
+      "itemId": "bottled-canned-bubly-lemon-can",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "separate_drink_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": "Attached to the note, not counted as either of the two foods."
+    },
+    {
+      "id": "default:drink:bottled-canned-bubly-lime-can",
+      "programId": "default",
+      "itemId": "bottled-canned-bubly-lime-can",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "you-pick-two:drink:bottled-canned-bubly-lime-can",
+      "programId": "you-pick-two",
+      "itemId": "bottled-canned-bubly-lime-can",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "separate_drink_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": "Attached to the note, not counted as either of the two foods."
+    },
+    {
+      "id": "default:drink:bottled-canned-dasani-lemon",
+      "programId": "default",
+      "itemId": "bottled-canned-dasani-lemon",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "you-pick-two:drink:bottled-canned-dasani-lemon",
+      "programId": "you-pick-two",
+      "itemId": "bottled-canned-dasani-lemon",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "separate_drink_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": "Attached to the note, not counted as either of the two foods."
+    },
+    {
+      "id": "default:drink:bottled-canned-dasani-lime",
+      "programId": "default",
+      "itemId": "bottled-canned-dasani-lime",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "you-pick-two:drink:bottled-canned-dasani-lime",
+      "programId": "you-pick-two",
+      "itemId": "bottled-canned-dasani-lime",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "separate_drink_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": "Attached to the note, not counted as either of the two foods."
+    },
+    {
+      "id": "default:drink:bottled-canned-coke-bottle",
+      "programId": "default",
+      "itemId": "bottled-canned-coke-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "you-pick-two:drink:bottled-canned-coke-bottle",
+      "programId": "you-pick-two",
+      "itemId": "bottled-canned-coke-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "separate_drink_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": "Attached to the note, not counted as either of the two foods."
+    },
+    {
+      "id": "default:drink:bottled-canned-coke-zero-bottle",
+      "programId": "default",
+      "itemId": "bottled-canned-coke-zero-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "you-pick-two:drink:bottled-canned-coke-zero-bottle",
+      "programId": "you-pick-two",
+      "itemId": "bottled-canned-coke-zero-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "separate_drink_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": "Attached to the note, not counted as either of the two foods."
+    },
+    {
+      "id": "default:drink:bottled-canned-diet-coke-bottle",
+      "programId": "default",
+      "itemId": "bottled-canned-diet-coke-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "you-pick-two:drink:bottled-canned-diet-coke-bottle",
+      "programId": "you-pick-two",
+      "itemId": "bottled-canned-diet-coke-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "separate_drink_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": "Attached to the note, not counted as either of the two foods."
+    },
+    {
+      "id": "default:drink:bottled-canned-diet-pepsi-bottle-can",
+      "programId": "default",
+      "itemId": "bottled-canned-diet-pepsi-bottle-can",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "you-pick-two:drink:bottled-canned-diet-pepsi-bottle-can",
+      "programId": "you-pick-two",
+      "itemId": "bottled-canned-diet-pepsi-bottle-can",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "separate_drink_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": "Attached to the note, not counted as either of the two foods."
+    },
+    {
+      "id": "default:drink:bottled-canned-dr-pepper-bottle",
+      "programId": "default",
+      "itemId": "bottled-canned-dr-pepper-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "you-pick-two:drink:bottled-canned-dr-pepper-bottle",
+      "programId": "you-pick-two",
+      "itemId": "bottled-canned-dr-pepper-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "separate_drink_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": "Attached to the note, not counted as either of the two foods."
+    },
+    {
+      "id": "default:drink:bottled-canned-mountain-dew-bottle-can",
+      "programId": "default",
+      "itemId": "bottled-canned-mountain-dew-bottle-can",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "you-pick-two:drink:bottled-canned-mountain-dew-bottle-can",
+      "programId": "you-pick-two",
+      "itemId": "bottled-canned-mountain-dew-bottle-can",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "separate_drink_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": "Attached to the note, not counted as either of the two foods."
+    },
+    {
+      "id": "default:drink:bottled-canned-diet-mountain-dew-can",
+      "programId": "default",
+      "itemId": "bottled-canned-diet-mountain-dew-can",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "you-pick-two:drink:bottled-canned-diet-mountain-dew-can",
+      "programId": "you-pick-two",
+      "itemId": "bottled-canned-diet-mountain-dew-can",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "separate_drink_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": "Attached to the note, not counted as either of the two foods."
+    },
+    {
+      "id": "default:drink:bottled-canned-pepsi-bottle-can",
+      "programId": "default",
+      "itemId": "bottled-canned-pepsi-bottle-can",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "you-pick-two:drink:bottled-canned-pepsi-bottle-can",
+      "programId": "you-pick-two",
+      "itemId": "bottled-canned-pepsi-bottle-can",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "separate_drink_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": "Attached to the note, not counted as either of the two foods."
+    },
+    {
+      "id": "default:drink:bottled-canned-pepsi-zero-bottle",
+      "programId": "default",
+      "itemId": "bottled-canned-pepsi-zero-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "you-pick-two:drink:bottled-canned-pepsi-zero-bottle",
+      "programId": "you-pick-two",
+      "itemId": "bottled-canned-pepsi-zero-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "separate_drink_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": "Attached to the note, not counted as either of the two foods."
+    },
+    {
+      "id": "default:drink:bottled-canned-sprite-bottle",
+      "programId": "default",
+      "itemId": "bottled-canned-sprite-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "you-pick-two:drink:bottled-canned-sprite-bottle",
+      "programId": "you-pick-two",
+      "itemId": "bottled-canned-sprite-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "separate_drink_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": "Attached to the note, not counted as either of the two foods."
+    },
+    {
+      "id": "default:drink:bottled-canned-sprite-zero-bottle",
+      "programId": "default",
+      "itemId": "bottled-canned-sprite-zero-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "you-pick-two:drink:bottled-canned-sprite-zero-bottle",
+      "programId": "you-pick-two",
+      "itemId": "bottled-canned-sprite-zero-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "separate_drink_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": "Attached to the note, not counted as either of the two foods."
+    },
+    {
+      "id": "default:drink:bottled-canned-starry-bottle-can",
+      "programId": "default",
+      "itemId": "bottled-canned-starry-bottle-can",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "you-pick-two:drink:bottled-canned-starry-bottle-can",
+      "programId": "you-pick-two",
+      "itemId": "bottled-canned-starry-bottle-can",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "separate_drink_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": "Attached to the note, not counted as either of the two foods."
+    },
+    {
+      "id": "default:drink:bottled-canned-gold-peak-tea-bottle",
+      "programId": "default",
+      "itemId": "bottled-canned-gold-peak-tea-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "you-pick-two:drink:bottled-canned-gold-peak-tea-bottle",
+      "programId": "you-pick-two",
+      "itemId": "bottled-canned-gold-peak-tea-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "separate_drink_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": "Attached to the note, not counted as either of the two foods."
+    },
+    {
+      "id": "default:drink:bottled-canned-honest-berry-hibiscus",
+      "programId": "default",
+      "itemId": "bottled-canned-honest-berry-hibiscus",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "you-pick-two:drink:bottled-canned-honest-berry-hibiscus",
+      "programId": "you-pick-two",
+      "itemId": "bottled-canned-honest-berry-hibiscus",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "separate_drink_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": "Attached to the note, not counted as either of the two foods."
+    },
+    {
+      "id": "default:drink:bottled-canned-minute-maid-oj",
+      "programId": "default",
+      "itemId": "bottled-canned-minute-maid-oj",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "you-pick-two:drink:bottled-canned-minute-maid-oj",
+      "programId": "you-pick-two",
+      "itemId": "bottled-canned-minute-maid-oj",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "separate_drink_local_unverified",
+      "demoEnabled": false,
       "sourceIds": [
         "nutrition"
       ],
@@ -15224,6 +15248,2044 @@
         "allergen"
       ],
       "note": null
+    },
+    {
+      "id": "drinks:drink:hot-coffee-tea-dark-roast-coffee",
+      "programId": "drinks",
+      "itemId": "hot-coffee-tea-dark-roast-coffee",
+      "role": "drink",
+      "allowedPortionIds": [
+        "16-oz",
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:hot-coffee-tea-light-roast-coffee",
+      "programId": "drinks",
+      "itemId": "hot-coffee-tea-light-roast-coffee",
+      "role": "drink",
+      "allowedPortionIds": [
+        "16-oz",
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:hot-coffee-tea-hazelnut-coffee",
+      "programId": "drinks",
+      "itemId": "hot-coffee-tea-hazelnut-coffee",
+      "role": "drink",
+      "allowedPortionIds": [
+        "16-oz",
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:hot-coffee-tea-decaf-coffee",
+      "programId": "drinks",
+      "itemId": "hot-coffee-tea-decaf-coffee",
+      "role": "drink",
+      "allowedPortionIds": [
+        "16-oz",
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:hot-coffee-tea-americano",
+      "programId": "drinks",
+      "itemId": "hot-coffee-tea-americano",
+      "role": "drink",
+      "allowedPortionIds": [
+        "16-oz",
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:hot-coffee-tea-caffe-latte",
+      "programId": "drinks",
+      "itemId": "hot-coffee-tea-caffe-latte",
+      "role": "drink",
+      "allowedPortionIds": [
+        "16-oz",
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:hot-coffee-tea-cappuccino",
+      "programId": "drinks",
+      "itemId": "hot-coffee-tea-cappuccino",
+      "role": "drink",
+      "allowedPortionIds": [
+        "16-oz",
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:hot-coffee-tea-caramel-latte",
+      "programId": "drinks",
+      "itemId": "hot-coffee-tea-caramel-latte",
+      "role": "drink",
+      "allowedPortionIds": [
+        "16-oz",
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:hot-coffee-tea-chai-tea-latte",
+      "programId": "drinks",
+      "itemId": "hot-coffee-tea-chai-tea-latte",
+      "role": "drink",
+      "allowedPortionIds": [
+        "16-oz",
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:hot-coffee-tea-vanilla-latte",
+      "programId": "drinks",
+      "itemId": "hot-coffee-tea-vanilla-latte",
+      "role": "drink",
+      "allowedPortionIds": [
+        "16-oz",
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:hot-coffee-tea-mocha-latte",
+      "programId": "drinks",
+      "itemId": "hot-coffee-tea-mocha-latte",
+      "role": "drink",
+      "allowedPortionIds": [
+        "16-oz",
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:hot-coffee-tea-pumpkin-spice-latte",
+      "programId": "drinks",
+      "itemId": "hot-coffee-tea-pumpkin-spice-latte",
+      "role": "drink",
+      "allowedPortionIds": [
+        "16-oz",
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:hot-coffee-tea-hot-chocolate",
+      "programId": "drinks",
+      "itemId": "hot-coffee-tea-hot-chocolate",
+      "role": "drink",
+      "allowedPortionIds": [
+        "16-oz",
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:hot-coffee-tea-british-breakfast-tea",
+      "programId": "drinks",
+      "itemId": "hot-coffee-tea-british-breakfast-tea",
+      "role": "drink",
+      "allowedPortionIds": [
+        "16-oz",
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:hot-coffee-tea-honey-ginseng-green-tea",
+      "programId": "drinks",
+      "itemId": "hot-coffee-tea-honey-ginseng-green-tea",
+      "role": "drink",
+      "allowedPortionIds": [
+        "16-oz",
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:hot-coffee-tea-orange-ginger-mint-tea",
+      "programId": "drinks",
+      "itemId": "hot-coffee-tea-orange-ginger-mint-tea",
+      "role": "drink",
+      "allowedPortionIds": [
+        "16-oz",
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:hot-coffee-tea-hot-tea",
+      "programId": "drinks",
+      "itemId": "hot-coffee-tea-hot-tea",
+      "role": "drink",
+      "allowedPortionIds": [
+        "16-oz",
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:hot-coffee-tea-espresso",
+      "programId": "drinks",
+      "itemId": "hot-coffee-tea-espresso",
+      "role": "drink",
+      "allowedPortionIds": [
+        "16-oz",
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:iced-coffee-iced-coffee",
+      "programId": "drinks",
+      "itemId": "iced-coffee-iced-coffee",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:iced-coffee-hazelnut-mocha-iced-coffee",
+      "programId": "drinks",
+      "itemId": "iced-coffee-hazelnut-mocha-iced-coffee",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:iced-coffee-rocky-road-iced-coffee",
+      "programId": "drinks",
+      "itemId": "iced-coffee-rocky-road-iced-coffee",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:iced-coffee-snickerdoodle-iced-coffee",
+      "programId": "drinks",
+      "itemId": "iced-coffee-snickerdoodle-iced-coffee",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:iced-coffee-pumpkin-spice-iced-coffee",
+      "programId": "drinks",
+      "itemId": "iced-coffee-pumpkin-spice-iced-coffee",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:iced-coffee-iced-caffe-latte",
+      "programId": "drinks",
+      "itemId": "iced-coffee-iced-caffe-latte",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:iced-coffee-iced-caramel-latte",
+      "programId": "drinks",
+      "itemId": "iced-coffee-iced-caramel-latte",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:iced-coffee-iced-chai-latte",
+      "programId": "drinks",
+      "itemId": "iced-coffee-iced-chai-latte",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:iced-coffee-iced-vanilla-latte",
+      "programId": "drinks",
+      "itemId": "iced-coffee-iced-vanilla-latte",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:iced-coffee-iced-mocha-latte",
+      "programId": "drinks",
+      "itemId": "iced-coffee-iced-mocha-latte",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:iced-coffee-iced-pumpkin-spice-latte",
+      "programId": "drinks",
+      "itemId": "iced-coffee-iced-pumpkin-spice-latte",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:frozen-smoothies-cafe-frozen-java",
+      "programId": "drinks",
+      "itemId": "frozen-smoothies-cafe-frozen-java",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:frozen-smoothies-hazelnut-mocha-frozen-java",
+      "programId": "drinks",
+      "itemId": "frozen-smoothies-hazelnut-mocha-frozen-java",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:frozen-smoothies-rocky-road-frozen-java",
+      "programId": "drinks",
+      "itemId": "frozen-smoothies-rocky-road-frozen-java",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:frozen-smoothies-snickerdoodle-frozen-java",
+      "programId": "drinks",
+      "itemId": "frozen-smoothies-snickerdoodle-frozen-java",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:frozen-smoothies-pumpkin-spice-frozen-java",
+      "programId": "drinks",
+      "itemId": "frozen-smoothies-pumpkin-spice-frozen-java",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:frozen-smoothies-frozen-hot-chocolate",
+      "programId": "drinks",
+      "itemId": "frozen-smoothies-frozen-hot-chocolate",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:frozen-smoothies-mango-smoothie",
+      "programId": "drinks",
+      "itemId": "frozen-smoothies-mango-smoothie",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:frozen-smoothies-strawberry-banana-smoothie",
+      "programId": "drinks",
+      "itemId": "frozen-smoothies-strawberry-banana-smoothie",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:frozen-smoothies-strawberry-smoothie",
+      "programId": "drinks",
+      "itemId": "frozen-smoothies-strawberry-smoothie",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:frozen-smoothies-tropical-green-smoothie",
+      "programId": "drinks",
+      "itemId": "frozen-smoothies-tropical-green-smoothie",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:tea-refreshers-agave-lemonade",
+      "programId": "drinks",
+      "itemId": "tea-refreshers-agave-lemonade",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:tea-refreshers-blackberry-hibiscus-tea",
+      "programId": "drinks",
+      "itemId": "tea-refreshers-blackberry-hibiscus-tea",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:tea-refreshers-passion-papaya-tea",
+      "programId": "drinks",
+      "itemId": "tea-refreshers-passion-papaya-tea",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:tea-refreshers-sweet-iced-tea",
+      "programId": "drinks",
+      "itemId": "tea-refreshers-sweet-iced-tea",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:tea-refreshers-unsweetened-iced-tea",
+      "programId": "drinks",
+      "itemId": "tea-refreshers-unsweetened-iced-tea",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:tea-refreshers-cherry-lime-fresca",
+      "programId": "drinks",
+      "itemId": "tea-refreshers-cherry-lime-fresca",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:tea-refreshers-strawberry-basil-fresca",
+      "programId": "drinks",
+      "itemId": "tea-refreshers-strawberry-basil-fresca",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:tea-refreshers-dragonfruit-sunset-refresher",
+      "programId": "drinks",
+      "itemId": "tea-refreshers-dragonfruit-sunset-refresher",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:tea-refreshers-island-mango-refresher",
+      "programId": "drinks",
+      "itemId": "tea-refreshers-island-mango-refresher",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:tea-refreshers-passionfruit-paradise-refresher",
+      "programId": "drinks",
+      "itemId": "tea-refreshers-passionfruit-paradise-refresher",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-caffeine-free-diet-pepsi",
+      "programId": "drinks",
+      "itemId": "fountain-caffeine-free-diet-pepsi",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-canada-dry-ginger-ale",
+      "programId": "drinks",
+      "itemId": "fountain-canada-dry-ginger-ale",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-coke",
+      "programId": "drinks",
+      "itemId": "fountain-coke",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-coke-zero",
+      "programId": "drinks",
+      "itemId": "fountain-coke-zero",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-diet-coke",
+      "programId": "drinks",
+      "itemId": "fountain-diet-coke",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-diet-dr-pepper",
+      "programId": "drinks",
+      "itemId": "fountain-diet-dr-pepper",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-diet-mountain-dew",
+      "programId": "drinks",
+      "itemId": "fountain-diet-mountain-dew",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-diet-pepsi",
+      "programId": "drinks",
+      "itemId": "fountain-diet-pepsi",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-dr-pepper",
+      "programId": "drinks",
+      "itemId": "fountain-dr-pepper",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-fanta-orange",
+      "programId": "drinks",
+      "itemId": "fountain-fanta-orange",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-lime-bubly",
+      "programId": "drinks",
+      "itemId": "fountain-lime-bubly",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-brisk-raspberry-tea",
+      "programId": "drinks",
+      "itemId": "fountain-brisk-raspberry-tea",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-mountain-dew",
+      "programId": "drinks",
+      "itemId": "fountain-mountain-dew",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-mug-root-beer",
+      "programId": "drinks",
+      "itemId": "fountain-mug-root-beer",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-pepsi",
+      "programId": "drinks",
+      "itemId": "fountain-pepsi",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-pepsi-zero",
+      "programId": "drinks",
+      "itemId": "fountain-pepsi-zero",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-pibb-xtra",
+      "programId": "drinks",
+      "itemId": "fountain-pibb-xtra",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-powerade-mountain-blast",
+      "programId": "drinks",
+      "itemId": "fountain-powerade-mountain-blast",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-sobe-yumberry-pomegranate",
+      "programId": "drinks",
+      "itemId": "fountain-sobe-yumberry-pomegranate",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-sprite",
+      "programId": "drinks",
+      "itemId": "fountain-sprite",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-starry",
+      "programId": "drinks",
+      "itemId": "fountain-starry",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-tropicana-fruit-punch",
+      "programId": "drinks",
+      "itemId": "fountain-tropicana-fruit-punch",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-tropicana-lemonade",
+      "programId": "drinks",
+      "itemId": "fountain-tropicana-lemonade",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:fountain-tropicana-light-lemonade",
+      "programId": "drinks",
+      "itemId": "fountain-tropicana-light-lemonade",
+      "role": "drink",
+      "allowedPortionIds": [
+        "20-oz",
+        "30-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-bottled-passionfruit-papaya-tea",
+      "programId": "drinks",
+      "itemId": "bottled-canned-bottled-passionfruit-papaya-tea",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-bottled-water",
+      "programId": "drinks",
+      "itemId": "bottled-canned-bottled-water",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-premium-oj",
+      "programId": "drinks",
+      "itemId": "bottled-canned-premium-oj",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-kids-apple-juice",
+      "programId": "drinks",
+      "itemId": "bottled-canned-kids-apple-juice",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-kids-chocolate-milk",
+      "programId": "drinks",
+      "itemId": "bottled-canned-kids-chocolate-milk",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-kids-white-milk",
+      "programId": "drinks",
+      "itemId": "bottled-canned-kids-white-milk",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-aha-blueberry-pomegranate",
+      "programId": "drinks",
+      "itemId": "bottled-canned-aha-blueberry-pomegranate",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-aha-lime-watermelon",
+      "programId": "drinks",
+      "itemId": "bottled-canned-aha-lime-watermelon",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-bubly-lemon-can",
+      "programId": "drinks",
+      "itemId": "bottled-canned-bubly-lemon-can",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-bubly-lime-can",
+      "programId": "drinks",
+      "itemId": "bottled-canned-bubly-lime-can",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-dasani-lemon",
+      "programId": "drinks",
+      "itemId": "bottled-canned-dasani-lemon",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-dasani-lime",
+      "programId": "drinks",
+      "itemId": "bottled-canned-dasani-lime",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-coke-bottle",
+      "programId": "drinks",
+      "itemId": "bottled-canned-coke-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-coke-zero-bottle",
+      "programId": "drinks",
+      "itemId": "bottled-canned-coke-zero-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-diet-coke-bottle",
+      "programId": "drinks",
+      "itemId": "bottled-canned-diet-coke-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-diet-pepsi-bottle-can",
+      "programId": "drinks",
+      "itemId": "bottled-canned-diet-pepsi-bottle-can",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-dr-pepper-bottle",
+      "programId": "drinks",
+      "itemId": "bottled-canned-dr-pepper-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-mountain-dew-bottle-can",
+      "programId": "drinks",
+      "itemId": "bottled-canned-mountain-dew-bottle-can",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-diet-mountain-dew-can",
+      "programId": "drinks",
+      "itemId": "bottled-canned-diet-mountain-dew-can",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-pepsi-bottle-can",
+      "programId": "drinks",
+      "itemId": "bottled-canned-pepsi-bottle-can",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-pepsi-zero-bottle",
+      "programId": "drinks",
+      "itemId": "bottled-canned-pepsi-zero-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-sprite-bottle",
+      "programId": "drinks",
+      "itemId": "bottled-canned-sprite-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-sprite-zero-bottle",
+      "programId": "drinks",
+      "itemId": "bottled-canned-sprite-zero-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-starry-bottle-can",
+      "programId": "drinks",
+      "itemId": "bottled-canned-starry-bottle-can",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-gold-peak-tea-bottle",
+      "programId": "drinks",
+      "itemId": "bottled-canned-gold-peak-tea-bottle",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-honest-berry-hibiscus",
+      "programId": "drinks",
+      "itemId": "bottled-canned-honest-berry-hibiscus",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "drinks:drink:bottled-canned-minute-maid-oj",
+      "programId": "drinks",
+      "itemId": "bottled-canned-minute-maid-oj",
+      "role": "drink",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": false,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "breakfast:food:breakfast-sausage-egg-bagel-stack",
+      "programId": "breakfast",
+      "itemId": "breakfast-sausage-egg-bagel-stack",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "breakfast:food:breakfast-wake-up-blt-bagel-stack",
+      "programId": "breakfast",
+      "itemId": "breakfast-wake-up-blt-bagel-stack",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "breakfast:food:breakfast-farmhouse-duo-bagel-stack",
+      "programId": "breakfast",
+      "itemId": "breakfast-farmhouse-duo-bagel-stack",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "breakfast:food:breakfast-bacon-egg-cheese-ciabatta",
+      "programId": "breakfast",
+      "itemId": "breakfast-bacon-egg-cheese-ciabatta",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "breakfast:food:breakfast-bacon-egg-cheese-croissant",
+      "programId": "breakfast",
+      "itemId": "breakfast-bacon-egg-cheese-croissant",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "breakfast:food:breakfast-bacon-double-take",
+      "programId": "breakfast",
+      "itemId": "breakfast-bacon-double-take",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "breakfast:food:breakfast-broccoli-cheddar-frittata",
+      "programId": "breakfast",
+      "itemId": "breakfast-broccoli-cheddar-frittata",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "breakfast:food:breakfast-chipotle-chicken-egg-avo",
+      "programId": "breakfast",
+      "itemId": "breakfast-chipotle-chicken-egg-avo",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "breakfast:food:breakfast-egg-cheese-ciabatta",
+      "programId": "breakfast",
+      "itemId": "breakfast-egg-cheese-ciabatta",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "breakfast:food:breakfast-egg-cheese-croissant",
+      "programId": "breakfast",
+      "itemId": "breakfast-egg-cheese-croissant",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "breakfast:food:breakfast-five-cheese-bacon-frittata",
+      "programId": "breakfast",
+      "itemId": "breakfast-five-cheese-bacon-frittata",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "breakfast:food:breakfast-ham-croissant-benny",
+      "programId": "breakfast",
+      "itemId": "breakfast-ham-croissant-benny",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "breakfast:food:breakfast-ham-egg-cheese-ciabatta",
+      "programId": "breakfast",
+      "itemId": "breakfast-ham-egg-cheese-ciabatta",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "breakfast:food:breakfast-sausage-egg-cheese-ciabatta",
+      "programId": "breakfast",
+      "itemId": "breakfast-sausage-egg-cheese-ciabatta",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "breakfast:food:breakfast-sausage-egg-cheese-croissant",
+      "programId": "breakfast",
+      "itemId": "breakfast-sausage-egg-cheese-croissant",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "breakfast:food:breakfast-steak-wake",
+      "programId": "breakfast",
+      "itemId": "breakfast-steak-wake",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "breakfast:food:breakfast-four-cheese-souffle",
+      "programId": "breakfast",
+      "itemId": "breakfast-four-cheese-souffle",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "breakfast:food:breakfast-spinach-bacon-souffle",
+      "programId": "breakfast",
+      "itemId": "breakfast-spinach-bacon-souffle",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "breakfast:food:breakfast-strawberry-pecan-oatmeal",
+      "programId": "breakfast",
+      "itemId": "breakfast-strawberry-pecan-oatmeal",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "breakfast:food:breakfast-garden-avo-egg-white",
+      "programId": "breakfast",
+      "itemId": "breakfast-garden-avo-egg-white",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "allergen"
+      ],
+      "note": null
+    },
+    {
+      "id": "individual-bagels:food:bagels-asiago-cheese",
+      "programId": "individual-bagels",
+      "itemId": "bagels-asiago-cheese",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "individual-bagels:food:bagels-asiago-everything",
+      "programId": "individual-bagels",
+      "itemId": "bagels-asiago-everything",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "individual-bagels:food:bagels-blueberry",
+      "programId": "individual-bagels",
+      "itemId": "bagels-blueberry",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "individual-bagels:food:bagels-chocolate-chip",
+      "programId": "individual-bagels",
+      "itemId": "bagels-chocolate-chip",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "individual-bagels:food:bagels-cinnamon-crunch",
+      "programId": "individual-bagels",
+      "itemId": "bagels-cinnamon-crunch",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "individual-bagels:food:bagels-cinnamon-swirl-raisin",
+      "programId": "individual-bagels",
+      "itemId": "bagels-cinnamon-swirl-raisin",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "individual-bagels:food:bagels-everything",
+      "programId": "individual-bagels",
+      "itemId": "bagels-everything",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "individual-bagels:food:bagels-multigrain-bagel-flat",
+      "programId": "individual-bagels",
+      "itemId": "bagels-multigrain-bagel-flat",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "individual-bagels:food:bagels-plain",
+      "programId": "individual-bagels",
+      "itemId": "bagels-plain",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "individual-bagels:food:bagels-sesame",
+      "programId": "individual-bagels",
+      "itemId": "bagels-sesame",
+      "role": "food",
+      "allowedPortionIds": [
+        "each"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "cream-cheese:food:spreads-plain-cream-cheese",
+      "programId": "cream-cheese",
+      "itemId": "spreads-plain-cream-cheese",
+      "role": "food",
+      "allowedPortionIds": [
+        "1-5-oz",
+        "8-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
+    },
+    {
+      "id": "cream-cheese:food:spreads-honey-walnut-cream-cheese",
+      "programId": "cream-cheese",
+      "itemId": "spreads-honey-walnut-cream-cheese",
+      "role": "food",
+      "allowedPortionIds": [
+        "1-5-oz",
+        "8-oz"
+      ],
+      "eligibilityStatus": "catalog_baseline_local_unverified",
+      "demoEnabled": true,
+      "sourceIds": [
+        "nutrition"
+      ],
+      "note": null
     }
   ],
   "cards": [
@@ -15232,7 +17294,7 @@
       "programId": "default",
       "label": "Default",
       "collapsible": true,
-      "initiallyExpanded": true,
+      "initiallyExpanded": false,
       "slots": [
         {
           "id": "food",
@@ -15263,7 +17325,7 @@
       "programId": "you-pick-two",
       "label": "You Pick Two",
       "collapsible": true,
-      "initiallyExpanded": true,
+      "initiallyExpanded": false,
       "slots": [
         {
           "id": "food-1",
@@ -15296,9 +17358,9 @@
     {
       "id": "bagel-tuesday",
       "programId": "bagel-tuesday",
-      "label": "Bagel Tuesday",
+      "label": "Baker’s Dozen",
       "collapsible": true,
-      "initiallyExpanded": true,
+      "initiallyExpanded": false,
       "slots": [
         {
           "id": "bagel-1",
@@ -15314,13 +17376,13 @@
         "optional": true
       },
       "portionControlSlotIds": [],
-      "repeatMeal": false,
+      "repeatMeal": true,
       "quantityControl": {
         "minimum": 1,
         "totalTarget": 13,
-        "enforcement": "cap_additions_preserve_legacy"
+        "enforcement": "cap_each_dozen_preserve_legacy"
       },
-      "rowPresentation": "inline_flavor_grid",
+      "rowPresentation": "shared_bagel_grid",
       "rowActions": [
         "add_one",
         "remove_one"
@@ -15400,6 +17462,66 @@
       "portionControlSlotIds": [],
       "repeatMeal": true,
       "sideCapture": "not_in_requested_layout"
+    },
+    {
+      "id": "drinks",
+      "label": "Drinks",
+      "collapsible": true,
+      "initiallyExpanded": false,
+      "repeatMeal": false,
+      "slots": [
+        {
+          "id": "count-1",
+          "role": "drink",
+          "label": "Item",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "breakfast",
+      "label": "Breakfast",
+      "collapsible": true,
+      "initiallyExpanded": false,
+      "repeatMeal": false,
+      "slots": [
+        {
+          "id": "count-1",
+          "role": "food",
+          "label": "Item",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "individual-bagels",
+      "label": "Individual bagels",
+      "collapsible": true,
+      "initiallyExpanded": false,
+      "repeatMeal": false,
+      "slots": [
+        {
+          "id": "count-1",
+          "role": "food",
+          "label": "Item",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "cream-cheese",
+      "label": "Cream cheese",
+      "collapsible": true,
+      "initiallyExpanded": false,
+      "repeatMeal": false,
+      "slots": [
+        {
+          "id": "count-1",
+          "role": "food",
+          "label": "Item",
+          "optional": true
+        }
+      ]
     }
   ],
   "cafeOverrides": {
@@ -15423,11 +17545,15 @@
     "emptyCard": "omit_from_order",
     "emptySlot": null,
     "saveEverySelection": true,
-    "unknownPortion": "store_null_and_review",
+    "unknownPortion": "preserve_food_note_and_review_drinks_require_size",
     "incompleteMeal": "preserve_and_review",
     "duplicateMixMatch": "preserve_heard_request_and_review",
     "neverInferProgramFromPortion": true,
-    "queueOrder": "oldest_first"
+    "queueOrder": "oldest_first",
+    "sizedDrinkCapture": "size_tap_only",
+    "sizeFreeDrinkCapture": "direct_item_tap",
+    "bagelCapture": "shared_grid_individual_then_independent_dozens",
+    "dozenLimit": "cap_additions_at_13_preserve_legacy"
   },
   "modifierVocabulary": {
     "documented_variants": [
@@ -15521,6 +17647,18 @@
       "16-oz",
       "20-oz"
     ],
-    "note": "Cashier-requested note capture rules; local selling sizes still require cafe verification. Espresso retains its 2 oz portion."
+    "note": "Approved cashier capture layout. All hot coffee and tea use 16 or 20 oz. Bottled and Frozen & Smoothies omit size capture. Local availability and selling rules still need cafe verification.",
+    "sizeFreeDrinkCategories": [
+      "bottled-canned",
+      "frozen-smoothies"
+    ],
+    "bottledItemIds": [
+      "bottled-canned-bottled-passionfruit-papaya-tea",
+      "bottled-canned-bottled-water",
+      "bottled-canned-premium-oj",
+      "bottled-canned-kids-apple-juice",
+      "bottled-canned-kids-chocolate-milk",
+      "bottled-canned-kids-white-milk"
+    ]
   }
 }

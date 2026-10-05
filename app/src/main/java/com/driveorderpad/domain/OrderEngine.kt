@@ -9,17 +9,26 @@ class OrderEngine(val menu: MenuCatalog) {
     )
 
     fun initialize(notebook: Notebook): Notebook {
-        require(notebook.schemaVersion == 1) { "Unsupported order storage version. Notes have been kept." }
+        require(notebook.schemaVersion in 1..2) { "Unsupported order storage version. Notes have been kept." }
         if (notebook.orders.isNotEmpty()) {
-            validate(notebook)
-            return notebook
+            // Add new capture groups without replacing old meals, stable IDs, quantities or label snapshots.
+            validate(notebook, legacy = notebook.schemaVersion == 1)
+            val upgraded = notebook.copy(schemaVersion = 2, orders = notebook.orders.map { order ->
+                val meals = order.meals.map { meal -> meal.copy(slots = meal.slots.mapValues { (_, line) ->
+                    if (line != null && menu.noSize(line.itemId)) line.copy(portionId = "each", portionLabel = menu.portionLabel("each")) else line
+                }) } + Program.entries.filter { program -> order.meals.none { it.program == program } }
+                    .map { blankMeal(it, "meal-${order.sequence}-${it.key}-1") }
+                order.copy(meals = meals, nextMealNumber = maxOf(order.nextMealNumber, meals.maxOf { it.id.substringAfterLast('-').toLongOrNull() ?: 1 } + 1))
+            })
+            validate(upgraded)
+            return upgraded
         }
         val order = blankOrder(notebook.nextSequence)
-        return notebook.copy(orders = listOf(order), activeOrderId = order.id, nextSequence = order.sequence + 1)
+        return notebook.copy(schemaVersion = 2, orders = listOf(order), activeOrderId = order.id, nextSequence = order.sequence + 1)
     }
 
-    fun validate(notebook: Notebook) {
-        require(notebook.schemaVersion == 1)
+    fun validate(notebook: Notebook, legacy: Boolean = false) {
+        require(notebook.schemaVersion == 2 || legacy && notebook.schemaVersion == 1)
         require(notebook.orders.isNotEmpty() && notebook.orders.any { it.id == notebook.activeOrderId })
         require(notebook.orders.map { it.id }.distinct().size == notebook.orders.size)
         require(notebook.orders.map { it.sequence }.distinct().size == notebook.orders.size)
@@ -27,21 +36,25 @@ class OrderEngine(val menu: MenuCatalog) {
         notebook.orders.forEach { order ->
             require(order.sequence > 0)
             require(order.meals.map { it.id }.distinct().size == order.meals.size)
-            require(Program.entries.all { program -> order.meals.any { it.program == program } })
-            require(order.meals.count { it.program == Program.BAGEL_TUESDAY } == 1)
+            val required = if (legacy) listOf(Program.DEFAULT, Program.YOU_PICK_TWO, Program.BAGEL_TUESDAY, Program.MIX_MATCH) else Program.entries
+            require(required.all { program -> order.meals.any { it.program == program } })
+            require(order.nextMealNumber > 0)
+            if (!legacy) require(order.meals.filterNot { menu.card(it.program).repeatMeal }.groupBy { it.program }.all { it.value.size == 1 })
             order.meals.forEach { meal ->
-                if (meal.program == Program.BAGEL_TUESDAY) {
-                    require(meal.slots.isNotEmpty() && meal.slots.keys.all { it.matches(Regex("bagel-[1-9][0-9]*")) && it.substringAfter("bagel-").toLongOrNull() != null })
+                if (meal.program.counted) {
+                    val prefix = if (meal.program == Program.BAGEL_TUESDAY) "bagel" else "count"
+                    require(meal.slots.isNotEmpty() && meal.slots.keys.all { it.matches(Regex("$prefix-[1-9][0-9]*")) && it.substringAfterLast('-').toLongOrNull() != null })
                 } else require(meal.slots.keys == menu.card(meal.program).slots.map { it.id }.toSet())
-                require(meal.slots.values.filterNotNull().all { it.quantity > 0 && (meal.program == Program.BAGEL_TUESDAY || it.quantity == 1) })
+                require(meal.slots.values.filterNotNull().all { it.quantity > 0 && (meal.program.counted || it.quantity == 1) })
             }
         }
     }
 
     private fun ensureBlank(meal: Meal): Meal {
-        if (meal.program != Program.BAGEL_TUESDAY || meal.slots.values.any { it == null }) return meal
-        val next = (meal.slots.keys.maxOfOrNull { it.substringAfter("bagel-").toLong() } ?: 0) + 1
-        return meal.copy(slots = meal.slots + ("bagel-$next" to null))
+        if (!meal.program.counted || meal.slots.values.any { it == null }) return meal
+        val next = (meal.slots.keys.maxOfOrNull { it.substringAfterLast('-').toLong() } ?: 0) + 1
+        val prefix = if (meal.program == Program.BAGEL_TUESDAY) "bagel" else "count"
+        return meal.copy(slots = meal.slots + ("$prefix-$next" to null))
     }
 
     private fun edit(state: Notebook, orderId: String, mealId: String, update: (Meal) -> Meal): Notebook {
@@ -66,8 +79,9 @@ class OrderEngine(val menu: MenuCatalog) {
                 require(offer in menu.choices(meal.program, slot)) { "Item is not eligible for this meal." }
                 require(action.portionId == null || action.portionId in offer.allowedPortionIds) { "Size is not eligible for this meal." }
                 val portion = action.portionId ?: offer.allowedPortionIds.singleOrNull()
+                require(slot.role != "drink" || portion != null) { "Choose a drink size before adding it." }
                 val item = menu.items.getValue(offer.itemId)
-                val quantity = if (meal.program == Program.BAGEL_TUESDAY) meal.slots[action.slotId]?.quantity ?: 1 else 1
+                val quantity = if (meal.program.counted) meal.slots[action.slotId]?.quantity ?: 1 else 1
                 require(meal.program != Program.BAGEL_TUESDAY || meal.slots[action.slotId] != null || meal.bagelTotal < 13) { "13 bagels selected. Remove one before adding more." }
                 meal.copy(slots = meal.slots + (action.slotId to Selection(offer.id, item.id, item.label, portion, portion?.let { menu.portionLabel(it) }, quantity)))
             }
@@ -113,6 +127,43 @@ class OrderEngine(val menu: MenuCatalog) {
                     }
                 }
             }
+            is OrderAction.StepCount -> edit(state, action.orderId, action.mealId) { meal ->
+                require(meal.program.counted && action.delta in listOf(-1, 1))
+                val matches = meal.slots.entries.filter { it.value?.offerId == action.offerId && it.value?.portionId == action.portionId }
+                when {
+                    action.delta < 0 && matches.isEmpty() -> meal
+                    action.delta < 0 -> {
+                        val (slot, line) = matches.last()
+                        message = "One ${line!!.itemLabel} removed."
+                        meal.copy(slots = if (line.quantity > 1) meal.slots + (slot to line.copy(quantity = line.quantity - 1)) else (meal.slots - slot).ifEmpty { blankMeal(meal.program, meal.id).slots })
+                    }
+                    meal.program == Program.BAGEL_TUESDAY && meal.bagelTotal >= 13 -> { message = "13 bagels selected. Remove one before adding more."; meal }
+                    else -> {
+                        val offer = menu.offers[action.offerId] ?: error("Item unavailable.")
+                        require(offer in menu.choices(meal.program, menu.slots(meal).first())) { "Item unavailable for this box." }
+                        require(action.portionId in offer.allowedPortionIds) { "Choose an eligible size before adding." }
+                        val item = menu.items.getValue(offer.itemId)
+                        message = "One ${item.label} added."
+                        if (matches.isNotEmpty()) {
+                            val (slot, line) = matches.first()
+                            require(line!!.quantity < Int.MAX_VALUE) { "Quantity limit reached." }
+                            meal.copy(slots = meal.slots + (slot to line.copy(quantity = line.quantity + 1)))
+                        } else {
+                            val available = ensureBlank(meal)
+                            val slot = available.slots.entries.first { it.value == null }.key
+                            available.copy(slots = available.slots + (slot to Selection(offer.id, item.id, item.label, action.portionId, menu.capturePortionLabel(meal.program, action.portionId))))
+                        }
+                    }
+                }
+            }
+            is OrderAction.RemoveDozen -> {
+                val order = state.orders.first { it.id == action.orderId }
+                val meal = order.meals.first { it.id == action.mealId }
+                require(meal.program == Program.BAGEL_TUESDAY)
+                val only = order.meals.count { it.program == Program.BAGEL_TUESDAY } == 1
+                message = if (only) "Dozen cleared." else "Dozen removed."
+                state.copy(orders = state.orders.map { if (it.id != order.id) it else it.copy(meals = if (only) it.meals.map { m -> if (m.id == meal.id) blankMeal(m.program, m.id) else m } else it.meals.filterNot { m -> m.id == meal.id }) })
+            }
             is OrderAction.Clear -> edit(state, action.orderId, action.mealId) { meal ->
                 requireSlot(meal, action.slotId)
                 message = "Selection cleared."
@@ -129,10 +180,10 @@ class OrderEngine(val menu: MenuCatalog) {
                 require(menu.card(action.program).repeatMeal) { "This card allows one bundle per car." }
                 val order = state.orders.first { it.id == action.orderId }
                 val meals = order.meals.filter { it.program == action.program }
-                if (!meals.last().hasItems) state else {
+                if (!meals.last().hasItems && action.program != Program.BAGEL_TUESDAY) state else {
                     message = "Another ${menu.card(action.program).label} meal started."
-                    val meal = blankMeal(action.program, "meal-${order.sequence}-${action.program.key}-${meals.size + 1}")
-                    state.copy(orders = state.orders.map { if (it.id == order.id) it.copy(meals = it.meals + meal) else it })
+                    val meal = blankMeal(action.program, "meal-${order.sequence}-${action.program.key}-${order.nextMealNumber}")
+                    state.copy(orders = state.orders.map { if (it.id == order.id) it.copy(meals = it.meals + meal, nextMealNumber = it.nextMealNumber + 1) else it })
                 }
             }
             is OrderAction.NextCar -> {

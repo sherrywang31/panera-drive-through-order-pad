@@ -35,7 +35,11 @@ data class MenuData(
 )
 
 enum class Program(val key: String) {
-    DEFAULT("default"), YOU_PICK_TWO("you-pick-two"), BAGEL_TUESDAY("bagel-tuesday"), MIX_MATCH("mix-match");
+    DRINKS("drinks"), BREAKFAST("breakfast"), INDIVIDUAL_BAGELS("individual-bagels"),
+    BAGEL_TUESDAY("bagel-tuesday"), CREAM_CHEESE("cream-cheese"),
+    DEFAULT("default"), YOU_PICK_TWO("you-pick-two"), MIX_MATCH("mix-match");
+    val counted: Boolean get() = this in setOf(DRINKS, BREAKFAST, INDIVIDUAL_BAGELS, BAGEL_TUESDAY, CREAM_CHEESE)
+    val section: Program get() = if (this in setOf(INDIVIDUAL_BAGELS, CREAM_CHEESE)) BAGEL_TUESDAY else this
     companion object { fun from(key: String) = entries.first { it.key == key } }
 }
 
@@ -64,11 +68,29 @@ class MenuCatalog(val data: MenuData) {
         offers.any { items.getValue(it.itemId).categoryId == category.id }
     }
     fun portionLabel(id: String?) = portions[id]?.label ?: "Size?"
-    fun slots(meal: Meal): List<SlotDefinition> = if (meal.program == Program.BAGEL_TUESDAY) {
-        meal.slots.keys.sortedBy { it.substringAfter("bagel-").toLong() }.map {
-            SlotDefinition(it, "food", "Bagel row ${it.substringAfter("bagel-")}", true)
+    fun slots(meal: Meal): List<SlotDefinition> = if (meal.program.counted) {
+        meal.slots.keys.sortedBy { it.substringAfterLast('-').toLong() }.map {
+            SlotDefinition(it, card(meal.program).slots.first().role, "Item ${it.substringAfterLast('-')}", true)
         }
     } else card(meal.program).slots
+
+    fun noSize(itemId: String) = items[itemId]?.categoryId in setOf("bottled-canned", "frozen-smoothies")
+    fun capturePortionLabel(program: Program, id: String) = if (program == Program.CREAM_CHEESE) {
+        if (id == "1-5-oz") "Single" else if (id == "8-oz") "Tub" else portionLabel(id)
+    } else portionLabel(id)
+
+    fun mealTitle(order: CarOrder, meal: Meal): String {
+        val label = card(meal.program).label
+        return if (card(meal.program).repeatMeal) "$label ${order.meals.filter { it.program == meal.program }.indexOfFirst { it.id == meal.id } + 1}" else label
+    }
+
+    fun readback(meal: Meal): String = if (meal.program.counted) {
+        meal.slots.values.filterNotNull().groupBy { it.itemId to it.portionId }.values.joinToString(" · ") { lines ->
+            "${lines.sumOf { it.quantity.toLong() }} × ${label(lines.first().copy(quantity = 1))}"
+        }
+    } else slots(meal).mapNotNull { slot -> meal.slots[slot.id]?.let {
+        "${if (slot.role == "food") "" else slot.label + ": "}${label(it)}"
+    } }.joinToString(" · ")
 
     fun label(line: Selection, bagels: Boolean = false): String = buildString {
         if (bagels || line.quantity > 1) append("${line.quantity} × ")
@@ -102,6 +124,7 @@ class MenuCatalog(val data: MenuData) {
             if (meal.slots.values.filterNotNull().any { it.portionId == null }) add("Confirm the size.")
             if (requiresSide(meal) && meal.slots["side"] == null) add("Required side still needed.")
             if (meal.slots.values.filterNotNull().any { offers[it.offerId]?.demoEnabled != true }) add("Menu choice changed: confirm at register.")
+            if (meal.slots.values.filterNotNull().any { line -> line.portionId != null && offers[line.offerId]?.let { line.portionId !in it.allowedPortionIds } == true }) add("Saved size is no longer offered: confirm at register.")
             if (meal.program == Program.BAGEL_TUESDAY) {
                 when {
                     meal.bagelTotal > 13 -> add("${meal.bagelTotal - 13} over the 13-bagel limit. Remove bagels before adding more.")

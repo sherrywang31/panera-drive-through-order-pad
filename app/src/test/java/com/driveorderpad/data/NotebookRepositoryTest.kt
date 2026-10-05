@@ -108,4 +108,50 @@ class NotebookRepositoryTest {
         try { NotebookSerializer.readFrom(ByteArrayInputStream("{}".encodeToByteArray())); fail("Incomplete notes were accepted") }
         catch (_: androidx.datastore.core.CorruptionException) { }
     }
+
+    @Test fun `schema one migration is persisted once and multiple dozens survive reopening and Undo`() = runBlocking {
+        val fresh = engine.initialize(Notebook())
+        val oldPrograms = setOf(Program.DEFAULT, Program.YOU_PICK_TWO, Program.BAGEL_TUESDAY, Program.MIX_MATCH)
+        val old = fresh.copy(schemaVersion = 1, revision = 4, orders = listOf(fresh.active.copy(meals = fresh.active.meals.filter { it.program in oldPrograms })))
+        val file = File(temporary.root, "upgrade.json")
+        file.outputStream().use { NotebookSerializer.writeTo(old, it) }
+        var scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+        val repo = FileNotebookRepository.create(file, engine, scope)
+        val upgraded = repo.load()
+        assertEquals(2, upgraded.schemaVersion)
+        assertEquals(5L, upgraded.revision)
+        assertEquals(upgraded, repo.load())
+        val first = upgraded.active.meals.first { it.program == Program.BAGEL_TUESDAY }
+        repeat(13) { repo.apply(OrderAction.StepCount(upgraded.activeOrderId, first.id, "bagel-tuesday:food:bagels-plain", "each", 1)) }
+        val created = repo.apply(OrderAction.Another(upgraded.activeOrderId, Program.BAGEL_TUESDAY)).after
+        val second = created.active.meals.last { it.program == Program.BAGEL_TUESDAY }
+        repeat(4) { repo.apply(OrderAction.StepCount(upgraded.activeOrderId, second.id, "bagel-tuesday:food:bagels-everything", "each", 1)) }
+        val removal = repo.apply(OrderAction.RemoveDozen(upgraded.activeOrderId, second.id))
+        val restored = repo.undo(removal.after.revision, removal.before)
+        scope.coroutineContext[kotlinx.coroutines.Job]!!.cancel()
+        scope.coroutineContext[kotlinx.coroutines.Job]!!.join()
+        scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+        try {
+            val reopened = FileNotebookRepository.create(file, engine, scope).load()
+            assertEquals(restored, reopened)
+            assertEquals(listOf(13L, 4L), reopened.active.meals.filter { it.program == Program.BAGEL_TUESDAY }.map { it.bagelTotal })
+        } finally { scope.cancel() }
+    }
+    @Test fun `Undo of dozen creation never reuses its ID for a later target`() = runBlocking {
+        val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+        try {
+            val repo = FileNotebookRepository.create(File(temporary.root, "ids.json"), engine, scope)
+            val s = repo.load()
+            val added = repo.apply(OrderAction.Another(s.activeOrderId, Program.BAGEL_TUESDAY))
+            val removedId = added.after.active.meals.last { it.program == Program.BAGEL_TUESDAY }.id
+            repo.undo(added.after.revision, added.before)
+            val next = repo.apply(OrderAction.Another(s.activeOrderId, Program.BAGEL_TUESDAY)).after
+            assertNotEquals(removedId, next.active.meals.last { it.program == Program.BAGEL_TUESDAY }.id)
+            try {
+                repo.apply(OrderAction.StepCount(s.activeOrderId, removedId, "bagel-tuesday:food:bagels-plain", "each", 1))
+                fail("A stale tap wrote into a new target")
+            } catch (_: IllegalArgumentException) { }
+        } finally { scope.cancel() }
+    }
+
 }

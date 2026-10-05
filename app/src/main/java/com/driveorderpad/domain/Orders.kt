@@ -17,6 +17,7 @@ import kotlinx.serialization.Serializable
     val hasItems: Boolean get() = slots.values.any { it != null }
     val bagelTotal: Long get() = slots.values.filterNotNull().sumOf { it.quantity.toLong() }
     fun bagelQuantity(itemId: String): Long = slots.values.filterNotNull().filter { it.itemId == itemId }.sumOf { it.quantity.toLong() }
+    fun quantity(itemId: String, portionId: String): Long = slots.values.filterNotNull().filter { it.itemId == itemId && it.portionId == portionId }.sumOf { it.quantity.toLong() }
 }
 @Serializable data class CarOrder(
     val id: String,
@@ -24,10 +25,11 @@ import kotlinx.serialization.Serializable
     val status: OrderStatus = OrderStatus.DRAFT,
     val menuVersion: String,
     val meals: List<Meal>,
+    val nextMealNumber: Long = 2,
 ) { val hasItems: Boolean get() = meals.any { it.hasItems } }
 
 @Serializable data class Notebook(
-    val schemaVersion: Int = 1,
+    val schemaVersion: Int = 2,
     val revision: Long = 0,
     val nextSequence: Long = 1,
     val activeOrderId: String = "",
@@ -46,6 +48,8 @@ sealed interface OrderAction {
     data class Clear(val orderId: String, val mealId: String, val slotId: String) : OrderAction
     data class RemoveBagel(val orderId: String, val mealId: String, val slotId: String) : OrderAction
     data class StepBagel(val orderId: String, val mealId: String, val itemId: String, val delta: Int) : OrderAction
+    data class StepCount(val orderId: String, val mealId: String, val offerId: String, val portionId: String, val delta: Int) : OrderAction
+    data class RemoveDozen(val orderId: String, val mealId: String) : OrderAction
     data class Another(val orderId: String, val program: Program) : OrderAction
     data class NextCar(val orderId: String) : OrderAction
     data class Entered(val orderId: String) : OrderAction

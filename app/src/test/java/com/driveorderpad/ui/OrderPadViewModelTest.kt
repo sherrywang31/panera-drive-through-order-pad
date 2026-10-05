@@ -95,7 +95,7 @@ class OrderPadViewModelTest {
         val restored = OrderPadViewModel(saved) { AppDependencies(menu, repo) }
         advanceUntilIdle()
         assertEquals(model.state.value.navigation, restored.state.value.navigation)
-        assertEquals(setOf(Program.DEFAULT, Program.YOU_PICK_TWO), restored.state.value.expanded)
+        assertEquals(setOf(Program.BAGEL_TUESDAY), restored.state.value.expanded)
         restored.choose("you-pick-two:food:sandwiches-bacon-turkey-bravo", "half")
         advanceUntilIdle()
         assertEquals("entry", restored.state.value.navigation.screen)
@@ -173,5 +173,41 @@ class OrderPadViewModelTest {
         assertEquals(bagel.id, model.state.value.navigation.anchorMealId)
         assertTrue(model.state.value.navigation.fromSummary)
         assertEquals(13L, repo.notes.active.meals.first { it.id == bagel.id }.bagelTotal)
+    }
+
+    @Test fun `new cars collapse six boxes and Drinks reopens hot while exact dozen focus restores`() = runTest(dispatcher) {
+        val repo = MemoryRepository(engine)
+        val saved = SavedStateHandle()
+        val model = OrderPadViewModel(saved) { AppDependencies(menu, repo) }
+        advanceUntilIdle()
+        assertTrue(model.state.value.expanded.isEmpty())
+        model.toggle(Program.DRINKS)
+        model.drinkCategory("bottled-canned")
+        model.toggle(Program.DRINKS)
+        model.toggle(Program.DRINKS)
+        assertEquals("hot-coffee-tea", model.state.value.drinkCategory)
+        val car = repo.notes.active
+        model.apply(OrderAction.Another(car.id, Program.BAGEL_TUESDAY))
+        advanceUntilIdle()
+        val second = repo.notes.active.meals.last { it.program == Program.BAGEL_TUESDAY }
+        model.apply(OrderAction.StepCount(car.id, second.id, "bagel-tuesday:food:bagels-plain", "each", 1))
+        advanceUntilIdle()
+        model.editMeal(second.id)
+        model.apply(OrderAction.RemoveDozen(car.id, second.id))
+        advanceUntilIdle()
+        model.undo()
+        advanceUntilIdle()
+        assertEquals(second.id, model.state.value.focusedMeals["${car.id}:bagel-tuesday"])
+        val restored = OrderPadViewModel(saved) { AppDependencies(menu, repo) }
+        advanceUntilIdle()
+        assertEquals(second.id, restored.state.value.focusedMeals["${car.id}:bagel-tuesday"])
+        val default = car.meals.first { it.program == Program.DEFAULT }
+        restored.openSlot(car.id, default.id, "drink", "entry")
+        assertEquals("hot-coffee-tea", restored.state.value.navigation.categoryId)
+        restored.back(); restored.back()
+        restored.nextCar()
+        advanceUntilIdle()
+        assertTrue(restored.state.value.expanded.isEmpty())
+        assertEquals("hot-coffee-tea", restored.state.value.drinkCategory)
     }
 }

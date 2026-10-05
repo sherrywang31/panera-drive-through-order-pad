@@ -58,9 +58,9 @@ import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.driveorderpad.R
 import com.driveorderpad.domain.CarOrder
@@ -70,6 +70,12 @@ import com.driveorderpad.domain.MenuOffer
 import com.driveorderpad.domain.OrderAction
 import com.driveorderpad.domain.Program
 import com.driveorderpad.domain.SlotDefinition
+
+private val entrySections = listOf(Program.DRINKS, Program.BREAKFAST, Program.BAGEL_TUESDAY, Program.DEFAULT, Program.YOU_PICK_TWO, Program.MIX_MATCH)
+private val openTint = Color(0xFFE1F0E7)
+private val closedTint = Color(0xFFFFEBC8)
+private val openInk = Color(0xFF174C35)
+private val closedInk = Color(0xFF604317)
 
 /** Stateless screens receive state and callbacks; the lifecycle owner lives at the app boundary. */
 data class OrderPadCallbacks(
@@ -87,6 +93,9 @@ data class OrderPadCallbacks(
     val choose: (String, String?) -> Unit,
     val clear: () -> Unit,
     val editMeal: (String) -> Unit,
+    val focusCount: (String) -> Unit,
+    val drinkCategory: (String) -> Unit,
+    val drinkSize: (String, String) -> Unit,
 )
 
 @Composable
@@ -96,6 +105,7 @@ fun OrderPadApp(viewModel: OrderPadViewModel) {
         viewModel::apply, viewModel::nextCar, viewModel::undo, viewModel::retry,
         viewModel::entry, viewModel::queue, viewModel::back, viewModel::editOrder,
         viewModel::toggle, viewModel::openSlot, viewModel::category, viewModel::choose, viewModel::clearPicker, viewModel::editMeal,
+        viewModel::focusCount, viewModel::drinkCategory, viewModel::drinkSize,
     ) }
     BackHandler(enabled = state.navigation.screen != "entry") { viewModel.back() }
     OrderPadContent(state, callbacks)
@@ -189,9 +199,9 @@ private fun EntryScreen(state: OrderPadState, actions: OrderPadCallbacks, scroll
         val nav = state.navigation
         val meal = order.meals.find { it.id == nav.anchorMealId }
         if (nav.anchorRequest > handledAnchor && meal != null) {
-            val cardKey = "card-${meal.program.key}"
+            val cardKey = "card-${meal.program.section.key}"
             if (nav.fromSummary || scroll.layoutInfo.visibleItemsInfo.none { it.key == cardKey }) {
-                scroll.scrollToItem(2 + Program.entries.indexOf(meal.program))
+                scroll.scrollToItem(2 + entrySections.indexOf(meal.program.section))
             }
             if (nav.anchorSlotId == null) onAnchorHandled(nav.anchorRequest)
         }
@@ -210,10 +220,11 @@ private fun EntryScreen(state: OrderPadState, actions: OrderPadCallbacks, scroll
             Status(state, actions)
         }
         item("summary") { CurrentOrderSummary(menu, order, actions) }
-        items(Program.entries, key = { "card-${it.key}" }) { program ->
+        items(entrySections, key = { "card-${it.key}" }) { program ->
             val meals = order.meals.filter { it.program == program }
             val meal = meals.find { it.id == state.focusedMeals["${order.id}:${program.key}"] } ?: meals.last()
-            MealCard(menu, order, meal, program in state.expanded, meals.filter { it.hasItems }, actions, state.navigation, handledAnchor, onAnchorHandled)
+            if (program == Program.BAGEL_TUESDAY) BagelsCard(state, order, actions)
+            else MealCard(state, order, meal, program in state.expanded, meals.filter { it.hasItems }, actions, handledAnchor, onAnchorHandled)
         }
     }
 }
@@ -225,20 +236,16 @@ private fun CurrentOrderSummary(menu: MenuCatalog, order: CarOrder, actions: Ord
         Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                 Text("Already ordered", style = MaterialTheme.typography.titleMedium)
-                Text("${selected.size} ${if (selected.size == 1) "meal" else "meals"}", style = MaterialTheme.typography.bodySmall)
+                Text("${selected.size} ${if (selected.size == 1) "entry" else "entries"}", style = MaterialTheme.typography.bodySmall)
             }
             if (selected.isEmpty()) Text("Items appear here as you select them.", style = MaterialTheme.typography.bodySmall)
             else {
                 Text(Program.entries.mapNotNull { program -> selected.count { it.program == program }.takeIf { it > 0 }?.let { "$it ${menu.card(program).label}" } }.joinToString(" · "), style = MaterialTheme.typography.bodySmall)
-                val numbers = mutableMapOf<Program, Int>()
                 selected.forEach { meal ->
-                    val number = (numbers[meal.program] ?: 0) + 1
-                    numbers[meal.program] = number
                     Surface(onClick = { actions.editMeal(meal.id) }, shape = RoundedCornerShape(8.dp), color = MaterialTheme.colorScheme.surfaceContainerLowest, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("summary-${meal.id}")) {
                         Column(Modifier.padding(10.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                            Text("${menu.card(meal.program).label} $number", style = MaterialTheme.typography.labelLarge)
-                            Text(if (meal.program == Program.BAGEL_TUESDAY) menu.bagelSelections(meal).joinToString(" · ") { "${meal.bagelQuantity(it.itemId)} × ${it.itemLabel}" }
-                                else menu.slots(meal).mapNotNull { slot -> meal.slots[slot.id]?.let { "${if (slot.role == "food") "" else slot.label + ": "}${menu.label(it)}" } }.joinToString(" · "), style = MaterialTheme.typography.bodyMedium)
+                            Text(menu.mealTitle(order, meal), style = MaterialTheme.typography.labelLarge)
+                            Text(menu.readback(meal), style = MaterialTheme.typography.bodyMedium)
                             menu.review(meal).takeIf { it.isNotEmpty() }?.let { Text(it.joinToString(" "), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error) }
                         }
                     }
@@ -249,42 +256,63 @@ private fun CurrentOrderSummary(menu: MenuCatalog, order: CarOrder, actions: Ord
 }
 
 @Composable
-private fun MealCard(menu: MenuCatalog, order: CarOrder, meal: Meal, expanded: Boolean, selected: List<Meal>, actions: OrderPadCallbacks, navigation: NavigationState, handledAnchor: Long, onAnchorHandled: (Long) -> Unit) {
-    val card = menu.card(meal.program)
-    Card(
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLowest),
-        border = BorderStroke(1.dp, if (meal.program == Program.BAGEL_TUESDAY && meal.bagelTotal > 13) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.outlineVariant),
-        modifier = Modifier.fillMaxWidth().testTag("card-${meal.program.key}"),
-    ) {
-        Row(
-            Modifier.fillMaxWidth().padding(horizontal = 12.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Column(Modifier.weight(1f).clickable(role = Role.Button) { actions.toggle(meal.program) }.padding(vertical = 10.dp).heightIn(min = 48.dp).testTag("toggle-${meal.program.key}").semantics { stateDescription = if (expanded) "Expanded" else "Collapsed"; contentDescription = "${if (expanded) "Fold" else "Expand"} ${card.label}" }) {
-                Text(card.label, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Medium)
-                if (selected.isNotEmpty() && meal.program != Program.BAGEL_TUESDAY) Text("${selected.size} ordered · editing meal ${(selected.indexOfFirst { it.id == meal.id }.takeIf { it >= 0 } ?: selected.size) + 1}", style = MaterialTheme.typography.bodySmall)
-                when (meal.program) {
-                    Program.BAGEL_TUESDAY -> Text("${meal.bagelTotal} / 13 bagels${if (meal.bagelTotal > 13) " · ${meal.bagelTotal - 13} over" else ""}", color = if (meal.bagelTotal > 13) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.testTag("bagel-summary"))
-                    Program.MIX_MATCH -> Text("${meal.slots.values.count { it != null }} / 10 selected", style = MaterialTheme.typography.bodySmall)
-                    else -> Unit
+private fun SectionFrame(program: Program, label: String, detail: String?, expanded: Boolean, actions: OrderPadCallbacks, headerAction: @Composable () -> Unit = {}, content: @Composable () -> Unit) {
+    val tint = if (expanded) openTint else closedTint
+    val ink = if (expanded) openInk else closedInk
+    Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLowest),
+        border = BorderStroke(2.dp, ink), modifier = Modifier.fillMaxWidth().testTag("card-${program.key}")) {
+        Surface(color = tint, contentColor = ink) {
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                Column(Modifier.weight(1f).clickable(role = Role.Button) { actions.toggle(program) }
+                    .heightIn(min = 56.dp).padding(horizontal = 12.dp, vertical = 8.dp).testTag("toggle-${program.key}")
+                    .semantics { stateDescription = if (expanded) "Open" else "Closed"; contentDescription = "${if (expanded) "Close" else "Open"} $label" }) {
+                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                        Text(label, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                        Text(if (expanded) "Open ⌃" else "Closed ⌄", style = MaterialTheme.typography.labelMedium)
+                    }
+                    detail?.let { Text(it, style = MaterialTheme.typography.bodySmall) }
                 }
-                Text(if (expanded) "⌃" else "⌄", style = MaterialTheme.typography.bodySmall)
+                headerAction()
             }
-            if (card.repeatMeal) TextButton(onClick = { actions.apply(OrderAction.Another(order.id, meal.program)) }, enabled = meal.hasItems, modifier = Modifier.testTag("another-${meal.program.key}")) { Text(stringResource(R.string.another)) }
         }
         if (expanded) {
-            Column(Modifier.padding(start = 12.dp, end = 12.dp, bottom = 12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                when (meal.program) {
-                    Program.BAGEL_TUESDAY -> BagelGrid(menu, order, meal, actions)
-                    Program.MIX_MATCH -> menu.slots(meal).chunked(2).forEach { pair ->
-                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                            pair.forEach { slot -> SlotButton(menu, meal, slot, { actions.openSlot(order.id, meal.id, slot.id, "entry") }, Modifier.weight(1f), returnRequest = if (navigation.anchorMealId == meal.id && navigation.anchorSlotId == slot.id && navigation.anchorRequest > handledAnchor) navigation.anchorRequest else 0, onAnchorHandled = onAnchorHandled) }
-                        }
-                    }
-                    else -> menu.slots(meal).forEach { slot ->
-                        FoodRow(menu, order, meal, slot, actions, "entry", showSize = meal.program == Program.DEFAULT && slot.id == "food", returnRequest = if (navigation.anchorMealId == meal.id && navigation.anchorSlotId == slot.id && navigation.anchorRequest > handledAnchor) navigation.anchorRequest else 0, onAnchorHandled = onAnchorHandled)
-                    }
+            Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) { content() }
+            Surface(color = openTint, contentColor = openInk) {
+                Row(Modifier.fillMaxWidth().padding(start = 12.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Text("End of $label", Modifier.weight(1f), style = MaterialTheme.typography.labelLarge)
+                    TextButton(onClick = { actions.toggle(program) }, modifier = Modifier.testTag("close-${program.key}")) { Text("Close", color = openInk) }
                 }
+            }
+        }
+    }
+}
+
+@Composable
+private fun MealCard(state: OrderPadState, order: CarOrder, meal: Meal, expanded: Boolean, selected: List<Meal>, actions: OrderPadCallbacks, handledAnchor: Long, onAnchorHandled: (Long) -> Unit) {
+    val menu = state.menu!!
+    val card = menu.card(meal.program)
+    val navigation = state.navigation
+    val detail = when {
+        meal.program.counted -> "${meal.bagelTotal} selected"
+        meal.program == Program.MIX_MATCH -> "${meal.slots.values.count { it != null }} / 10 selected"
+        selected.isNotEmpty() -> "${selected.size} ordered · editing ${menu.mealTitle(order, meal)}"
+        else -> null
+    }
+    SectionFrame(meal.program, card.label, detail, expanded, actions, headerAction = {
+        if (card.repeatMeal) TextButton(onClick = { actions.apply(OrderAction.Another(order.id, meal.program)) }, enabled = meal.hasItems, modifier = Modifier.testTag("another-${meal.program.key}")) { Text(stringResource(R.string.another), color = (if (expanded) openInk else closedInk).copy(alpha = if (meal.hasItems) 1f else 0.4f)) }
+    }) {
+        when (meal.program) {
+            Program.DRINKS -> DrinksGrid(state, order, meal, actions)
+            Program.BREAKFAST -> QuickGrid(menu, order, meal, menu.choices(meal.program, menu.slots(meal).first()).map { CountChoice(it, it.allowedPortionIds.single()) }, "breakfast", actions)
+            Program.MIX_MATCH -> menu.slots(meal).chunked(2).forEach { pair ->
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    pair.forEach { slot -> SlotButton(menu, meal, slot, { actions.openSlot(order.id, meal.id, slot.id, state.navigation.screen) }, Modifier.weight(1f), returnRequest = if (navigation.anchorMealId == meal.id && navigation.anchorSlotId == slot.id && navigation.anchorRequest > handledAnchor) navigation.anchorRequest else 0, onAnchorHandled = onAnchorHandled) }
+                }
+            }
+            else -> menu.slots(meal).forEach { slot ->
+                FoodRow(menu, order, meal, slot, actions, state.navigation.screen,
+                    showSize = slot.role == "food" && (meal.program == Program.DEFAULT || meal.program == Program.YOU_PICK_TWO),
+                    returnRequest = if (navigation.anchorMealId == meal.id && navigation.anchorSlotId == slot.id && navigation.anchorRequest > handledAnchor) navigation.anchorRequest else 0, onAnchorHandled = onAnchorHandled)
             }
         }
     }
@@ -343,42 +371,125 @@ private fun FoodRow(menu: MenuCatalog, order: CarOrder, meal: Meal, slot: SlotDe
     }
 }
 
+private data class CountChoice(val offer: MenuOffer, val portion: String, val label: String? = null)
+
 @Composable
-private fun BagelGrid(menu: MenuCatalog, order: CarOrder, meal: Meal, actions: OrderPadCallbacks) {
-    val total = meal.bagelTotal
-    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-        Text("$total / 13 bagels", style = MaterialTheme.typography.titleLarge, modifier = Modifier.testTag("bagel-total").semantics { liveRegion = LiveRegionMode.Polite })
-        if (total == 13L) Text("13 selected", color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.labelLarge)
-    }
+private fun QuickGrid(menu: MenuCatalog, order: CarOrder, meal: Meal, choices: List<CountChoice>, prefix: String, actions: OrderPadCallbacks) {
     Text("Tap a box to add · − to remove", style = MaterialTheme.typography.bodySmall)
-    if (total > 13) Warning("${total - 13} over the 13-bagel limit. Remove bagels before adding more.", Modifier.testTag("bagel-over"))
-    val choices = menu.choices(Program.BAGEL_TUESDAY, menu.slots(meal).first())
-    val flavors = choices.map { it.itemId } + menu.bagelSelections(meal).map { it.itemId }.filter { id -> choices.none { it.itemId == id } }
-    flavors.chunked(2).forEach { pair ->
+    choices.chunked(2).forEach { pair ->
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            pair.forEach { itemId ->
-                key(meal.id, itemId) {
-                    val quantity = meal.bagelQuantity(itemId)
-                    val name = menu.items[itemId]?.label ?: meal.slots.values.filterNotNull().first { it.itemId == itemId }.itemLabel
-                    Box(Modifier.weight(1f)) {
-                        Surface(onClick = { actions.apply(OrderAction.StepBagel(order.id, meal.id, itemId, 1)) }, enabled = total < 13 && choices.any { it.itemId == itemId },
-                            shape = RoundedCornerShape(10.dp), border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
-                            color = if (quantity > 0) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surface,
-                            modifier = Modifier.fillMaxWidth().heightIn(min = 72.dp).testTag("bagel-add-$itemId").semantics { contentDescription = "Add one $name bagel"; stateDescription = "$quantity selected" }) {
-                            Column(Modifier.padding(start = 10.dp, end = 10.dp, top = 8.dp, bottom = 6.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                                Text(name, style = MaterialTheme.typography.bodyMedium, maxLines = 2, overflow = TextOverflow.Ellipsis)
-                                Box(Modifier.fillMaxWidth().heightIn(min = 48.dp).padding(end = 48.dp), contentAlignment = Alignment.CenterStart) {
-                                    Text("$quantity", style = MaterialTheme.typography.titleMedium, modifier = Modifier.testTag("bagel-count-$itemId"))
-                                }
+            pair.forEach { choice ->
+                val item = menu.items.getValue(choice.offer.itemId)
+                val quantity = meal.quantity(item.id, choice.portion)
+                val label = choice.label ?: item.label
+                val tag = if (prefix == "bagel" || prefix == "breakfast") item.id else "${item.id}-${choice.portion}"
+                Box(Modifier.weight(1f)) {
+                    Surface(onClick = { actions.apply(OrderAction.StepCount(order.id, meal.id, choice.offer.id, choice.portion, 1)) },
+                        enabled = meal.program != Program.BAGEL_TUESDAY || meal.bagelTotal < 13,
+                        shape = RoundedCornerShape(10.dp), border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
+                        color = if (quantity > 0) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surface,
+                        modifier = Modifier.fillMaxWidth().heightIn(min = 88.dp).testTag("$prefix-add-$tag")
+                            .semantics { contentDescription = "Add one $label${if (choice.portion == "each") "" else ", ${menu.capturePortionLabel(meal.program, choice.portion)}"}"; stateDescription = "$quantity selected" }) {
+                        Column(Modifier.padding(start = 10.dp, end = 10.dp, top = 8.dp, bottom = 6.dp)) {
+                            Text(label, style = MaterialTheme.typography.bodyMedium)
+                            Box(Modifier.fillMaxWidth().heightIn(min = 48.dp).padding(end = 48.dp), contentAlignment = Alignment.CenterStart) {
+                                Text("$quantity", style = MaterialTheme.typography.titleMedium, modifier = Modifier.testTag("$prefix-count-$tag"))
                             }
                         }
-                        OutlinedButton(onClick = { actions.apply(OrderAction.StepBagel(order.id, meal.id, itemId, -1)) }, enabled = quantity > 0,
-                            contentPadding = PaddingValues(0.dp), shape = RoundedCornerShape(8.dp), modifier = Modifier.align(Alignment.BottomEnd).padding(end = 6.dp, bottom = 6.dp).size(48.dp).testTag("bagel-minus-$itemId").semantics { contentDescription = "Remove one $name bagel" }) { Text("−", style = MaterialTheme.typography.titleLarge) }
                     }
+                    // The minus target is a sibling overlay, so it cannot also trigger the tile's add action.
+                    OutlinedButton(onClick = { actions.apply(OrderAction.StepCount(order.id, meal.id, choice.offer.id, choice.portion, -1)) }, enabled = quantity > 0,
+                        contentPadding = PaddingValues(0.dp), shape = RoundedCornerShape(8.dp), modifier = Modifier.align(Alignment.BottomEnd).padding(end = 6.dp, bottom = 6.dp).size(48.dp).testTag("$prefix-minus-$tag")
+                            .semantics { contentDescription = "Remove one $label${if (choice.portion == "each") "" else ", ${menu.capturePortionLabel(meal.program, choice.portion)}"}" }) { Text("−", style = MaterialTheme.typography.titleLarge) }
                 }
             }
             if (pair.size == 1) Spacer(Modifier.weight(1f))
         }
+    }
+    val legacy = meal.slots.values.filterNotNull().filter { line -> choices.none { it.offer.id == line.offerId && it.portion == line.portionId } }
+    // Drink grids are filtered by category/size. Only retired choices belong in this removal-only list.
+    val retired = legacy.filter { line -> menu.offers[line.offerId]?.let { !it.demoEnabled || line.portionId !in it.allowedPortionIds } ?: true }
+    retired.distinctBy { it.offerId to it.portionId }.forEach { line ->
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text("${menu.label(line)} · saved earlier", Modifier.weight(1f), style = MaterialTheme.typography.bodySmall)
+            OutlinedButton(onClick = {
+                if (line.portionId != null) actions.apply(OrderAction.StepCount(order.id, meal.id, line.offerId, line.portionId, -1))
+                else actions.apply(OrderAction.Clear(order.id, meal.id, meal.slots.entries.first { it.value == line }.key))
+            }) { Text("−") }
+        }
+    }
+}
+
+@Composable
+private fun DrinksGrid(state: OrderPadState, order: CarOrder, meal: Meal, actions: OrderPadCallbacks) {
+    val menu = state.menu!!
+    val offers = menu.choices(meal.program, menu.slots(meal).first())
+    val categories = menu.categories(offers)
+    val category = categories.firstOrNull { it.id == state.drinkCategory } ?: categories.first { it.id == "hot-coffee-tea" }
+    categories.chunked(2).forEach { pair ->
+        Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            pair.forEach { c -> OutlinedButton(onClick = { actions.drinkCategory(c.id) }, contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp), modifier = Modifier.weight(1f).heightIn(min = 48.dp).testTag("drink-category-${c.id}")) {
+                Text(c.label, style = MaterialTheme.typography.bodySmall, color = if (c == category) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface)
+            } }
+            if (pair.size == 1) Spacer(Modifier.weight(1f))
+        }
+    }
+    Text(category.label, style = MaterialTheme.typography.titleMedium, modifier = Modifier.testTag("drink-category-heading"))
+    val categoryOffers = offers.filter { menu.items.getValue(it.itemId).categoryId == category.id }
+    val sizes = categoryOffers.flatMap { it.allowedPortionIds }.distinct()
+    val noSize = categoryOffers.all { menu.noSize(it.itemId) }
+    val size = state.drinkSizes[category.id]?.takeIf { it in sizes } ?: sizes.first()
+    if (!noSize) {
+        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            sizes.forEach { portion -> Surface(onClick = { actions.drinkSize(category.id, portion) }, shape = RoundedCornerShape(8.dp),
+                color = if (size == portion) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceContainer,
+                modifier = Modifier.heightIn(min = 48.dp).testTag("drink-size-$portion").semantics { stateDescription = if (size == portion) "Selected" else "Not selected" }) {
+                Text(menu.portionLabel(portion), Modifier.padding(12.dp))
+            } }
+        }
+        Text("Adding ${menu.portionLabel(size)} drinks", style = MaterialTheme.typography.bodySmall)
+    }
+    val choices = categoryOffers.filter { noSize || size in it.allowedPortionIds }.map { CountChoice(it, if (noSize) "each" else size) }
+    QuickGrid(menu, order, meal, choices, "drink", actions)
+}
+
+@Composable
+private fun BagelsCard(state: OrderPadState, order: CarOrder, actions: OrderPadCallbacks) {
+    val menu = state.menu!!
+    val individuals = order.meals.first { it.program == Program.INDIVIDUAL_BAGELS }
+    val dozens = order.meals.filter { it.program == Program.BAGEL_TUESDAY }
+    val targets = listOf(individuals) + dozens
+    val selected = targets.firstOrNull { it.id == state.focusedMeals["${order.id}:bagel-tuesday"] } ?: individuals
+    val cream = order.meals.first { it.program == Program.CREAM_CHEESE }
+    SectionFrame(Program.BAGEL_TUESDAY, "Bagels", "${individuals.bagelTotal} individual · ${dozens.count { it.hasItems }} dozens · ${cream.bagelTotal} cream cheese", Program.BAGEL_TUESDAY in state.expanded, actions) {
+        FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            targets.forEachIndexed { index, target ->
+                val label = if (index == 0) "Individual" else "Dozen $index"
+                Surface(onClick = { actions.focusCount(target.id) }, shape = RoundedCornerShape(8.dp), color = if (target.id == selected.id) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceContainer,
+                    modifier = Modifier.heightIn(min = 48.dp).testTag("bagel-target-${target.id}").semantics { stateDescription = if (target.id == selected.id) "Selected" else "Not selected" }) {
+                    Text("$label · ${target.bagelTotal}${if (index == 0) "" else "/13"}", Modifier.padding(10.dp))
+                }
+            }
+            OutlinedButton(onClick = { actions.apply(OrderAction.Another(order.id, Program.BAGEL_TUESDAY)) }, modifier = Modifier.testTag("add-dozen")) { Text("+ Dozen") }
+        }
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+            Column(Modifier.weight(1f)) {
+                Text(menu.mealTitle(order, selected), style = MaterialTheme.typography.titleMedium, modifier = Modifier.testTag("bagel-target-title"))
+                Text(if (selected.program == Program.BAGEL_TUESDAY) "${selected.bagelTotal} / 13 bagels" else "${selected.bagelTotal} bagels", style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier.testTag("bagel-total").semantics { liveRegion = LiveRegionMode.Polite })
+            }
+            if (selected.program == Program.BAGEL_TUESDAY) TextButton(onClick = { actions.apply(OrderAction.RemoveDozen(order.id, selected.id)) }, modifier = Modifier.testTag("remove-dozen")) { Text(if (dozens.size == 1) "Clear dozen" else "Remove") }
+        }
+        if (selected.program == Program.BAGEL_TUESDAY) {
+            if (selected.bagelTotal == 13L) Text("13 selected · remove one to add more", color = MaterialTheme.colorScheme.primary)
+            if (selected.bagelTotal > 13) Warning("${selected.bagelTotal - 13} over the 13-bagel limit. Remove bagels before adding more.", Modifier.testTag("bagel-over"))
+        }
+        QuickGrid(menu, order, selected, menu.choices(selected.program, menu.slots(selected).first()).map { CountChoice(it, "each") }, "bagel", actions)
+        HorizontalDivider()
+        Text("Cream cheese · for this car", style = MaterialTheme.typography.titleMedium)
+        QuickGrid(menu, order, cream, menu.choices(cream.program, menu.slots(cream).first()).flatMap { offer ->
+            offer.allowedPortionIds.map { portion -> CountChoice(offer, portion, "${if (offer.itemId.contains("walnut")) "Walnut" else "Plain"} · ${menu.capturePortionLabel(cream.program, portion)}") }
+        }, "cream", actions)
     }
 }
 
@@ -437,17 +548,20 @@ private fun PickerScreen(state: OrderPadState, actions: OrderPadCallbacks) {
 private fun OfferChoice(menu: MenuCatalog, offer: MenuOffer, meal: Meal, choose: (String, String?) -> Unit, modifier: Modifier = Modifier) {
     val item = menu.items.getValue(offer.itemId)
     val portions = offer.allowedPortionIds
+    val explicitSize = offer.role == "drink" && !menu.noSize(item.id)
     Card(modifier, colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLowest), border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)) {
-        TextButton(onClick = { choose(offer.id, portions.singleOrNull()) }, modifier = Modifier.fillMaxWidth().heightIn(min = 72.dp).testTag("offer-${offer.id}")) {
-            Column(Modifier.fillMaxWidth()) {
+        val heading: @Composable () -> Unit = {
+            Column(Modifier.fillMaxWidth().padding(10.dp)) {
                 Text(item.label, color = MaterialTheme.colorScheme.onSurface)
-                if (portions.size == 1 && portions.single() != "each") Text(menu.portionLabel(portions.single()), style = MaterialTheme.typography.bodySmall)
-                if (portions.size > 1) Text("Choose size below", style = MaterialTheme.typography.bodySmall)
+                if (explicitSize || portions.size > 1) Text("Choose size below", style = MaterialTheme.typography.bodySmall)
+                else if (portions.single() != "each") Text(menu.portionLabel(portions.single()), style = MaterialTheme.typography.bodySmall)
                 if (meal.program == Program.MIX_MATCH && meal.slots.values.any { it?.itemId == item.id }) Text("Already selected", style = MaterialTheme.typography.bodySmall)
             }
         }
-        if (portions.size > 1) FlowRow(Modifier.padding(horizontal = 6.dp, vertical = 4.dp), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-            portions.forEach { portion -> OutlinedButton(onClick = { choose(offer.id, portion) }, contentPadding = PaddingValues(horizontal = 10.dp, vertical = 8.dp), modifier = Modifier.testTag("offer-${offer.id}-$portion")) { Text(menu.portionLabel(portion)) } }
+        if (explicitSize) Box(Modifier.fillMaxWidth().heightIn(min = 64.dp).testTag("offer-${offer.id}")) { heading() }
+        else TextButton(onClick = { choose(offer.id, portions.singleOrNull()) }, modifier = Modifier.fillMaxWidth().heightIn(min = 64.dp).testTag("offer-${offer.id}")) { heading() }
+        if (explicitSize || portions.size > 1) FlowRow(Modifier.padding(horizontal = 6.dp, vertical = 4.dp), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+            portions.forEach { portion -> OutlinedButton(onClick = { choose(offer.id, portion) }, contentPadding = PaddingValues(horizontal = 10.dp, vertical = 8.dp), modifier = Modifier.heightIn(min = 48.dp).testTag("offer-${offer.id}-$portion")) { Text(menu.portionLabel(portion)) } }
         }
     }
 }
@@ -466,11 +580,11 @@ private fun QueueScreen(state: OrderPadState, actions: OrderPadCallbacks) {
                         Text("Car ${notes.carNumber(car.id)}", Modifier.weight(1f), style = MaterialTheme.typography.titleLarge)
                         TextButton(onClick = { actions.edit(car.id) }) { Text(stringResource(R.string.edit)) }
                     }
-                    car.meals.filter { it.hasItems }.forEach { meal ->
-                        Text(menu.card(meal.program).label, style = MaterialTheme.typography.titleMedium)
+                    car.meals.filter { it.hasItems }.sortedBy { Program.entries.indexOf(it.program) }.forEach { meal ->
+                        Text(menu.mealTitle(car, meal), style = MaterialTheme.typography.titleMedium)
                         if (meal.program == Program.BAGEL_TUESDAY) Text("${meal.bagelTotal} / 13 bagels", style = MaterialTheme.typography.titleMedium)
-                        if (meal.program == Program.BAGEL_TUESDAY) menu.bagelSelections(meal).forEach { Text("${meal.bagelQuantity(it.itemId)} × ${it.itemLabel}") }
-                        else menu.slots(meal).forEach { slot -> meal.slots[slot.id]?.let { line -> Text("${if (slot.role != "food") slot.label + ": " else ""}${menu.label(line)}") } }
+                        if (meal.program.counted) Text(menu.readback(meal))
+                        else menu.slots(meal).forEach { slot -> meal.slots[slot.id]?.let { Text("${if (slot.role != "food") slot.label + ": " else ""}${menu.label(it)}") } }
                         menu.review(meal).forEach { Warning(it) }
                         HorizontalDivider()
                     }
@@ -483,24 +597,5 @@ private fun QueueScreen(state: OrderPadState, actions: OrderPadCallbacks) {
 
 @Composable
 private fun TicketScreen(state: OrderPadState, actions: OrderPadCallbacks, scroll: LazyListState, handledAnchor: Long, onAnchorHandled: (Long) -> Unit) {
-    val order = state.notebook!!.orders.find { it.id == state.navigation.orderId } ?: state.notebook.active
-    val menu = state.menu!!
-    val meals = order.meals.filter { it.hasItems || it.id == state.navigation.anchorMealId }
-    LaunchedEffect(order.id, state.navigation.anchorRequest) {
-        val index = meals.indexOfFirst { it.id == state.navigation.anchorMealId }
-        if (state.navigation.anchorRequest > handledAnchor && index >= 0 && scroll.layoutInfo.visibleItemsInfo.none { it.key == state.navigation.anchorMealId }) scroll.scrollToItem(index + 1)
-    }
-    LazyColumn(state = scroll, contentPadding = PaddingValues(12.dp), verticalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.testTag("ticket-list")) {
-        item("status") { Status(state, actions) }
-        items(meals, key = { it.id }) { meal ->
-            Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLowest)) {
-                Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Text(menu.card(meal.program).label, style = MaterialTheme.typography.titleMedium)
-                    if (meal.program == Program.BAGEL_TUESDAY) BagelGrid(menu, order, meal, actions)
-                    else menu.slots(meal).forEach { FoodRow(menu, order, meal, it, actions, "ticket", showSize = meal.program == Program.DEFAULT && it.role == "food", returnRequest = if (state.navigation.anchorMealId == meal.id && state.navigation.anchorSlotId == it.id && state.navigation.anchorRequest > handledAnchor) state.navigation.anchorRequest else 0, onAnchorHandled = onAnchorHandled) }
-                    menu.review(meal).filterNot { meal.program == Program.BAGEL_TUESDAY && meal.bagelTotal > 13 }.forEach { Warning(it) }
-                }
-            }
-        }
-    }
+    EntryScreen(state, actions, scroll, handledAnchor, onAnchorHandled)
 }

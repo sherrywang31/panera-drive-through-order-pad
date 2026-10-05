@@ -1,6 +1,9 @@
-package: name='com.driveorderpad' versionCode='2' versionName='0.2.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+Local version 0.3.0 verification — October 4, 2026
+
+package: name='com.driveorderpad' versionCode='3' versionName='0.3.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
 sdkVersion:'26'
 targetSdkVersion:'36'
+
 Verifies
 Verified using v1 scheme (JAR signing): false
 Verified using v2 scheme (APK Signature Scheme v2): true
@@ -19,4 +22,6 @@ Signer #1 public key SHA-256 digest: 178c99768c6a3b56f2a70e15df6064b38e29f0eee91
 Signer #1 public key SHA-1 digest: 5fe5648925dcdc4d761555df3a0b7d5c231c231c
 Signer #1 public key MD5 digest: 840e442e2699af4441f9fc23be89caa2
 
-SHA-256: c760aa5e4e8fd921292d636845bd363f29ca0139ddf299c326f818cde0bd4f73
+SHA-256: b144e99622ced1c915a3625908a0896a3190cf12d18ab1f802e88cd6020eadac
+Bundled menu exactly matches source menu.json.
+39 tests passed; lint, debug and optimized unsigned release builds passed.

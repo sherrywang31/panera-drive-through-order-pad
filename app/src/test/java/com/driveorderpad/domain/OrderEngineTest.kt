@@ -147,7 +147,7 @@ class OrderEngineTest {
     }
 
     @Test fun `all hot coffee and tea offers expose sixteen and twenty ounce sizes`() {
-        val drinks = menu.items.values.filter { it.categoryId == "hot-coffee-tea" && it.label != "Espresso" }
+        val drinks = menu.items.values.filter { it.categoryId == "hot-coffee-tea" }
         drinks.forEach { item ->
             assertEquals(item.label, listOf("16-oz", "20-oz"), item.portionIds)
             menu.offers.values.filter { it.itemId == item.id }.forEach { assertEquals(item.label, item.portionIds, it.allowedPortionIds) }

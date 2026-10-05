@@ -14,7 +14,6 @@ import java.io.OutputStream
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.flow.first
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 
@@ -49,8 +48,11 @@ class FileNotebookRepository(
     private val engine: OrderEngine,
 ) : NotebookRepository {
     override suspend fun load(): Notebook {
-        val current = store.data.first()
-        return if (current.orders.isEmpty()) store.updateData { engine.initialize(it) } else current.also(engine::validate)
+        return store.updateData { current ->
+            val initialized = engine.initialize(current)
+            // Initial creation starts at revision zero; upgrades are atomic and happen once.
+            if (current.orders.isNotEmpty() && initialized != current) initialized.copy(revision = current.revision + 1) else initialized
+        }
     }
 
     override suspend fun apply(action: OrderAction): Change {
@@ -67,7 +69,9 @@ class FileNotebookRepository(
     override suspend fun undo(expectedRevision: Long, restore: Notebook): Notebook = store.updateData { current ->
         check(current.revision == expectedRevision) { "Notes changed since that action. Undo is no longer available." }
         engine.validate(restore)
-        restore.copy(revision = current.revision + 1)
+        // Undo restores notes, while allocation counters stay monotonic to reject stale UI taps.
+        restore.copy(revision = current.revision + 1, nextSequence = maxOf(current.nextSequence, restore.nextSequence),
+            orders = restore.orders.map { order -> order.copy(nextMealNumber = maxOf(order.nextMealNumber, current.orders.firstOrNull { it.id == order.id }?.nextMealNumber ?: order.nextMealNumber)) })
     }
 
     companion object {

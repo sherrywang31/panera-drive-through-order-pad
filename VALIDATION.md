@@ -1,37 +1,42 @@
-# Executed validation — 0.2.0
+# Executed validation — 0.3.0
 
-Verified October 3, 2026 on macOS arm64 with a workspace-local JDK 17 and Android SDK. The checksum-verified Gradle 8.13 wrapper executed:
+Verified October 4, 2026 on macOS arm64 with a workspace-local JDK 17 and Android SDK. The checksum-verified Gradle 8.13 wrapper executed:
 
 ```sh
 ./gradlew --no-daemon --offline testDebugUnitTest lintDebug assembleDebug assembleRelease
 ```
 
-Result: **BUILD SUCCESSFUL**. All **28 tests passed**, with zero failures or errors.
+Result: **BUILD SUCCESSFUL**. All **39 tests passed**, with zero failures or errors.
 
 | Check | Result |
 |---|---|
-| Pure menu/order rules | 12 passed; every enabled offer/portion, all required-side categories, optional bakery sides, hot drink sizes, zero-based queue renumbering, bagel cap and older duplicate/over-limit notes |
-| File DataStore | 7 passed; real files, concurrent updates, reopening, old schema-1 notes, Undo revision conflicts, corruption and missing-field preservation |
-| ViewModel | 6 passed; buffered taps and save failures, exact earlier-meal focus, choose/clear/back return anchors, Bagel Tuesday editing at 13, SavedStateHandle restoration and Undo |
-| Compose interactions | 3 passed; Android 15/API 35 in Robolectric, native graphics, 320 × 640 dp configuration |
+| Pure menu/order rules | 17 passed; every enabled offer/portion, exact Bottled roster, all Frozen selections, required drink sizes, Cup/Bowl soups, independent counts/dozens, required sides, queue numbering and legacy migration |
+| File DataStore | 9 passed; concurrent writes, reopening, schema-1 migration persisted once, multiple-dozen persistence, Undo, allocation ID preservation, revision conflicts and corruption preservation |
+| ViewModel | 7 passed; default collapsed sections, Hot Coffee & Tea on reopen/next car, restored exact dozen focus, Undo target, buffered save failures, navigation anchors and SavedStateHandle restoration |
+| Compose interactions | 6 passed; Android 15/API 35 in Robolectric, native graphics, 320 × 640 dp configuration |
 | Android lint | Passed; zero reported code/resource issues |
-| Debug APK | Version 0.2.0 / code 2; development signature verified by Android `apksigner` |
+| Debug APK | Version 0.3.0 / code 3; development signature verified by Android `apksigner` |
 | Release APK | Built with R8 optimization and resource shrinking; unsigned |
 
-The native UI checks exercise tapping a bagel box away from the minus button, reaching 13, disabled additions, repeated subtraction without triggering addition, folding Bagel Tuesday and reopening it from the summary, Undo, required-side gating, direct side selection and register readback. A two-Default/two-You-Pick-Two scenario verifies editing the first combo preserves the second and returning from food selection retains the original field's vertical position within 1 px. Compose saved-state recreation then retains the later bagel scroll position without replaying that old selection target.
+Native checks exercise whole-tile bagel addition, the 13-bagel limit and enabled subtraction, summary editing of folded sections, two numbered meal instances, exact selection return within 1 px, and saved-state recreation without replaying an old anchor. New scenarios verify independent Individual/Dozen 1/Dozen 2 counts, cream cheese Single/Tub, dozen removal and Undo, Hot Coffee & Tea, explicit meal drink sizes, size-free Bottled and Frozen selections, and Cup/Bowl You Pick Two soup capture.
 
 Screens were rendered through Android views with Robolectric native graphics and visually inspected:
 
-- [Entry](verification/entry.png)
-- [Bagel grid at 13](verification/bagel-thirteen.png)
-- [Bagel summary edit return](verification/bagel-edit-return.png)
+- [Six closed boxes](verification/entry.png)
+- [Dozen at 13](verification/bagel-thirteen.png)
+- [Dozen summary edit return](verification/bagel-edit-return.png)
+- [Multiple dozen targets](verification/multiple-dozens.png)
+- [Cream cheese](verification/cream-cheese.png)
+- [Bottled](verification/bottled.png)
+- [Frozen & Smoothies](verification/frozen.png)
+- [You Pick Two soup sizes](verification/soup-bowl.png)
 - [Growing order list](verification/ordered-list.png)
-- [Selection return to You Pick Two](verification/selection-return.png)
+- [Selection return](verification/selection-return.png)
 - [Register queue](verification/queue.png)
 - [Local APK metadata and signature](verification/apk-verification.txt)
 
-The local debug APK SHA-256 is `c760aa5e4e8fd921292d636845bd363f29ca0139ddf299c326f818cde0bd4f73`. CI independently builds and signs its public download; its release checksum identifies that APK.
+The APK checksum is recorded in `verification/apk-verification.txt`. CI independently builds and signs its public download; the release checksum identifies that APK.
 
-Lint keeps code/resource warnings as errors. Four advisory checks for newer dependency/tool versions and target SDK availability remain excluded because the compatible toolchain and SDK 36 are deliberately pinned. There is one path-specific adaptive-icon folder exclusion; no broad lint baseline is used.
+Lint keeps code/resource warnings as errors. Four advisory dependency/tool/target-SDK checks remain excluded for the deliberately pinned toolchain. One adaptive-icon folder exclusion remains; there is no broad lint baseline.
 
-These are JVM/native-renderer checks, not a physical-phone or emulator test. Touch reach, large font settings, accessibility services, rotation and operating-system process termination still need phone review. Data persistence was checked by closing/reopening file storage; navigation, meal focus and expansion were checked through SavedStateHandle. The optimized APK has not been installed on a device. Café-specific menu accuracy and promotion terms remain research data requiring local verification. POS integration is outside this app's scope.
+These are JVM/native-renderer checks. A physical phone or emulator has not been used. Touch reach, large fonts, accessibility services, rotation and operating-system process termination still need phone review. File storage was closed/reopened and navigation/focus restored through SavedStateHandle. Cafe menu accuracy and promotion terms still require local verification. POS integration is outside this app's scope.
