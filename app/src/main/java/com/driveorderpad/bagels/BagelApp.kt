@@ -283,7 +283,7 @@ private fun HoldCapture(listening: Boolean, enabled: Boolean, start: () -> Unit,
                 HorizontalDivider()
             }
             Text("Add bagel flavor", fontWeight = FontWeight.Bold)
-            Wrap { catalog.flavors.forEach { flavor -> OutlinedButton(onClick = { modify { it.copy(bagels = it.bagels + BagelLine(flavor = flavor, quantity = 1)) } }, enabled = enabled) { Text("+ $flavor") } }
+            Wrap { catalog.flavors.forEach { flavor -> OutlinedButton(onClick = { modify { it.copy(bagels = it.bagels + BagelLine(flavor = flavor, quantity = 1)) } }, enabled = enabled) { Text("+ $flavor") } } }
             Text("Cream cheese", style = MaterialTheme.typography.titleMedium)
             group.spreads.forEach { spread ->
                 FlavorSelector(spread.flavor, BagelCatalog.spreads, enabled) { flavor -> modify { it.copy(spreads = it.spreads.map { s -> if (s.id == spread.id) s.copy(flavor = flavor) else s }) } }
