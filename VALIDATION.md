@@ -1,3 +1,21 @@
+# Executed validation — 0.4.0 bagel batch voice
+
+Verified October 10, 2026 with JDK 17, Gradle 8.13 and Android SDK 36:
+
+```sh
+./gradlew --no-daemon clean testDebugUnitTest lintDebug assembleDebug assembleRelease
+```
+
+Result: **BUILD SUCCESSFUL**. All **59 tests passed**, with zero failures or errors. Android lint passed; debug and optimized, unsigned release APKs built. The installable debug APK is version 0.4.0 / code 4 and its development signature was verified with Android `apksigner`.
+
+The 20 additional checks cover batch parsing (including the 16-bagel example, explicit dozen rules, unknown words and clear versus ambiguous corrections), DataStore reopening and corruption preservation, draft/order revision guards, stale recognition after manual editing, and native Compose batch/editor interactions at 320 × 640 dp. The hold-button test verifies that saving-related recomposition does not cancel the gesture and release happens once. Batch acceptance is one action. Native-rendered batch and editor screenshots were visually inspected.
+
+The existing 39 menu, order, persistence and UI checks remain passing. The old general-menu entry UI is no longer the app's launch screen.
+
+These checks do **not** exercise a physical microphone or establish recognition accuracy, gapless streaming, one-handed reach, large-font usability, or actual phone lifecycle behavior. Android on-device speech requires Android 12+ and a compatible English model. No paid speech or interpretation API is configured. See [BAGEL_VOICE.md](BAGEL_VOICE.md) for supported phrases, failure handling and the phone feasibility trial. Menu availability and the requested dozen selling rule still require café verification.
+
+---
+
 # Executed validation — 0.3.0
 
 Verified October 4, 2026 on macOS arm64 with a workspace-local JDK 17 and Android SDK. The checksum-verified Gradle 8.13 wrapper executed:

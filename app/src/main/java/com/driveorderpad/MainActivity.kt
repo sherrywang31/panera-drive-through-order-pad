@@ -8,9 +8,9 @@ import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.driveorderpad.ui.OrderPadApp
+import com.driveorderpad.bagels.BagelApp
+import com.driveorderpad.bagels.BagelViewModel
 import com.driveorderpad.ui.OrderPadTheme
-import com.driveorderpad.ui.OrderPadViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,8 +18,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         val container = (application as OrderPadApplication).container
         val factory = viewModelFactory {
-            initializer { OrderPadViewModel(createSavedStateHandle(), container::dependencies) }
+            initializer { BagelViewModel(createSavedStateHandle(), container.bagelRepository, container::bagelCatalog) }
         }
-        setContent { OrderPadTheme { OrderPadApp(viewModel(factory = factory)) } }
+        setContent { OrderPadTheme { BagelApp(viewModel(factory = factory)) } }
     }
 }

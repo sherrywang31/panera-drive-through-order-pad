@@ -19,6 +19,11 @@ data class AppDependencies(val menu: MenuCatalog, val repository: NotebookReposi
 
 /** Manual DI keeps a small single-feature app explicit and avoids service locators in screens. */
 class AppContainer(private val application: Application) {
+    val bagelRepository by lazy { com.driveorderpad.bagels.BagelRepository.create(File(application.filesDir, "bagel-batches-v1.json")) }
+    suspend fun bagelCatalog(): com.driveorderpad.bagels.BagelCatalog = withContext(Dispatchers.IO) {
+        val menu = application.assets.open("menu.json").bufferedReader().use { MenuCatalog.decode(it.readText()) }
+        com.driveorderpad.bagels.BagelCatalog(menu.data.items.filter { it.categoryId == "bagels" }.map { it.label })
+    }
     private val mutex = Mutex()
     private var dependencies: AppDependencies? = null
     suspend fun dependencies(): AppDependencies = mutex.withLock {
