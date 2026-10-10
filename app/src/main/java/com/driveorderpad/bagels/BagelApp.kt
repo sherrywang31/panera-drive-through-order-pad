@@ -270,7 +270,9 @@ private fun HoldCapture(listening: Boolean, enabled: Boolean, start: () -> Unit,
             Wrap { BagelKind.entries.forEach { kind -> OutlinedButton(onClick = { modify { it.copy(kind = kind) } }, enabled = enabled && group.kind != kind) { Text(kind.label) } } }
             group.bagels.forEach { line ->
                 FlavorSelector(line.flavor, catalog.flavors, enabled) { flavor -> modify { it.copy(bagels = it.bagels.map { b -> if (b.id == line.id) b.copy(flavor = flavor) else b }) } }
-                Quantity("${line.flavor} quantity", line.quantity, enabled) { q -> modify { it.copy(bagels = it.bagels.map { b -> if (b.id == line.id) b.copy(quantity = q) else b }) } }
+                Quantity("${line.flavor} quantity", line.quantity, enabled,
+                    adjust = { delta -> modify { g -> g.copy(bagels = g.bagels.map { b -> if (b.id == line.id) b.copy(quantity = ((b.quantity ?: 0) + delta).coerceIn(1,999)) else b }) } },
+                    change = { q -> modify { it.copy(bagels = it.bagels.map { b -> if (b.id == line.id) b.copy(quantity = q) else b }) } })
                 Wrap { Slice.entries.forEach { value -> OutlinedButton(onClick = { modify { it.copy(bagels = it.bagels.map { b -> if (b.id == line.id) b.copy(slice = value) else b }) } }, enabled = enabled && line.slice != value) { Text(value.label) } } }
                 Wrap { Toast.entries.forEach { value -> OutlinedButton(onClick = { modify { it.copy(bagels = it.bagels.map { b -> if (b.id == line.id) b.copy(toast = value) else b }) } }, enabled = enabled && line.toast != value) { Text(value.label) } } }
                 Wrap {
@@ -287,11 +289,13 @@ private fun HoldCapture(listening: Boolean, enabled: Boolean, start: () -> Unit,
             Text("Cream cheese", style = MaterialTheme.typography.titleMedium)
             group.spreads.forEach { spread ->
                 FlavorSelector(spread.flavor, BagelCatalog.spreads, enabled) { flavor -> modify { it.copy(spreads = it.spreads.map { s -> if (s.id == spread.id) s.copy(flavor = flavor) else s }) } }
-                Quantity("${spread.flavor} quantity", spread.quantity, enabled) { q -> modify { it.copy(spreads = it.spreads.map { s -> if (s.id == spread.id) s.copy(quantity = q) else s }) } }
+                Quantity("${spread.flavor} quantity", spread.quantity, enabled,
+                    adjust = { delta -> modify { g -> g.copy(spreads = g.spreads.map { b -> if (b.id == spread.id) b.copy(quantity = ((b.quantity ?: 0) + delta).coerceIn(1,999)) else b }) } },
+                    change = { q -> modify { it.copy(spreads = it.spreads.map { s -> if (s.id == spread.id) s.copy(quantity = q) else s }) } })
                 Wrap { SpreadSize.entries.forEach { size -> OutlinedButton(onClick = { modify { it.copy(spreads = it.spreads.map { s -> if (s.id == spread.id) s.copy(size = size) else s }) } }, enabled = enabled && spread.size != size) { Text(size.label) } } }
                 TextButton(onClick = { modify { it.copy(spreads = it.spreads.filterNot { s -> s.id == spread.id }) } }, enabled = enabled) { Text("Remove spread") }
             }
-            Wrap { BagelCatalog.spreads.forEach { flavor -> OutlinedButton(onClick = { modify { it.copy(spreads = it.spreads + SpreadLine(flavor = flavor, quantity = 1)) } }, enabled = enabled) { Text("+ $flavor") } }
+            Wrap { BagelCatalog.spreads.forEach { flavor -> OutlinedButton(onClick = { modify { it.copy(spreads = it.spreads + SpreadLine(flavor = flavor, quantity = 1)) } }, enabled = enabled) { Text("+ $flavor") } } }
             TextButton(onClick = { change(carId) { it.copy(groups = it.groups.filterNot { g -> g.id == group.id }) } }, enabled = enabled) { Text("Remove group · Undo available") }
         }
     }
@@ -303,10 +307,10 @@ private fun HoldCapture(listening: Boolean, enabled: Boolean, start: () -> Unit,
         DropdownMenu(expanded = open, onDismissRequest = { open = false }) { choices.forEach { choice -> DropdownMenuItem(text = { Text(choice) }, onClick = { change(choice); open = false }) } }
     }
 }
-@Composable private fun Quantity(label: String, quantity: Int?, enabled: Boolean, change: (Int?) -> Unit) {
+@Composable private fun Quantity(label: String, quantity: Int?, enabled: Boolean, adjust: (Int) -> Unit, change: (Int?) -> Unit) {
     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        OutlinedButton(onClick = { change((quantity ?: 1) - 1) }, enabled = enabled && (quantity ?: 0) > 1, modifier = Modifier.size(48.dp), contentPadding = PaddingValues(0.dp)) { Text("−") }
+        OutlinedButton(onClick = { adjust(-1) }, enabled = enabled && (quantity ?: 0) > 1, modifier = Modifier.size(48.dp), contentPadding = PaddingValues(0.dp)) { Text("−") }
         OutlinedTextField(value = quantity?.toString().orEmpty(), onValueChange = { value -> if (value.isEmpty()) change(null) else value.toIntOrNull()?.takeIf { it in 1..999 }?.let(change) }, label = { Text("Qty") }, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number), singleLine = true, enabled = enabled, modifier = Modifier.width(90.dp).semantics { contentDescription = label })
-        OutlinedButton(onClick = { change((quantity ?: 0) + 1) }, enabled = enabled && (quantity ?: 0) < 999, modifier = Modifier.size(48.dp), contentPadding = PaddingValues(0.dp)) { Text("+") }
+        OutlinedButton(onClick = { adjust(1) }, enabled = enabled && (quantity ?: 0) < 999, modifier = Modifier.size(48.dp), contentPadding = PaddingValues(0.dp)) { Text("+") }
     }
 }

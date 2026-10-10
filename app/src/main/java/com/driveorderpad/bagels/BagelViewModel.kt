@@ -91,6 +91,7 @@ class BagelViewModel(private val saved: SavedStateHandle, private val repository
     }
     fun applyBatch() = enqueue {
         val ui = mutable.value
+        if (ui.proposal.isEmpty()) return@enqueue
         val book = ui.book ?: return@enqueue
         if (book.orderRevision != book.draftBaseRevision) {
             mutable.value = ui.copy(message = "Orders changed. Tap Organize again to review this batch against the latest orders.")
