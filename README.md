@@ -1,5 +1,15 @@
 # Drive-through Order Pad
 
+## Current prototype: bagel batch voice (0.4.0)
+
+The Android app opens the approved **bagels-only batch capture** design: hold once to dictate multiple numbered cars, review/apply the whole batch, read clean per-car summaries, and use one Edit button for a dedicated car editor. All edits auto-save with Undo. The capture control and ordered summaries share one workspace; no per-car selector or Next car step is required. Individual bagels, independent baker’s dozens, quantities, slicing, three toast options and cream-cheese quantity/size are supported. Missing details and skipped cars remain explicit review states.
+
+Real offline microphone recognition requires **Android 12+ and an available English on-device recognizer/model**. The app still installs on Android 8.0+ with typed batch and touch entry. Interpretation is currently local and uses a supported bagel vocabulary; paid speech/interpretation services are not configured. See [BAGEL_VOICE.md](BAGEL_VOICE.md) for examples, recovery behavior, limitations and the phone feasibility test. See [AGENTS.md](AGENTS.md) for the standing design rules.
+
+The previous general-menu notes are preserved in their original file. The bagel prototype uses separate storage and starts with an empty queue; it does not import or display those old orders. The café menu and dozen selling rules still need verification.
+
+## Previous prototype (0.3.0): architecture and archived workflow
+
 A native Kotlin / Jetpack Compose Android app implementing the cashier prototype. Android 8.0 (API 26) or later. Version 0.3.0 opens with an empty Car 0; it does not seed demonstration orders.
 
 ## Cashier workflow
