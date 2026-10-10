@@ -70,7 +70,7 @@ jobs:
           cat > release-notes.md <<'NOTES'
           Installable bagel batch voice Android prototype. Tests, lint, debug and optimized release builds passed before publication.
 
-Hold once to dictate multiple numbered cars; review the batch, then correct individual cars in the dedicated bagel editor. Offline microphone recognition requires Android 12+ with an installed English on-device recognizer/model. Android 8.0+ supports typed batch and touch editing. Interpretation uses a bounded local bagel vocabulary; no paid API is configured. See BAGEL_VOICE.md in the repository for supported phrases and phone testing limitations.
+          Hold once to dictate multiple numbered cars; review the batch, then correct individual cars in the dedicated bagel editor. Offline microphone recognition requires Android 12+ with an installed English on-device recognizer/model. Android 8.0+ supports typed batch and touch editing. Interpretation uses a bounded local bagel vocabulary; no paid API is configured. See BAGEL_VOICE.md in the repository for supported phrases and phone testing limitations.
 
           On an Android 8.0+ phone, download **panera-order-pad.apk**, open it, and allow installation from that download source if Android asks. The .sha256 file is an optional integrity check.
 

@@ -43,7 +43,13 @@ class BagelUiTest {
         }
         compose.onNodeWithTag("back-to-batch").performClick()
         compose.onNodeWithTag("hold-batch").assertIsDisplayed()
-        compose.runOnIdle { assertEquals(null,state.value.editId) }
+        compose.runOnIdle {
+            assertEquals(null,state.value.editId)
+            val v=checkNotNull(view)
+            val bitmap=android.graphics.Bitmap.createBitmap(v.width,v.height,android.graphics.Bitmap.Config.ARGB_8888)
+            v.draw(android.graphics.Canvas(bitmap))
+            java.io.File("build/reports/screenshots/bagel-batch-320.png").apply { parentFile?.mkdirs() }.outputStream().use { bitmap.compress(android.graphics.Bitmap.CompressFormat.PNG,100,it) }
+        }
     }
     @Test fun wholeBatchConfirmationIsOneAction() {
         val proposal=BagelParser(BagelCatalog.fallback).parse("Car 1 2 sesame. Car 2 no bagels. Car 3 13 plain.",1)
