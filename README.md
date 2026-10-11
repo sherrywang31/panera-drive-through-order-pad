@@ -38,6 +38,16 @@ The APK is signed with a development key for prototype review. A different CI ru
 
 This is a working offline review build, not a Play Store release. It does not send orders to a POS. The included 249-item menu is the research profile from the prototype, with cashier capture overrides dated October 4, 2026. **The Glenview café roster, current promotion eligibility and availability still need café verification before live use.** Mix & Match side capture remains a register review prompt, following the approved layout. Removing the app or clearing its data removes its notes.
 
+## Parsing experiments
+
+Keep Android's native on-device speech recognition for capture. The standalone
+[`script/`](script/README.md) harness compares LLM models and prompts on finalized
+transcripts, including follow-ups, corrections, pauses and car boundaries. It
+reports exact order accuracy at every turn, whole-conversation accuracy, latency
+and usage-based cost estimates. It does not add a speech service, network
+permission or an LLM to the APK. The starter fixtures are synthetic; actual
+cashier transcripts and phone testing are still needed.
+
 ## Build
 
 Open this folder in Android Studio, or use a JDK 17 installation and the Android SDK. Versions are pinned in `gradle/libs.versions.toml`; the Gradle 8.13 wrapper verifies its distribution checksum. Install `platforms;android-36` and `build-tools;36.0.0` with the Android SDK manager. Point `ANDROID_HOME` to that SDK, or add `sdk.dir=/absolute/sdk/path` to an untracked `local.properties`.

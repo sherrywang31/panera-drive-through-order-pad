@@ -6,3 +6,6 @@ local.properties
 *.iml
 *.jks
 *.keystore
+__pycache__/
+script/results/
+script/models.local.json
