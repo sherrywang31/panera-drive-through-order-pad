@@ -1,0 +1,1848 @@
+[
+  {
+    "id": "natural-followups",
+    "tags": [
+      "followup",
+      "correction",
+      "negation"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": []
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "A baker's dozen, six plain and six everything.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "DOZEN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 6,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    },
+                    {
+                      "flavor": "Everything",
+                      "quantity": 6,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "t2",
+        "kind": "final",
+        "segment_id": "s2",
+        "text": "One more plain?",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "DOZEN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 6,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    },
+                    {
+                      "flavor": "Everything",
+                      "quantity": 6,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": true
+            }
+          ]
+        }
+      },
+      {
+        "id": "t3",
+        "kind": "final",
+        "segment_id": "s3",
+        "text": "Okay, seven plain total.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "DOZEN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 7,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    },
+                    {
+                      "flavor": "Everything",
+                      "quantity": 6,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "t4",
+        "kind": "final",
+        "segment_id": "s4",
+        "text": "All sliced, no toast. Got it.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "DOZEN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 7,
+                      "slice": "SLICED",
+                      "toast": "UNTOASTED"
+                    },
+                    {
+                      "flavor": "Everything",
+                      "quantity": 6,
+                      "slice": "SLICED",
+                      "toast": "UNTOASTED"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "t5",
+        "kind": "final",
+        "segment_id": "s5",
+        "text": "Actually, toast only the everything.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "DOZEN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 7,
+                      "slice": "SLICED",
+                      "toast": "UNTOASTED"
+                    },
+                    {
+                      "flavor": "Everything",
+                      "quantity": 6,
+                      "slice": "SLICED",
+                      "toast": "TOASTED"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "t6",
+        "kind": "final",
+        "segment_id": "s6",
+        "text": "Next car. Two individual plain, sliced, not toasted.",
+        "expected": {
+          "activeCarNumber": 2,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "DOZEN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 7,
+                      "slice": "SLICED",
+                      "toast": "UNTOASTED"
+                    },
+                    {
+                      "flavor": "Everything",
+                      "quantity": 6,
+                      "slice": "SLICED",
+                      "toast": "TOASTED"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            },
+            {
+              "number": 2,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "INDIVIDUAL",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 2,
+                      "slice": "SLICED",
+                      "toast": "UNTOASTED"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "missing-preparation",
+    "tags": [
+      "unknowns"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": []
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "Car one two plain.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 2,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "missing-quantity",
+    "tags": [
+      "unknowns"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": []
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "Individual sesame bagels, sliced, toasted.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "INDIVIDUAL",
+                  "bagels": [
+                    {
+                      "flavor": "Sesame",
+                      "quantity": null,
+                      "slice": "SLICED",
+                      "toast": "TOASTED"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "count-does-not-imply-dozen",
+    "tags": [
+      "packaging"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": []
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "Thirteen sesame sliced toasted.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Sesame",
+                      "quantity": 13,
+                      "slice": "SLICED",
+                      "toast": "TOASTED"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "dozen-overflow",
+    "tags": [
+      "overflow"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": []
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "Baker's dozen sixteen sesame.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "DOZEN",
+                  "bagels": [
+                    {
+                      "flavor": "Sesame",
+                      "quantity": 16,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "plain-versus-spread",
+    "tags": [
+      "spreads"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": []
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "Three individual plain sliced toasted with two singles of plain cream cheese.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "INDIVIDUAL",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 3,
+                      "slice": "SLICED",
+                      "toast": "TOASTED"
+                    }
+                  ],
+                  "spreads": [
+                    {
+                      "flavor": "Plain Cream Cheese",
+                      "quantity": 2,
+                      "size": "SINGLE"
+                    }
+                  ]
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "spreads-missing-details",
+    "tags": [
+      "spreads",
+      "unknowns"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": []
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "Two plain with honey walnut cream cheese.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 2,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": [
+                    {
+                      "flavor": "Honey Walnut Cream Cheese",
+                      "quantity": null,
+                      "size": "UNKNOWN"
+                    }
+                  ]
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "complete-dozen",
+    "tags": [
+      "dozen",
+      "spreads"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": []
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "Car two baker's dozen thirteen sesame unsliced double toasted, one tub of plain cream cheese and one tub of honey walnut.",
+        "expected": {
+          "activeCarNumber": 2,
+          "cars": [
+            {
+              "number": 1,
+              "status": "UNCAPTURED",
+              "groups": [],
+              "needsClarification": false
+            },
+            {
+              "number": 2,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "DOZEN",
+                  "bagels": [
+                    {
+                      "flavor": "Sesame",
+                      "quantity": 13,
+                      "slice": "UNSLICED",
+                      "toast": "DOUBLE"
+                    }
+                  ],
+                  "spreads": [
+                    {
+                      "flavor": "Plain Cream Cheese",
+                      "quantity": 1,
+                      "size": "TUB"
+                    },
+                    {
+                      "flavor": "Honey Walnut Cream Cheese",
+                      "quantity": 1,
+                      "size": "TUB"
+                    }
+                  ]
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "set-add-remove",
+    "tags": [
+      "correction"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": []
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "Five chocolate chip.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Chocolate Chip",
+                      "quantity": 5,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "t2",
+        "kind": "final",
+        "segment_id": "s2",
+        "text": "Make chocolate chip four.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Chocolate Chip",
+                      "quantity": 4,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "t3",
+        "kind": "final",
+        "segment_id": "s3",
+        "text": "Add three chocolate chip.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Chocolate Chip",
+                      "quantity": 7,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "t4",
+        "kind": "final",
+        "segment_id": "s4",
+        "text": "Remove chocolate chip.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "repeat-total",
+    "tags": [
+      "deduplication"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": []
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "Seven plain.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 7,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "t2",
+        "kind": "final",
+        "segment_id": "s2",
+        "text": "Seven plain total.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 7,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "different-preparation",
+    "tags": [
+      "line-identity"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": []
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "Two sesame sliced toasted and three sesame unsliced untoasted.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Sesame",
+                      "quantity": 2,
+                      "slice": "SLICED",
+                      "toast": "TOASTED"
+                    },
+                    {
+                      "flavor": "Sesame",
+                      "quantity": 3,
+                      "slice": "UNSLICED",
+                      "toast": "UNTOASTED"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ambiguous-correction",
+    "tags": [
+      "ambiguity",
+      "line-identity"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": [
+        {
+          "number": 1,
+          "status": "ORDER",
+          "groups": [
+            {
+              "kind": "UNKNOWN",
+              "bagels": [
+                {
+                  "flavor": "Sesame",
+                  "quantity": 2,
+                  "slice": "SLICED",
+                  "toast": "TOASTED"
+                },
+                {
+                  "flavor": "Sesame",
+                  "quantity": 3,
+                  "slice": "UNSLICED",
+                  "toast": "UNTOASTED"
+                }
+              ],
+              "spreads": []
+            }
+          ],
+          "needsClarification": false
+        }
+      ]
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "Make sesame four.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Sesame",
+                      "quantity": 2,
+                      "slice": "SLICED",
+                      "toast": "TOASTED"
+                    },
+                    {
+                      "flavor": "Sesame",
+                      "quantity": 3,
+                      "slice": "UNSLICED",
+                      "toast": "UNTOASTED"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "flavor-replacement",
+    "tags": [
+      "correction"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": []
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "Three everything sliced toasted.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Everything",
+                      "quantity": 3,
+                      "slice": "SLICED",
+                      "toast": "TOASTED"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "t2",
+        "kind": "final",
+        "segment_id": "s2",
+        "text": "Actually change everything to plain.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 3,
+                      "slice": "SLICED",
+                      "toast": "TOASTED"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "skipped-car",
+    "tags": [
+      "car-boundary"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": []
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "Car one two plain. Car three no bagels.",
+        "expected": {
+          "activeCarNumber": 3,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 2,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            },
+            {
+              "number": 2,
+              "status": "UNCAPTURED",
+              "groups": [],
+              "needsClarification": false
+            },
+            {
+              "number": 3,
+              "status": "NONE",
+              "groups": [],
+              "needsClarification": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "advance-incomplete",
+    "tags": [
+      "car-boundary",
+      "unknowns"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": []
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "Two plain.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 2,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "t2",
+        "kind": "final",
+        "segment_id": "s2",
+        "text": "Next car.",
+        "expected": {
+          "activeCarNumber": 2,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 2,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "t3",
+        "kind": "final",
+        "segment_id": "s3",
+        "text": "Three everything.",
+        "expected": {
+          "activeCarNumber": 2,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 2,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            },
+            {
+              "number": 2,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Everything",
+                      "quantity": 3,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "pause-resume",
+    "tags": [
+      "pause",
+      "partial",
+      "deduplication"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": []
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "same",
+        "text": "Two plain.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 2,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "t2",
+        "kind": "final",
+        "segment_id": "same",
+        "text": "Two plain.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 2,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "t3",
+        "kind": "pause",
+        "segment_id": "s3",
+        "text": "",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 2,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "t4",
+        "kind": "partial",
+        "segment_id": "s4",
+        "text": "All toast",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 2,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "t5",
+        "kind": "resume",
+        "segment_id": "s5",
+        "text": "",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 2,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "t6",
+        "kind": "final",
+        "segment_id": "s6",
+        "text": "All sliced, not toasted.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 2,
+                      "slice": "SLICED",
+                      "toast": "UNTOASTED"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "short-answer-with-context",
+    "tags": [
+      "followup",
+      "question"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": [
+        {
+          "number": 1,
+          "status": "ORDER",
+          "groups": [
+            {
+              "kind": "UNKNOWN",
+              "bagels": [
+                {
+                  "flavor": "Plain",
+                  "quantity": 2,
+                  "slice": "UNKNOWN",
+                  "toast": "UNKNOWN"
+                }
+              ],
+              "spreads": []
+            }
+          ],
+          "needsClarification": false
+        }
+      ]
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "Would you like all sliced?",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 2,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": true
+            }
+          ]
+        }
+      },
+      {
+        "id": "t2",
+        "kind": "final",
+        "segment_id": "s2",
+        "text": "Yes.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 2,
+                      "slice": "SLICED",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "yes-without-context",
+    "tags": [
+      "ambiguity",
+      "unknowns"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": [
+        {
+          "number": 1,
+          "status": "ORDER",
+          "groups": [
+            {
+              "kind": "UNKNOWN",
+              "bagels": [
+                {
+                  "flavor": "Plain",
+                  "quantity": 2,
+                  "slice": "UNKNOWN",
+                  "toast": "UNKNOWN"
+                }
+              ],
+              "spreads": []
+            }
+          ],
+          "needsClarification": false
+        }
+      ]
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "Yes.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 2,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "unknown-flavor",
+    "tags": [
+      "unsupported"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": []
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "Two blueberry and three jalapeno.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Blueberry",
+                      "quantity": 2,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "invalid-quantity",
+    "tags": [
+      "unsupported"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": []
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "One thousand sesame.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Sesame",
+                      "quantity": null,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "independent-dozens",
+    "tags": [
+      "dozen",
+      "line-identity"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": []
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "Two baker's dozens. First dozen thirteen plain unsliced untoasted. Second dozen thirteen everything sliced toasted.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "DOZEN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 13,
+                      "slice": "UNSLICED",
+                      "toast": "UNTOASTED"
+                    }
+                  ],
+                  "spreads": []
+                },
+                {
+                  "kind": "DOZEN",
+                  "bagels": [
+                    {
+                      "flavor": "Everything",
+                      "quantity": 13,
+                      "slice": "SLICED",
+                      "toast": "TOASTED"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "no-bagels-conflict",
+    "tags": [
+      "ambiguity"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": []
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "No bagels, two sesame.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Sesame",
+                      "quantity": 2,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "spoken-alias",
+    "tags": [
+      "aliases"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 1,
+      "cars": []
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "Eight cinnamon swirl and raisin and three asiago cheese.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Cinnamon Swirl & Raisin",
+                      "quantity": 8,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    },
+                    {
+                      "flavor": "Asiago Cheese",
+                      "quantity": 3,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "return-to-earlier-car",
+    "tags": [
+      "car-boundary",
+      "correction"
+    ],
+    "source": "synthetic",
+    "initial_state": {
+      "activeCarNumber": 2,
+      "cars": [
+        {
+          "number": 1,
+          "status": "ORDER",
+          "groups": [
+            {
+              "kind": "UNKNOWN",
+              "bagels": [
+                {
+                  "flavor": "Plain",
+                  "quantity": 2,
+                  "slice": "UNKNOWN",
+                  "toast": "UNKNOWN"
+                }
+              ],
+              "spreads": []
+            }
+          ],
+          "needsClarification": false
+        },
+        {
+          "number": 2,
+          "status": "ORDER",
+          "groups": [
+            {
+              "kind": "UNKNOWN",
+              "bagels": [
+                {
+                  "flavor": "Everything",
+                  "quantity": 3,
+                  "slice": "UNKNOWN",
+                  "toast": "UNKNOWN"
+                }
+              ],
+              "spreads": []
+            }
+          ],
+          "needsClarification": false
+        }
+      ]
+    },
+    "turns": [
+      {
+        "id": "t1",
+        "kind": "final",
+        "segment_id": "s1",
+        "text": "Car one make plain four.",
+        "expected": {
+          "activeCarNumber": 1,
+          "cars": [
+            {
+              "number": 1,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Plain",
+                      "quantity": 4,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            },
+            {
+              "number": 2,
+              "status": "ORDER",
+              "groups": [
+                {
+                  "kind": "UNKNOWN",
+                  "bagels": [
+                    {
+                      "flavor": "Everything",
+                      "quantity": 3,
+                      "slice": "UNKNOWN",
+                      "toast": "UNKNOWN"
+                    }
+                  ],
+                  "spreads": []
+                }
+              ],
+              "needsClarification": false
+            }
+          ]
+        }
+      }
+    ]
+  }
+]
